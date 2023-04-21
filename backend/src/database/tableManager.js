@@ -3,6 +3,7 @@ import UserModel from "../models/User.js";
 import CustomerModel from "../models/Customer.js";
 import CardModel from "../models/Card.js";
 import MovementModel from "../models/Movement.js";
+import LoanRequestModel from "../models/LoanRequest.js";
 
 const initManager = sequelize => {
     const customer = sequelize.define('Customer', CustomerModel)
@@ -10,6 +11,7 @@ const initManager = sequelize => {
     const account = sequelize.define('Account', AccountModel)
     const card = sequelize.define('Card', CardModel)
     const movement = sequelize.define('Movement', MovementModel)
+    const loanRequest = sequelize.define('LoanRequest', LoanRequestModel)
 
     customer.hasOne(user)
     user.belongsTo(customer)
@@ -22,6 +24,9 @@ const initManager = sequelize => {
 
     account.hasMany(movement)
     movement.belongsTo(account)
+
+    account.hasMany(loanRequest)
+    loanRequest.belongsTo(account)
 }
 
 export default initManager
