@@ -5,10 +5,6 @@ import env from '../config/config.js'
 import createDB_mysql from './create_db_mysql.js'
 import tableManager from './tableManager.js'
 
-import CustomerModel from '../models/Customer.js'
-import UserModel from '../models/User.js'
-import AccountModel from '../models/Account.js'
-
 const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASW, {
     host: env.DB_HOST ,
     dialect: 'mysql'
