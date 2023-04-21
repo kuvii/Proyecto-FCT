@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
 
 const server = createServer(app)
 
-
 const runServer = async () => {
     await connection.initDatabase()
 

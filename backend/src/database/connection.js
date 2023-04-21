@@ -11,8 +11,6 @@ const sequelize = new Sequelize(envVariables.DB_NAME, envVariables.DB_USER, envV
     dialect: 'mysql'
 })
 
-
-
 const testConnection = async () => {
     try {
         await sequelize.authenticate()

@@ -12,7 +12,7 @@ const createDB_mysql = async () => {
         })
         await connection.query(constants.queries_mysql.CREATE_DB_QUERY)
     } catch (error) {
-        console.error('[createDB]: Error creating DB', error)
+        console.error('[CreateDB]: Error creating DB', error)
     }
 }
 
