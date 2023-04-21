@@ -3,7 +3,7 @@ import { createServer } from 'http'
 
 import cors from 'cors'
 
-import { envVariables } from '../config/config.js'
+import env from '../config/config.js'
 import {connection} from '../database/connection.js'
 
 const app = express()
@@ -21,7 +21,7 @@ const server = createServer(app)
 const runServer = async () => {
     await connection.initDatabase()
 
-    server.listen(envVariables.SERVER_PORT, () => {
+    server.listen(env.SERVER_PORT, () => {
         console.log(`[INFO]: Server started on ${server.address().port}`)
     })
 }

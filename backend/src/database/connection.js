@@ -1,13 +1,13 @@
 import Sequelize from 'sequelize'
 
-import {envVariables} from '../config/config.js'
+import env from '../config/config.js'
 
 import createDB_mysql from './create_db_mysql.js'
 
 import CustomerModel from '../models/Customer.js'
 
-const sequelize = new Sequelize(envVariables.DB_NAME, envVariables.DB_USER, envVariables.DB_PASW, {
-    host: envVariables.DB_HOST ,
+const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASW, {
+    host: env.DB_HOST ,
     dialect: 'mysql'
 })
 

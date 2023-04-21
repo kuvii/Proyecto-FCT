@@ -12,7 +12,7 @@ const SERVER_PORT = parseInt(process.env.SERVER_PORT, 10)
 
 const SEQUELIZE_DIALECT = process.env.SEQUELIZE_DIALECT
 
-export const envVariables = {
+const env = {
     DB_NAME,
     DB_HOST,
     DB_PORT,
@@ -21,3 +21,5 @@ export const envVariables = {
     SERVER_PORT,
     SEQUELIZE_DIALECT
 }
+
+export default env
