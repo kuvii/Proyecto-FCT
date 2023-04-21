@@ -5,6 +5,7 @@ import env from '../config/config.js'
 import createDB_mysql from './create_db_mysql.js'
 
 import CustomerModel from '../models/Customer.js'
+import UserModel from '../models/User.js'
 
 const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASW, {
     host: env.DB_HOST ,
@@ -29,6 +30,9 @@ const initDatabase = async () => {
     try {
         await testConnection()
         const Customer = CustomerModel(sequelize, Sequelize)
+        const User = UserModel(sequelize, Sequelize)
+        Customer.hasOne(User)
+        User.belongsTo(Customer)
         await sequelize.sync({force: true})
     } catch (error) {
         console.error('[InitDB]: Error starting DB', error)

@@ -4,6 +4,8 @@ const queries_mysql = {
     CREATE_DB_QUERY: `CREATE DATABASE IF NOT EXISTS ${env.DB_NAME};`
 }
 
-export const constants = {
+const constants = {
     queries_mysql
 }
+
+export default constants

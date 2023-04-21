@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise'
 import env from '../config/config.js'
-import { constants } from '../utils/constants.js'
+import constants from '../utils/constants.js'
 
 const createDB_mysql = async () => {
     try {

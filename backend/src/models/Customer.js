@@ -1,4 +1,4 @@
-
+import User from './User.js'
 // const regex_dni = /^\d{8}[a-zA-Z]$/
 // const regex_phone = /\d{3}-\d{3}-\d{4}/ 
 
@@ -56,5 +56,6 @@ const CustomerModel = (sequelize, DataTypes) =>
             allowNull: false
         },
 })
+
 
 export default CustomerModel
