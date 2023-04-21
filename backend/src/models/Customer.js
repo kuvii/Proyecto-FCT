@@ -1,9 +1,8 @@
-import User from './User.js'
+import { DataTypes } from "sequelize"
 // const regex_dni = /^\d{8}[a-zA-Z]$/
 // const regex_phone = /\d{3}-\d{3}-\d{4}/ 
 
-const CustomerModel = (sequelize, DataTypes) => 
-    sequelize.define( "Customer", {
+const CustomerModel = {
         id: {
             type: DataTypes.BIGINT,
             autoincrement: true,
@@ -32,20 +31,10 @@ const CustomerModel = (sequelize, DataTypes) =>
         dni: {
             type: DataTypes.STRING(9),
             allowNull: false,
-            // validate: {
-            //     validator: function(value) {
-            //         return regex_dni.test(value)
-            //     }
-            // }
         },
         phone: {
             type: DataTypes.STRING,
             allowNull: false,
-            // validate: {
-            //     validator: function(value) {
-            //         return regex_phone.test(value)
-            //     }
-            // }
         },
         postal_code: {
             type: DataTypes.STRING(5),
@@ -55,7 +44,7 @@ const CustomerModel = (sequelize, DataTypes) =>
             type: DataTypes.STRING(25),
             allowNull: false
         },
-})
+}
 
 
 export default CustomerModel

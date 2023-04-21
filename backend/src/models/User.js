@@ -1,11 +1,10 @@
-import Customer from './Customer.js'
+import { DataTypes } from "sequelize"
 
-const UserModel = (sequelize, DataTypes) => 
-    sequelize.define('User', {
-        role: {
-            type: DataTypes.INTEGER
-        },
-    })
+const UserModel = {
+    role: {
+        type: DataTypes.INTEGER
+    },
+}
 
 
 export default UserModel
