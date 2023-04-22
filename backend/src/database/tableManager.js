@@ -6,14 +6,27 @@ import MovementModel from "../models/Movement.js";
 import LoanRequestModel from "../models/LoanRequest.js";
 import LoanModel from "../models/Loan.js";
 
-const initManager = sequelize => {
-    const customer = sequelize.define('Customer', CustomerModel)
-    const user = sequelize.define('User', UserModel)
-    const account = sequelize.define('Account', AccountModel)
-    const card = sequelize.define('Card', CardModel)
-    const movement = sequelize.define('Movement', MovementModel)
-    const loanRequest = sequelize.define('LoanRequest', LoanRequestModel)
-    const loan = sequelize.define('Loan', LoanModel)
+import sequelize from "./sequelize.js";
+
+const customer = sequelize.define('Customer', CustomerModel)
+const user = sequelize.define('User', UserModel)
+const account = sequelize.define('Account', AccountModel)
+const card = sequelize.define('Card', CardModel)
+const movement = sequelize.define('Movement', MovementModel)
+const loanRequest = sequelize.define('LoanRequest', LoanRequestModel)
+const loan = sequelize.define('Loan', LoanModel)
+
+const tables = {
+    customer,
+    user,
+    account,
+    card,
+    movement,
+    loanRequest,
+    loan
+}
+
+const initManager = () => {
 
     customer.hasOne(user)
     user.belongsTo(customer)
@@ -36,4 +49,9 @@ const initManager = sequelize => {
     loan.belongsTo(loanRequest)
 }
 
-export default initManager
+const tableManager = {
+    initManager,
+    tables
+}
+
+export default tableManager

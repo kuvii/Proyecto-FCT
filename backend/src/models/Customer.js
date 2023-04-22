@@ -3,11 +3,6 @@ import { DataTypes } from "sequelize"
 // const regex_phone = /\d{3}-\d{3}-\d{4}/ 
 
 const CustomerModel = {
-        id: {
-            type: DataTypes.BIGINT,
-            autoincrement: true,
-            primaryKey: true
-        },
         first_name: {
             type: DataTypes.STRING(25),
             allowNull: false

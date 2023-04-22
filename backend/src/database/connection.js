@@ -1,14 +1,8 @@
-import Sequelize from 'sequelize'
-
-import env from '../config/config.js'
-
 import createDB_mysql from './create_db_mysql.js'
 import tableManager from './tableManager.js'
+import sequelize from './sequelize.js'
 
-const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASW, {
-    host: env.DB_HOST ,
-    dialect: 'mysql'
-})
+import { customerServices } from '../services/customerServices.js'
 
 const testConnection = async () => {
     try {
@@ -27,8 +21,10 @@ const testConnection = async () => {
 const initDatabase = async () => {
     try {
         await testConnection()
-        tableManager(sequelize)
+        tableManager.initManager(sequelize)
         await sequelize.sync({force: true})
+        customerServices.findOneCustomer()
+        customerServices.createNewCustomer()
     } catch (error) {
         console.error('[InitDB]: Error starting DB', error)
     }
