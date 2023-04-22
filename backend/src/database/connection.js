@@ -1,31 +1,36 @@
 import Sequelize from 'sequelize'
-import createDB_mysql from './create_db_mysql.js'
-import {envVariables} from '../config/config.js'
 
-const sequelize = new Sequelize(envVariables.DB_NAME, envVariables.DB_USER, envVariables.DB_PASW, {
-    host: envVariables.DB_HOST ,
+import env from '../config/config.js'
+
+import createDB_mysql from './create_db_mysql.js'
+import tableManager from './tableManager.js'
+
+const sequelize = new Sequelize(env.DB_NAME, env.DB_USER, env.DB_PASW, {
+    host: env.DB_HOST ,
     dialect: 'mysql'
 })
 
 const testConnection = async () => {
     try {
         await sequelize.authenticate()
-        console.log('Connection stablished')
+        console.log('[INFO]: Connection stablished')
     } catch (error) {
         if (error.original.errno === 1049){
             createDB_mysql()
             initDatabase()
             return
         }
-        console.error('[testConn]:Connection refused', error)
+        console.error('[TestConn]:Connection refused', error)
     }
 }
 
 const initDatabase = async () => {
     try {
         await testConnection()
+        tableManager(sequelize)
+        await sequelize.sync({force: true})
     } catch (error) {
-        console.error('[initDB]: Error starting DB', error)
+        console.error('[InitDB]: Error starting DB', error)
     }
 }
 
