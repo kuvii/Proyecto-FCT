@@ -1,7 +1,5 @@
 import { DataTypes } from "sequelize"
 import sequelize from "../database/sequelize"
-// const regex_dni = /^\d{8}[a-zA-Z]$/
-// const regex_phone = /\d{3}-\d{3}-\d{4}/ 
 
 const customer = sequelize.define('customer', {
         first_name: {
