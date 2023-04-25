@@ -10,12 +10,14 @@ const getCustomerInfo = async (id) => {
     }
 }
 
-const postNewCustomer = async (customerData) => {
+const postNewCustomer = async (req, res) => {
+    const newCustomerData = req.body
+    // console.log(newCustomerData)
     try {
-        await customerServices.createNewCustomer(customerData)
-        
+        const newCustomer = await customerServices.createNewCustomer(newCustomerData)
+        res.json(newCustomer)
     } catch (error) {
-        console.error(error)
+        console.log(error)
     }
 }
 
