@@ -1,7 +1,8 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/sequelize.js";
+import Account from "./Account.js";
 
-const card = sequelize.define('card', {
+const Card = sequelize.define('card', {
     holderName: {
         type: DataTypes.STRING(50),
     },
@@ -20,4 +21,7 @@ const card = sequelize.define('card', {
     },
 })
 
-export default card
+Card.hasMany(Account)
+Account.belongsTo(Card)
+
+export default Card

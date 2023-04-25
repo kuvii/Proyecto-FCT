@@ -1,7 +1,8 @@
 import { DataTypes } from "sequelize"
 import sequelize from "../database/sequelize.js";
+import User from "./User.js";
 
-const customer = sequelize.define('customer', {
+const Customer = sequelize.define('customer', {
         first_name: {
             type: DataTypes.STRING(25),
             allowNull: false
@@ -40,5 +41,7 @@ const customer = sequelize.define('customer', {
         },
 })
 
+User.hasOne(Customer)
+Customer.belongsTo(User)
 
-export default customer
+export default Customer
