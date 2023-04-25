@@ -1,8 +1,10 @@
-import { DataTypes } from "sequelize"
+import { DataTypes, Model } from "sequelize"
 import sequelize from "../database/sequelize.js";
 import User from "./User.js";
 
-const Customer = sequelize.define('customer', {
+class Customer extends Model {}
+
+Customer.init({
         first_name: {
             type: DataTypes.STRING(25),
             allowNull: false
@@ -39,9 +41,8 @@ const Customer = sequelize.define('customer', {
             type: DataTypes.STRING(25),
             allowNull: false
         },
-})
+}, {sequelize, modelName: 'customer'})
 
-User.hasOne(Customer)
-Customer.belongsTo(User)
+Customer.User = Customer.belongsTo(User)
 
 export default Customer

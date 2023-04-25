@@ -1,8 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../database/sequelize.js";
-import Account from "./Account.js";
 
-const Card = sequelize.define('card', {
+class Card extends Model {}
+Card.init( {
     holderName: {
         type: DataTypes.STRING(50),
     },
@@ -19,9 +19,6 @@ const Card = sequelize.define('card', {
     dateExpiration: {
         type: DataTypes.DATEONLY
     },
-})
-
-Card.hasMany(Account)
-Account.belongsTo(Card)
+}, {sequelize, modelName: 'card'})
 
 export default Card

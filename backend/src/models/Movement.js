@@ -1,7 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../database/sequelize.js";
 
-const Movement = sequelize.define('movement', {
+class Movement extends Model {}
+Movement.init({
     quantity: {
         type: DataTypes.DOUBLE,
         allowNull: false
@@ -23,6 +24,6 @@ const Movement = sequelize.define('movement', {
         type: DataTypes.BIGINT,
         allowNull: false
     }
-})
+}, {sequelize, modelName: 'movement'})
 
 export default Movement

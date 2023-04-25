@@ -1,9 +1,9 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../database/sequelize.js";
-import Account from "./Account.js";
-import LoanRequest from "./LoanRequest.js";
 
-const Loan = sequelize.define('loan', {
+class Loan extends Model {}
+
+Loan.init({
     total: {
         type: DataTypes.DOUBLE,
         allowNull: false
@@ -20,11 +20,6 @@ const Loan = sequelize.define('loan', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-})
-
-Account.hasMany(Loan)
-LoanRequest.hasMany(Loan)
-Loan.belongsTo(Account)
-Loan.belongsTo(LoanRequest)
+}, {sequelize, modelName: 'loan'})
 
 export default Loan

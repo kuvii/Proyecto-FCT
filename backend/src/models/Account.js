@@ -1,10 +1,9 @@
-import { DataTypes } from "sequelize"
+import { DataTypes, Model } from "sequelize"
 import sequelize from "../database/sequelize.js"
-import User from "./User.js"
-import LoanRequest from "./LoanRequest.js"
-import Movement from "./Movement.js"
 
-const Account = sequelize.define('account', {
+class Account extends Model {}
+
+Account.init({
     money: {
         type: DataTypes.DOUBLE,
         allowNull: false
@@ -12,16 +11,6 @@ const Account = sequelize.define('account', {
     iban: {
         type: DataTypes.STRING(24)
     }
-})
-
-
-Account.hasOne(User)
-User.belongsTo(Account)
-
-Account.hasMany(LoanRequest)
-LoanRequest.belongsTo(Account)
-
-Movement.hasMany(Account)
-Account.belongsTo(Movement)
+}, {sequelize, modelName: 'account'})
 
 export default Account
