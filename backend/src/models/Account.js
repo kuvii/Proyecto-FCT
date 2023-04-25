@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize"
+import sequelize from "../database/sequelize"
 
-const AccountModel = {
+const account = sequelize.define('account', {
     money: {
         type: DataTypes.DOUBLE,
         allowNull: false
@@ -8,6 +9,6 @@ const AccountModel = {
     iban: {
         type: DataTypes.STRING(24)
     }
-}
+})
 
-export default AccountModel
+export default account
