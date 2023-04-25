@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../database/sequelize";
+import sequelize from "../database/sequelize.js";
 
 const movement = sequelize.define('movement', {
     quantity: {
