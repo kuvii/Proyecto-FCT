@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
+import sequelize from "../database/sequelize";
 
-const CardModel = {
+const card = sequelize.define('card', {
     holderName: {
         type: DataTypes.STRING(50),
     },
@@ -17,6 +18,6 @@ const CardModel = {
     dateExpiration: {
         type: DataTypes.DATEONLY
     },
-}
+})
 
-export default CardModel
+export default card
