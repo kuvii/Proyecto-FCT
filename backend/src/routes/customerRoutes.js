@@ -9,15 +9,6 @@ router.get('/my/:id', async (req, res) => {
     res.status(200).json(data)
 })
 
-router.post('/new-customer', async (req, res) => {
-    try {
-        const customerData = req.body
-        await customerController.postNewCustomer(customerData)
-        res.status(201).json('Created correctly')
-    } catch (error) {
-        res.status(500).json('Error creating new customer')
-        console.error(error)
-    }
-})
+router.post('/new-customer', customerController.postNewCustomer)
 
 export default router
