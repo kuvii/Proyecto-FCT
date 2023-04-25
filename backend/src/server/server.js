@@ -5,6 +5,7 @@ import cors from 'cors'
 
 import env from '../config/config.js'
 import {connection} from '../database/connection.js'
+import router from '../routes/customerRoutes.js'
 
 const app = express()
 
@@ -12,9 +13,7 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.json({message: "Welcome to kinvsbank application"})
-})
+app.use(router)
 
 const server = createServer(app)
 
