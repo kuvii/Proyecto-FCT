@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
+import sequelize from "../database/sequelize";
 
-const LoanModel = {
+const loan = sequelize.define('loan', {
     total: {
         type: DataTypes.DOUBLE,
         allowNull: false
@@ -17,6 +18,6 @@ const LoanModel = {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-}
+})
 
-export default LoanModel
+export default loan
