@@ -1,10 +1,10 @@
 import { DataTypes } from "sequelize"
+import sequelize from "../database/sequelize"
 
-const UserModel = {
+const user = sequelize.define('user', {
     role: {
         type: DataTypes.INTEGER
     },
-}
+})
 
-
-export default UserModel
+export default user
