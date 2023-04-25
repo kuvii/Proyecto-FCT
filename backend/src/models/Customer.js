@@ -1,8 +1,9 @@
 import { DataTypes } from "sequelize"
+import sequelize from "../database/sequelize"
 // const regex_dni = /^\d{8}[a-zA-Z]$/
 // const regex_phone = /\d{3}-\d{3}-\d{4}/ 
 
-const CustomerModel = {
+const customer = sequelize.define('customer', {
         first_name: {
             type: DataTypes.STRING(25),
             allowNull: false
@@ -39,7 +40,7 @@ const CustomerModel = {
             type: DataTypes.STRING(25),
             allowNull: false
         },
-}
+})
 
 
-export default CustomerModel
+export default customer
