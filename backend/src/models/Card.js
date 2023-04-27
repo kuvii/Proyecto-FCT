@@ -16,7 +16,7 @@ Card.init( {
     cvv: {
         type: DataTypes.STRING(3)
     },
-    dateExpiration: {
+    date_expiration: {
         type: DataTypes.DATEONLY
     },
 }, {sequelize, modelName: 'card'})
