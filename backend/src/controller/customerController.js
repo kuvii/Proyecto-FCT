@@ -10,17 +10,6 @@ const getCustomerInfo = async (req, res) => {
     }
 }
 
-const postNewCustomer = async (req, res) => {
-    const newCustomerData = req.body
-    // console.log(newCustomerData)
-    try {
-        const newCustomer = await customerServices.createNewCustomer(newCustomerData)
-        res.json(newCustomer)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 const getAuthCustomer = async (req, res) => {
     const customerRequestedToAuthInfo = req.body
     console.log(customerRequestedToAuthInfo)
@@ -40,7 +29,6 @@ const getAuthCustomer = async (req, res) => {
 
 const customerController = {
     getCustomerInfo,
-    postNewCustomer,
     getAuthCustomer
 }
 
