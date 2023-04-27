@@ -3,12 +3,8 @@ import customerController from "../controller/customerController.js";
 
 const router = Router()
 
-router.get('/my/:id', async (req, res) => {
-    const { id } = req.params
-    const data = await customerController.getCustomerInfo(id)
-    res.status(200).json(data)
-})
+router.get('/', customerController.getAuthCustomer)
 
-router.post('/new-customer', customerController.postNewCustomer)
+router.get('/my/dashboard/:id', customerController.getCustomerInfo)
 
 export default router
