@@ -1,12 +1,12 @@
 import { customerServices } from "../services/customerServices.js"
 
-const getCustomerInfo = async (id) => {
+const getCustomerInfo = async (req, res) => {
+    const { id } = req.params
     try {
         const data = await customerServices.findOneCustomer(id)
-
-        return data
+        res.status(200).json(data)
     } catch (error) {
-        console.error('[GetCustomerInfo]: Error getting customer Info\n', error)
+        console.error('[GetCustomerInfo]: Error getting customer Info')
     }
 }
 
@@ -21,9 +21,27 @@ const postNewCustomer = async (req, res) => {
     }
 }
 
+const getAuthCustomer = async (req, res) => {
+    const customerRequestedToAuthInfo = req.body
+    console.log(customerRequestedToAuthInfo)
+
+    try {
+        const isAuthorized = await customerServices.authUser(customerRequestedToAuthInfo)
+        if (isAuthorized) {
+            res.status(200).json(true)
+            return
+        }
+        res.status(401).json("Not Authorizated")
+    } catch (error) {
+        console.log(error)
+        res.status(500).json("InternalError")
+    }
+}
+
 const customerController = {
     getCustomerInfo,
-    postNewCustomer
+    postNewCustomer,
+    getAuthCustomer
 }
 
 export default customerController
