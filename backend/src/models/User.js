@@ -7,7 +7,7 @@ User.init({
     role: {
         type: DataTypes.INTEGER
     },
-}, {sequelize, modelName: 'user'})
+}, {sequelize, modelName: 'user', timestamps: false})
 
 User.Account = User.hasOne(Account)
 
