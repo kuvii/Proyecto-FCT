@@ -5,7 +5,8 @@ import cors from 'cors'
 
 import env from '../config/config.js'
 import {connection} from '../database/connection.js'
-import router from '../routes/customerRoutes.js'
+import customerRouter from '../routes/customerRoutes.js'
+import adminRouter from '../routes/adminRoutes.js'
 
 const app = express()
 
@@ -15,7 +16,8 @@ app.use(cors(
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.use(router)
+app.use(customerRouter)
+app.use(adminRouter)
 
 const server = createServer(app)
 
