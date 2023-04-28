@@ -43,6 +43,6 @@ Customer.init({
         },
 }, {sequelize, modelName: 'customer'})
 
-Customer.Account = Customer.belongsTo(Account)
+Customer.Account = Customer.hasOne(Account)
 
 export default Customer
