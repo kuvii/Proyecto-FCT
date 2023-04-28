@@ -3,6 +3,7 @@ import Customer from "../models/Customer.js"
 import bcrypt from 'bcrypt'
 import Loan from "../models/Loan.js"
 import LoanRequest from "../models/LoanRequest.js"
+import Movement from "../models/Movement.js"
 
 const findOneCustomer = async (id) => {
     const customer = await Customer.findOne({
@@ -75,6 +76,37 @@ const findLoanRequestsFromCustomer = async (id) => {
 
 }
 
+const createNewMovement = async (movement, id) => {
+    try {
+        await Movement.create({
+            quantity: movement?.quantity,
+            description: movement?.description,
+            type: movement?.type,
+            date: movement?.date,
+            cardId: 0,
+            accountId: id
+        })
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
+const findMovementsFromCustomerId = async (id) => {
+    try {
+        const movementList = Movement.findAll({
+            where: {
+                id
+            }
+        })
+        if (movementList){
+            return movementList
+        }
+        return []
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 const authUser = async (customerToAuth) => {
     try {
         const foundUser = await Customer.findOne({
@@ -100,5 +132,7 @@ export const customerServices = {
     findCardsFromCustomerId,
     createNewCard,
     createNewLoanRequest,
-    findLoanRequestsFromCustomer
+    findLoanRequestsFromCustomer,
+    createNewMovement,
+    findMovementsFromCustomerId
 }

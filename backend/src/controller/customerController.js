@@ -51,6 +51,28 @@ const getLoanRequests = async (req, res) => {
     }
 }
 
+const postNewMovement = async (req, res) => {
+    const { id } = req.params
+    const movement = req.body
+    try {
+        await customerServices.createNewMovement(movement, id)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const getMovementList = async (req, res) => {
+    const { id } = req.params
+    try {
+        const movementList = await customerServices.findMovementsFromCustomerId(id)
+        if (movementList != []){
+            res.status(200).json(movementList)
+        }
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const getAuthCustomer = async (req, res) => {
     const customerRequestedToAuthInfo = req.body
     console.log(customerRequestedToAuthInfo)
@@ -74,7 +96,9 @@ const customerController = {
     getCardsFromCustomer,
     postNewCard,
     postNewLoanRequest,
-    getLoanRequests
+    getLoanRequests,
+    postNewMovement,
+    getMovementList
 }
 
 export default customerController
