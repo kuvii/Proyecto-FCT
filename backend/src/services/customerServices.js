@@ -13,13 +13,11 @@ const findOneCustomer = async (id) => {
 
 const authUser = async (customerToAuth) => {
     try {
-        // Use this function in {find one customer}
         const foundUser = await Customer.findOne({
             where: {
                 email: customerToAuth.email
             }
         })
-        // -------
         if (foundUser){
             const password_valid = await bcrypt.compare(customerToAuth.password, foundUser.password)
             if (password_valid){
