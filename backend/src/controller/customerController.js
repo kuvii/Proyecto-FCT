@@ -82,6 +82,7 @@ const getMovementList = async (req, res) => {
         if (movementList != []){
             res.status(200).json(movementList)
         }
+        res.status(422).json([])
     } catch (error) {
         console.error(error)
     }
