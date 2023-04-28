@@ -65,12 +65,13 @@ const createNewCard = async (card, id) => {
 
 const createNewLoanRequest = async (loanRequest, id) => {
     try {
-        await LoanRequest.create({
+        const newLoanRequest = await LoanRequest.create({
             total: loanRequest?.total,
             description: loanRequest?.description,
             status: 0,
             accountId: id,
         })
+        return newLoanRequest
     } catch (error) {
         throw new Error (error)
     }
