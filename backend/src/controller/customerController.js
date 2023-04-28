@@ -10,6 +10,27 @@ const getCustomerInfo = async (req, res) => {
     }
 }
 
+const getCardsFromCustomer = async (req, res) => {
+    const { id } = req.params
+    try {
+        const cards = await customerServices.findCardsFromCustomerId(id)
+        res.status(200).json(cards)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const postNewCard = async (req, res) => {
+    const card = req.body
+    const { id } = req.params
+    try {
+        await customerServices.createNewCard(card, id)
+        res.status(201).json('Created')
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const getAuthCustomer = async (req, res) => {
     const customerRequestedToAuthInfo = req.body
     console.log(customerRequestedToAuthInfo)
@@ -29,7 +50,9 @@ const getAuthCustomer = async (req, res) => {
 
 const customerController = {
     getCustomerInfo,
-    getAuthCustomer
+    getAuthCustomer,
+    getCardsFromCustomer,
+    postNewCard
 }
 
 export default customerController
