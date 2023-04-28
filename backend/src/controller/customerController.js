@@ -64,7 +64,12 @@ const postNewMovement = async (req, res) => {
     const { id } = req.params
     const movement = req.body
     try {
-        await customerServices.createNewMovement(movement, id)
+        const newMovement = await customerServices.createNewMovement(movement, id)
+        if (newMovement){
+            res.status(201).json(newMovement)
+            return
+        }
+        res.status(422).json({})
     } catch (error) {
         console.error(error)
     }

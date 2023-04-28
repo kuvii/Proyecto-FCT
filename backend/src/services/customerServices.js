@@ -96,7 +96,7 @@ const findLoanRequestsFromCustomer = async (id) => {
 
 const createNewMovement = async (movement, id) => {
     try {
-        await Movement.create({
+        const newMovement = await Movement.create({
             quantity: movement?.quantity,
             description: movement?.description,
             type: movement?.type,
@@ -104,6 +104,7 @@ const createNewMovement = async (movement, id) => {
             cardId: 0,
             accountId: id
         })
+        return newMovement
     } catch (error) {
         throw new Error (error)
     }
