@@ -54,7 +54,10 @@ const getLoanRequests = async (req, res) => {
     const { id } = req.params
     try {
         const loanRequestList = await customerServices.findLoanRequestsFromCustomer(id)
-        res.status(200).json(loanRequestList)
+        if (loanRequestList){
+            res.status(200).json(loanRequestList)
+        }
+        res.status(400).json([])
     } catch (error) {
         console.error(error)
     }
