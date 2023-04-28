@@ -49,7 +49,7 @@ const findCardsFromCustomerId = async (id) => {
 
 const createNewCard = async (card, id) => {
     try {
-        await Card.create({
+        const newCard = await Card.create({
             holder_name: card?.holder_name,
             number: card?.number,
             type: card?.type,
@@ -57,6 +57,7 @@ const createNewCard = async (card, id) => {
             date_expiration: card?.date_expiration,
             accountId: id,
         })
+        return newCard
     } catch (error) {
         throw new Error (error)
     }

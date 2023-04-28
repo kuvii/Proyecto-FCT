@@ -24,8 +24,12 @@ const postNewCard = async (req, res) => {
     const card = req.body
     const { id } = req.params
     try {
-        await customerServices.createNewCard(card, id)
-        res.status(201).json('Created')
+        const newCard = await customerServices.createNewCard(card, id)
+        if (newCard){
+            res.status(201).json(newCard)
+            return
+        }
+        res.status(422).json({})
     } catch (error) {
         console.error(error)
     }
