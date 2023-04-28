@@ -5,7 +5,7 @@ const router = Router()
 
 router.get('/', customerController.getAuthCustomer)
 
-router.get('/my/dashboard/:id', customerController.getCustomerInfo)
+router.get('/my/dashboard/:id', customerController.getCustomerDashboard)
 
 router.get('/my/cards/:id', customerController.getCardsFromCustomer)
 

@@ -1,12 +1,12 @@
 import { customerServices } from "../services/customerServices.js"
 
-const getCustomerInfo = async (req, res) => {
+const getCustomerDashboard = async (req, res) => {
     const { id } = req.params
     try {
-        const data = await customerServices.findOneCustomer(id)
+        const data = await customerServices.findCustomerDashboardInfo(id)
         res.status(200).json(data)
     } catch (error) {
-        console.error('[GetCustomerInfo]: Error getting customer Info')
+        console.error('[getCustomerDashboard]: Error getting customer Info')
     }
 }
 
@@ -91,7 +91,7 @@ const getAuthCustomer = async (req, res) => {
 }
 
 const customerController = {
-    getCustomerInfo,
+    getCustomerDashboard,
     getAuthCustomer,
     getCardsFromCustomer,
     postNewCard,

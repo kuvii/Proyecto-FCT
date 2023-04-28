@@ -6,22 +6,29 @@ import LoanRequest from "../models/LoanRequest.js"
 import Movement from "../models/Movement.js"
 import Account from "../models/Account.js"
 
-const findOneCustomer = async (id) => {
-    const customer = await Customer.findOne({
-        where: {
-            id
-        },
-        include: [{
-            model: Account,
-            include: [
-                { model: Card },
-                { model: LoanRequest },
-                { model: Loan },
-                { model: Movement },
-            ]
-        }]
-    })
-    return customer
+const findCustomerDashboardInfo = async (id) => {
+    try {
+        const customer = await Customer.findOne({
+            where: {
+                id
+            },
+            include: [{
+                model: Account,
+                include: [
+                    { model: Card },
+                    { model: LoanRequest },
+                    { model: Loan },
+                    { model: Movement },
+                ]
+            }]
+        })
+        if (customer){
+            return customer
+        }
+        return 0
+    } catch (error) {
+        throw new Error (error)
+    }
 }
 
 const findCardsFromCustomerId = async (id) => {
@@ -136,7 +143,7 @@ const authUser = async (customerToAuth) => {
 }
 
 export const customerServices = {
-    findOneCustomer,
+    findCustomerDashboardInfo,
     authUser,
     findCardsFromCustomerId,
     createNewCard,
