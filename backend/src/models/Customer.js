@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize"
 import sequelize from "../database/sequelize.js";
-import User from "./User.js";
+import Account from "./Account.js";
 
 class Customer extends Model {}
 
@@ -43,6 +43,6 @@ Customer.init({
         },
 }, {sequelize, modelName: 'customer'})
 
-Customer.User = Customer.belongsTo(User)
+Customer.Account = Customer.belongsTo(Account)
 
 export default Customer
