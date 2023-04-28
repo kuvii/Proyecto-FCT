@@ -1,5 +1,4 @@
 import Customer from "../models/Customer.js"
-import User from "../models/User.js"
 import bcrypt from 'bcrypt'
 
 const findOneCustomer = async (id) => {
@@ -7,10 +6,7 @@ const findOneCustomer = async (id) => {
         where: {
             id
         },
-        include: [{
-            association: Customer.User,
-            include: [User.Account]
-        }]
+        include: [Customer.Account]
     })
     return customer
 }

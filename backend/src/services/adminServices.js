@@ -1,5 +1,4 @@
 import Customer from "../models/Customer.js"
-import User from "../models/User.js"
 import bcrypt from 'bcrypt'
 
 const createNewCustomer = async (customerData) => {
@@ -17,18 +16,13 @@ const createNewCustomer = async (customerData) => {
             phone: customerData?.phone,
             postal_code: customerData?.postal_code,
             address: customerData?.address,
-            user: {
-                role: customerData?.user?.role,
-                account: {
-                    money: customerData?.user?.account?.money,
-                    iban: customerData?.user?.account?.iban
-                }
+            account: {
+                role: customerData?.account?.role,
+                money: customerData?.account?.money,
+                iban: customerData?.account?.iban
             }
         }, {
-            include: [{
-                association: Customer.User,
-                include: [User.Account]
-            }]
+            include: [Customer.Account]
         })
     } catch (error) {
         throw new Error (error)
