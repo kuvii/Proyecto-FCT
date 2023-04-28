@@ -20,7 +20,7 @@ const getAuthCustomer = async (req, res) => {
             res.status(200).json(true)
             return
         }
-        res.status(401).json("Not Authorizated")
+        res.status(401).json(false)
     } catch (error) {
         console.log(error)
         res.status(500).json("InternalError")
