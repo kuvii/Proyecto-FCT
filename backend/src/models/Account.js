@@ -9,6 +9,9 @@ import Movement from './Movement.js'
 class Account extends Model {}
 
 Account.init({
+    role: {
+        type: DataTypes.INTEGER
+    },
     money: {
         type: DataTypes.DOUBLE,
         allowNull: false
