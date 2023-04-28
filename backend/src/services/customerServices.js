@@ -1,6 +1,8 @@
 import Card from "../models/Card.js"
 import Customer from "../models/Customer.js"
 import bcrypt from 'bcrypt'
+import Loan from "../models/Loan.js"
+import LoanRequest from "../models/LoanRequest.js"
 
 const findOneCustomer = async (id) => {
     const customer = await Customer.findOne({
@@ -43,6 +45,36 @@ const createNewCard = async (card, id) => {
     }
 }
 
+const createNewLoanRequest = async (loanRequest, id) => {
+    try {
+        await LoanRequest.create({
+            total: loanRequest?.total,
+            description: loanRequest?.description,
+            status: 0,
+            accountId: id,
+        })
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
+const findLoanRequestsFromCustomer = async (id) => {
+    try {
+        const loanRequests = LoanRequest.findAll({
+            where: {
+                accountId: id
+            },
+        })
+        if (loanRequests){
+            return loanRequests
+        }
+        return 0
+    } catch (error) {
+        throw new Error (error)
+    }
+
+}
+
 const authUser = async (customerToAuth) => {
     try {
         const foundUser = await Customer.findOne({
@@ -66,5 +98,7 @@ export const customerServices = {
     findOneCustomer,
     authUser,
     findCardsFromCustomerId,
-    createNewCard
+    createNewCard,
+    createNewLoanRequest,
+    findLoanRequestsFromCustomer
 }

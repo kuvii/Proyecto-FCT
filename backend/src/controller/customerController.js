@@ -31,6 +31,26 @@ const postNewCard = async (req, res) => {
     }
 }
 
+const postNewLoanRequest = async (req, res) => {
+    const loanRequest = req.body
+    const { id } = req.params
+    try {
+        await customerServices.createNewLoanRequest(loanRequest, id)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const getLoanRequests = async (req, res) => {
+    const { id } = req.params
+    try {
+        const loanRequestList = await customerServices.findLoanRequestsFromCustomer(id)
+        res.status(200).json(loanRequestList)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const getAuthCustomer = async (req, res) => {
     const customerRequestedToAuthInfo = req.body
     console.log(customerRequestedToAuthInfo)
@@ -52,7 +72,9 @@ const customerController = {
     getCustomerInfo,
     getAuthCustomer,
     getCardsFromCustomer,
-    postNewCard
+    postNewCard,
+    postNewLoanRequest,
+    getLoanRequests
 }
 
 export default customerController

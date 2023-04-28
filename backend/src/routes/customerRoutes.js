@@ -11,4 +11,8 @@ router.get('/my/cards/:id', customerController.getCardsFromCustomer)
 
 router.post('/my/cards/new-card/:id', customerController.postNewCard)
 
+router.post('/my/new-loan-request/:id', customerController.postNewLoanRequest)
+
+router.get('/my/loans/:id', customerController.getLoanRequests)
+
 export default router
