@@ -3,7 +3,7 @@ import sequelize from "../database/sequelize.js";
 
 class Card extends Model {}
 Card.init( {
-    holderName: {
+    holder_name: {
         type: DataTypes.STRING(50),
     },
     number: {
