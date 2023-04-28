@@ -4,13 +4,22 @@ import bcrypt from 'bcrypt'
 import Loan from "../models/Loan.js"
 import LoanRequest from "../models/LoanRequest.js"
 import Movement from "../models/Movement.js"
+import Account from "../models/Account.js"
 
 const findOneCustomer = async (id) => {
     const customer = await Customer.findOne({
         where: {
             id
         },
-        include: [Customer.Account]
+        include: [{
+            model: Account,
+            include: [
+                { model: Card },
+                { model: LoanRequest },
+                { model: Loan },
+                { model: Movement },
+            ]
+        }]
     })
     return customer
 }
