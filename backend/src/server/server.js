@@ -3,6 +3,7 @@ import { createServer } from 'http'
 
 import compression from 'compression'
 import cors from 'cors'
+import helmet from 'helmet'
 
 import env from '../config/config.js'
 import {connection} from '../database/connection.js'
@@ -15,6 +16,8 @@ app.use(cors(
     {origin:'*'}
 ))
 app.use(compression())
+app.use(helmet())
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
