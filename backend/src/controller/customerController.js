@@ -1,12 +1,16 @@
 import { customerServices } from "../services/customerServices.js"
+import HTTP_codes from "../utils/HTTP_codes.js"
+
+const { correct_codes, client_errors, server_errors } = HTTP_codes
 
 const getCustomerDashboard = async (req, res) => {
     const { id } = req.params
     try {
         const data = await customerServices.findCustomerDashboardInfo(id)
-        res.status(200).json(data)
+        res.status(correct_codes.OK).json(data)
     } catch (error) {
-        console.error('[getCustomerDashboard]: Error getting customer Info')
+        res.status(server_errors.INTERNAL_ERROR).json({})
+        console.error(error)
     }
 }
 
@@ -14,8 +18,9 @@ const getCardsFromCustomer = async (req, res) => {
     const { id } = req.params
     try {
         const cards = await customerServices.findCardsFromCustomerId(id)
-        res.status(200).json(cards)
+        res.status(correct_codes.OK).json(cards)
     } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.error(error)
     }
 }
@@ -26,11 +31,12 @@ const postNewCard = async (req, res) => {
     try {
         const newCard = await customerServices.createNewCard(card, id)
         if (newCard){
-            res.status(201).json(newCard)
+            res.status(correct_codes.CREATED).json(newCard)
             return
         }
-        res.status(422).json({})
+        res.status(client_errors.NOT_ACCEPTABLE).json({})
     } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.error(error)
     }
 }
@@ -41,11 +47,12 @@ const postNewLoanRequest = async (req, res) => {
     try {
         const newLoanRequest = await customerServices.createNewLoanRequest(loanRequest, id)
         if (newLoanRequest){
-            res.status(200).json(newLoanRequest)
+            res.status(correct_codes.CREATED).json(newLoanRequest)
             return
         }
-        res.status(422).json({})
+        res.status(correct_codes.NO_CONTENT).json({})
     } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.error(error)
     }
 }
@@ -55,11 +62,12 @@ const getLoanRequests = async (req, res) => {
     try {
         const loanRequestList = await customerServices.findLoanRequestsFromCustomer(id)
         if (loanRequestList){
-            res.status(200).json(loanRequestList)
+            res.status(correct_codes.OK).json(loanRequestList)
             return
         }
-        res.status(400).json([])
+        res.status(correct_codes.NO_CONTENT).json([])
     } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.error(error)
     }
 }
@@ -70,11 +78,12 @@ const postNewMovement = async (req, res) => {
     try {
         const newMovement = await customerServices.createNewMovement(movement, id)
         if (newMovement){
-            res.status(201).json(newMovement)
+            res.status(correct_codes.CREATED).json(newMovement)
             return
         }
-        res.status(422).json({})
+        res.status(correct_codes.NO_CONTENT).json({})
     } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.error(error)
     }
 }
@@ -84,10 +93,11 @@ const getMovementList = async (req, res) => {
     try {
         const movementList = await customerServices.findMovementsFromCustomerId(id)
         if (movementList != []){
-            res.status(200).json(movementList)
+            res.status(correct_codes.OK).json(movementList)
         }
-        res.status(422).json([])
+        res.status(correct_codes.NO_CONTENT).json([])
     } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.error(error)
     }
 }
@@ -102,10 +112,10 @@ const getAuthCustomer = async (req, res) => {
             res.status(200).json(true)
             return
         }
-        res.status(401).json(false)
+        res.status(client_errors.FORBIDDEN).json(false)
     } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.log(error)
-        res.status(500).json("InternalError")
     }
 }
 
