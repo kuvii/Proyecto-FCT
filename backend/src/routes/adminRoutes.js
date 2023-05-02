@@ -5,4 +5,6 @@ const router = Router()
 
 router.post('/admin/new-customer', adminController.postNewCustomer)
 
+router.get('/admin/customers', adminController.getAllCustomer)
+
 export default router

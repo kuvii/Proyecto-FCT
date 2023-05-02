@@ -11,6 +11,16 @@ const postNewCustomer = async (req, res) => {
     }
 }
 
+const getAllCustomer = async (req, res) => {
+    try {
+        const customerList = await adminServices.findAllCustomer()
+        res.status(200).json(customerList)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export const adminController = {
-    postNewCustomer
+    postNewCustomer,
+    getAllCustomer
 }

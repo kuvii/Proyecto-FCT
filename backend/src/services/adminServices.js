@@ -29,6 +29,16 @@ const createNewCustomer = async (customerData) => {
     }
 }
 
+const findAllCustomer = async () => {
+    try {
+        const customerList = Customer.findAll()
+        return customerList
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 export const adminServices = {
-    createNewCustomer
+    createNewCustomer,
+    findAllCustomer
 }
