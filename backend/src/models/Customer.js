@@ -1,13 +1,10 @@
-import { DataTypes } from "sequelize"
-// const regex_dni = /^\d{8}[a-zA-Z]$/
-// const regex_phone = /\d{3}-\d{3}-\d{4}/ 
+import { DataTypes, Model } from "sequelize"
+import sequelize from "../database/sequelize.js";
+import Account from "./Account.js";
 
-const CustomerModel = {
-        id: {
-            type: DataTypes.BIGINT,
-            autoincrement: true,
-            primaryKey: true
-        },
+class Customer extends Model {}
+
+Customer.init({
         first_name: {
             type: DataTypes.STRING(25),
             allowNull: false
@@ -44,7 +41,8 @@ const CustomerModel = {
             type: DataTypes.STRING(25),
             allowNull: false
         },
-}
+}, {sequelize, modelName: 'customer'})
 
+Customer.Account = Customer.hasOne(Account)
 
-export default CustomerModel
+export default Customer

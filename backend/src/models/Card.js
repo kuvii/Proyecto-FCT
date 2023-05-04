@@ -1,7 +1,9 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
+import sequelize from "../database/sequelize.js";
 
-const CardModel = {
-    holderName: {
+class Card extends Model {}
+Card.init( {
+    holder_name: {
         type: DataTypes.STRING(50),
     },
     number: {
@@ -14,9 +16,9 @@ const CardModel = {
     cvv: {
         type: DataTypes.STRING(3)
     },
-    dateExpiration: {
+    date_expiration: {
         type: DataTypes.DATEONLY
     },
-}
+}, {sequelize, modelName: 'card'})
 
-export default CardModel
+export default Card

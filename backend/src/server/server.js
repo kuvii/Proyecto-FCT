@@ -1,20 +1,28 @@
 import express from 'express'
 import { createServer } from 'http'
 
+import compression from 'compression'
 import cors from 'cors'
+import helmet from 'helmet'
 
 import env from '../config/config.js'
 import {connection} from '../database/connection.js'
+import customerRouter from '../routes/customerRoutes.js'
+import adminRouter from '../routes/adminRoutes.js'
 
 const app = express()
 
-app.use(cors())
+app.use(cors(
+    {origin:'*'}
+))
+app.use(compression())
+app.use(helmet())
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.json({message: "Welcome to kinvsbank application"})
-})
+app.use(customerRouter)
+app.use(adminRouter)
 
 const server = createServer(app)
 
