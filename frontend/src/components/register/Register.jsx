@@ -1,4 +1,5 @@
 import imagenLogo1 from '../../assets/KingsBank_BlancoVerde1.png'
+import Formulary from '../formulary/Formulary'
 
 const Register = () => {
 
@@ -19,6 +20,8 @@ const Register = () => {
                     </div>
                 </div>
             </nav>
+
+            <Formulary/>
 
             <div className="footer">
                 <span className="footerText">KingsBank &copy; 2023</span>
