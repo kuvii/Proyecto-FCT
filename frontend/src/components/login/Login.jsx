@@ -1,6 +1,7 @@
 import imagenCandado from '../../assets/candado.png'
 import imagenUsuario from '../../assets/usuario.png'
 import imagenLogo1 from '../../assets/KingsBank_BlancoVerde1.png'
+import SliderPhotos from '../slider/SliderPhotos'
 
 const Login = () => {
     return (
@@ -40,7 +41,7 @@ const Login = () => {
                 </div>
             </nav>
 
-
+            <SliderPhotos/>
 
             <div className="footer">
                 <span className="footerText">KingsBank &copy; 2023</span>
