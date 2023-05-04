@@ -57,7 +57,6 @@ const Formulario = () => {
         
     };
 
-
     return (
         <div className="contenedorRegistro">
             <div className="row formRegistro">
