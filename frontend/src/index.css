@@ -1,13 +1,119 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: 'Space Mono';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #209d5c;
+  text-align: center;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Space Mono', monospace;
+}
+
+.logoTitulo {
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+  align-items: center;
+}
+
+.imagenKingBank {
+  width: 150px;
+}
+
+.titulo {
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.space{
+  margin-right: 10px;
+}
+
+.containerInputs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputContainer2 {
+  position: relative;
+}
+
+.inputContainer1 {
+  position: relative;
+}
+
+.inputLogo {
+  position: absolute;
+  right: 12px;
+  top: 35%;
+  transform: translateY(-45%);
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background-color: #209d5c;
+}
+
+input:focus, input::placeholder, input:valid {
+  color: #fff;
+}
+
+.imagenLogo {
+  width: 20px;
+}
+
+.containerRegisterLogin {
+  display: flex;
+  flex-direction: column;
+}
+
+.botonLogin {
+  background-color: black;
+  color: #fff;
+  border-radius: 10px;
+  width: 120px;
+  height: 35px;
+}
+
+.botonLogin:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.botonRegister {
+  border: none;
+  background-color: transparent;
+  color: #fff;  
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  background-color: #fff;
+  width: 100%;
+  padding: 0.5%;
+}
+
+.footerText {
+  font-weight: bold;
+}
+
+.formMax {
+  width: 100%;
+  justify-content: flex-end;
 }
