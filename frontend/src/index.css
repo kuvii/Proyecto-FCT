@@ -117,3 +117,8 @@ input:focus, input::placeholder, input:valid {
   width: 100%;
   justify-content: flex-end;
 }
+
+.anuncios {
+  width: 90%;
+  height: 550px;
+}
