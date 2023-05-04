@@ -1,8 +1,5 @@
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   font-family: 'Space Mono';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -122,3 +119,45 @@ input:focus, input::placeholder, input:valid {
   width: 90%;
   height: 550px;
 }
+
+.contenedorRegistro {
+  display: flex;
+  justify-content: center;
+}
+
+.formRegistro {
+  background-color: white;
+  width: 60%;
+  border-radius: 10px;
+  height: auto;
+}
+
+.buttonRegister {
+  border-radius: 10px;
+  color: #fff;
+  background-color: #209d5c;
+  border-color: #209d5c;
+  margin-bottom: 15px;
+  padding: 0px 10px 0px 10px;
+}
+
+.buttonRegister:hover {
+  border-radius: 10px;
+  color: #209d5c;
+  background-color: #fff;
+  border-color: #209d5c;
+  margin-bottom: 15px;
+}
+
+.inputFormulario {
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  background-color: #fff;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.inputFormulario:focus, .inputFormulario::placeholder, .inputFormulario:valid {
+  color: #000;
+} 
