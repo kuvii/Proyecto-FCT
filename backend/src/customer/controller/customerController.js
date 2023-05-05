@@ -1,5 +1,5 @@
 import { customerServices } from "../services/customerServices.js"
-import HTTP_codes from "../utils/HTTP_codes.js"
+import HTTP_codes from "../../utils/HTTP_codes.js"
 
 const { correct_codes, client_errors, server_errors } = HTTP_codes
 

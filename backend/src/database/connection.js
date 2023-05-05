@@ -1,5 +1,5 @@
 import createDB_mysql from './create_db_mysql.js'
-import sequelize from './sequelize.js'
+import sequelize from '../sequelize/sequelize.js'
 
 const testConnection = async () => {
     try {
