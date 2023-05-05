@@ -172,3 +172,61 @@ input:focus, input::placeholder, input:valid {
   display: flex;
   justify-content: space-between;
 }
+
+.containerDataCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 70%;
+  text-align: left;
+  padding-left: 2%;
+}
+
+.card {
+  border: 1px solid black;
+  width: 45%;
+  height: 150px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.card2 {
+  display: flex;
+  border: 1px solid black;
+  width: 45%;
+  height: 150px;
+  border-radius: 10px;
+  text-align: center;
+
+}
+
+.subContainerMoney {
+  text-align: end;
+  margin-right: 10px;
+}
+
+.subContainerES {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.subcontainerCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  background-color: #fff;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.subContainerRequestCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  width: 50%;
+  border-radius: 10px;
+}
