@@ -1,10 +1,10 @@
-import Card from "../models/Card.js"
-import Customer from "../models/Customer.js"
+import Card from "../../models/Card.js"
+import Customer from "../../models/Customer.js"
 import bcrypt from 'bcrypt'
-import Loan from "../models/Loan.js"
-import LoanRequest from "../models/LoanRequest.js"
-import Movement from "../models/Movement.js"
-import Account from "../models/Account.js"
+import Loan from "../../models/Loan.js"
+import LoanRequest from "../../models/LoanRequest.js"
+import Movement from "../../models/Movement.js"
+import Account from "../../models/Account.js"
 
 const findCustomerDashboardInfo = async (id) => {
     try {

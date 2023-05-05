@@ -1,5 +1,5 @@
 import { adminServices } from "../services/adminServices.js";
-import HTTP_codes from "../utils/HTTP_codes.js";
+import HTTP_codes from "../../utils/HTTP_codes.js";
 
 const { correct_codes, server_errors } = HTTP_codes
 

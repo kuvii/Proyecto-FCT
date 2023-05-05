@@ -7,8 +7,8 @@ import helmet from 'helmet'
 
 import env from '../config/config.js'
 import {connection} from '../database/connection.js'
-import customerRouter from '../routes/customerRoutes.js'
-import adminRouter from '../routes/adminRoutes.js'
+import customerIndex from '../customer/index.js'
+import adminIndex from '../admin/index.js'
 
 const app = express()
 
@@ -21,8 +21,8 @@ app.use(helmet())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.use(customerRouter)
-app.use(adminRouter)
+app.use(customerIndex.customerRouter)
+app.use(adminIndex.adminRouter)
 
 const server = createServer(app)
 

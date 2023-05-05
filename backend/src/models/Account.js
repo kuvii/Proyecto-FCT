@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize"
-import sequelize from "../database/sequelize.js"
+import sequelize from "../sequelize/sequelize.js"
 import Card from "./Card.js"
 import Loan from "./Loan.js"
 import LoanRequest from './LoanRequest.js'
