@@ -11,7 +11,7 @@ code {
   font-family: 'Space Mono', monospace;
 }
 
-.logoTitulo {
+.logoTitle {
   display: flex;
   justify-content: space-between;
   width: 45%;
@@ -22,7 +22,7 @@ code {
   width: 150px;
 }
 
-.titulo {
+.title {
   font-size: 50px;
   font-weight: bold;
   color: #fff;
@@ -161,3 +161,14 @@ input:focus, input::placeholder, input:valid {
 .inputFormulario:focus, .inputFormulario::placeholder, .inputFormulario:valid {
   color: #000;
 } 
+
+.mainContainer {
+  display: flex;
+  border: 1px solid red;
+  width: 70%;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+}
