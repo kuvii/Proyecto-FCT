@@ -1,13 +1,12 @@
 import './App.css';
-// import Login from './components/login/Login';
-import Register from './components/register/Register';
+import KingsbankApp from './app/KingsbankApp';
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    <div>
-      {/* <Login/> */}
-      <Register/>
-    </div>
+    <BrowserRouter>
+      <KingsbankApp/>
+    </BrowserRouter>
   );
 }
 
