@@ -9,6 +9,18 @@ const initLoginAuthorizationBody = {
 
 const Login = () => {
 
+    const isAuthorized = async (authBody) => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(authBody)
+        }
+        const response = await fetch('http://localhost:8000', requestOptions)
+        const result = await response.json()
+        console.log(result)
+        return result
+    }
+
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
 
     const handleChange = (e) => {
@@ -28,7 +40,9 @@ const Login = () => {
         if (!validateEmail(email)){
             <Alert severity='error'>Email incorrecto</Alert>
         }
-        console.log(loginAuthorizationBody)
+        if (isAuthorized(loginAuthorizationBody)){
+            console.log("Is logged")
+        }
     }
     const validateEmail = (email) => {
     const emailRegex = /^\w+([-]?\w+)*@\w+([.-]?\w+)*(\w{2,3})+$/
