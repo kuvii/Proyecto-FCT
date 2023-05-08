@@ -1,75 +1,77 @@
-import imagenCandado from '../../assets/candado.png'
-import imagenUsuario from '../../assets/usuario.png'
-import imagenLogo1 from '../../assets/KingsBank_BlancoVerde1.png'
 import { useState } from 'react'
-import SliderPhotos from '../slider/SliderPhotos'
+import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
+import { Alert, Stack, TextField, } from '@mui/material'
+
+const initLoginAuthorizationBody = {
+    email: '',
+    password: ''
+}
 
 const Login = () => {
 
-    const [user, setUser] = useState("");
-    const [password, setPassword] = useState("");
+    const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
+    // const [isOpen, setIsOpen] = useState(false) 
+    
+    // const widthControlTrigger = useMediaQuery(defaultTheme.breakpoints.up('sm'))
+
+    // const toggleNavBar = () => setIsOpen(!isOpen)
+
+    // const defaultTheme = useTheme()
+
+    const handleChange = (e) => {
+        setLoginAuthorizationBody(prevState => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        if (user === "" || password === "") {
-            alert("Tiene que rellenar todos los campos para poder registrarse")
-        } else {
-            setUser(user);
-            setPassword(password);
+    e.preventDefault()
+    const { email, password } = loginAuthorizationBody
+
+        if (email === '' || password === ''){
+            <Alert severity='error'>Por favor rellena ambos campos</Alert>
         }
-    };
+        if (!validateEmail(email)){
+            <Alert severity='error'>Email incorrecto</Alert>
+        }
+        console.log(loginAuthorizationBody)
+    }
+    const validateEmail = (email) => {
+    const emailRegex = /^\w+([-]?\w+)*@\w+([.-]?\w+)*(\w{2,3})+$/
+    if (email.match(emailRegex)){
+        return true
+    }
+    return false
+    }
 
-
-    return (
-        <>
-            <nav className="navbar navbar-expand-lg contenedorNavbar">
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <div className="logoTitulo">
-                        <img src={imagenLogo1} className='imagenKingBank' alt='Imagen del Logo'/>
-                        <span className="titulo">Kings Bank</span>
-                    </div>
-                    <div className="header">
-                        <form onSubmit={handleSubmit} className="d-flex ml-auto formMax">
-                            <div className='containerInputs'>   
-                                <div className="inputContainer1">
-                                    <input className="space" 
-                                    type="text" 
-                                    placeholder="Username" 
-                                    value={user}
-                                    onChange={(e) => setUser(e.target.value)}
-                                    />
-                                    <span className="inputLogo"><img src={imagenUsuario} className='imagenLogo' alt='Imagen del Logo Usuario'/></span>
-                                </div>
-                                
-                                <div className="inputContainer2">
-                                    <input className="space" 
-                                    type="text" 
-                                    placeholder="Password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    />
-                                    <span className="inputLogo"><img src={imagenCandado} className='imagenLogo' alt='Imagen del Logo Contraseña'/></span>
-                                </div>
-                            </div>
-
-                            <div className='containerRegisterLogin'>
-                                <button className="botonLogin" type="submit">Login</button>
-                                <a href='/' className="botonRegister">Crear cuenta</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-
-            <SliderPhotos/>
-
-            <div className="footer">
-                <span className="footerText">KingsBank &copy; 2023</span>
-            </div>
-        </>
-
-        
+    return(
+        <Form onSubmit={handleSubmit}>
+            <Row className="row-cols-lg-auto g-3 align-items-center">
+                <Stack 
+                direction={{xs: 'column', sm: 'row'}}
+                spacing={{xs: 1, sm: 2, md: 2}}
+                useFlexGap
+                flexWrap='wrap'
+                >
+                <Col>
+                    <FormGroup floating>
+                        <TextField autoComplete='off' id='userEmailLogin' name='email' label='Email' type='email' variant='standard' color='neutral' value={loginAuthorizationBody.email} onChange={handleChange} /> 
+                    </FormGroup>
+                </Col>
+                <Col>
+                    <FormGroup floating>
+                        <TextField autoComplete='off' id='userPasswordLogin' name='password' label='Password' type='text' variant='standard' color='neutral' value={loginAuthorizationBody.password} onChange={handleChange}/> 
+                    </FormGroup>
+                </Col>
+                <Col>
+                    <Button type="submit">
+                        Login
+                    </Button>
+                </Col>
+                </Stack>
+            </Row>
+        </Form>
     )
 }
 
