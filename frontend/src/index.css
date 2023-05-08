@@ -163,41 +163,45 @@ input:focus, input::placeholder, input:valid {
 } 
 
 .mainContainer {
-  display: flex;
-  border: 1px solid red;
-  width: 70%;
+  width: 80%;
+  background-color: #209d5c;
 }
 
 .headerContainer {
+  border: 1px solid black;
+  border-top-right-radius: 10px;
+}
+
+.containerCardAndLastMovements {
   display: flex;
-  justify-content: space-between;
+  width: 80%;
+  
+  border-bottom-right-radius: 10px;
+  background-color: #209d5c;
 }
 
 .containerDataCard {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  width: 70%;
+  width: 350px;
   text-align: left;
-  padding-left: 2%;
+  padding-left: 50px;
+  padding-right: 30px;
 }
 
 .card {
   border: 1px solid black;
-  width: 45%;
+  width: 300px;
   height: 150px;
   border-radius: 10px;
-  position: relative;
 }
 
 .card2 {
   display: flex;
   border: 1px solid black;
-  width: 45%;
+  width: 300px;
   height: 150px;
   border-radius: 10px;
   text-align: center;
-
+  padding: 10px;
 }
 
 .subContainerMoney {
@@ -229,4 +233,36 @@ input:focus, input::placeholder, input:valid {
   background-color: #fff;
   width: 50%;
   border-radius: 10px;
+}
+
+.lastMovements {
+  width: 100%;
+  height: 350px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.containerPage {
+  height: 750px;
+  width: 100%;
+  border: 1px solid red;
+}
+
+@media only screen and (max-width: 768px) {
+  .containerCardAndLastMovements {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .containerDataCard {
+    margin-bottom: 15px;
+    padding-left: 30px;
+  }
+
+  .containerPage {
+    height: 730px;
+    width: 100%;
+  }
 }
