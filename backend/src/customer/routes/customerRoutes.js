@@ -3,7 +3,7 @@ import customerController from "../controller/customerController.js";
 
 const customerRouter = Router()
 
-customerRouter.get('/', customerController.getAuthCustomer)
+customerRouter.post('/', customerController.getAuthCustomer)
 
 customerRouter.get('/my/dashboard/:id', customerController.getCustomerDashboard)
 
