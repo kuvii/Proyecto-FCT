@@ -10,13 +10,6 @@ const initLoginAuthorizationBody = {
 const Login = () => {
 
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
-    // const [isOpen, setIsOpen] = useState(false) 
-    
-    // const widthControlTrigger = useMediaQuery(defaultTheme.breakpoints.up('sm'))
-
-    // const toggleNavBar = () => setIsOpen(!isOpen)
-
-    // const defaultTheme = useTheme()
 
     const handleChange = (e) => {
         setLoginAuthorizationBody(prevState => ({
