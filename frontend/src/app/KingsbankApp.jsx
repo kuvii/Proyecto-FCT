@@ -1,12 +1,16 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../screens/home/Home'
+import MainNavbar from '../components/navbar/MainNavbar'
 
 const KingsbankApp = () => {
   return (
-    <Routes>
+    <div>
+      <MainNavbar />
+      <Routes>
         <Route path='/' element={<Home/>}/>
-    </Routes>
+      </Routes>
+    </div>
   )
 }
 
