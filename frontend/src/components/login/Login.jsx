@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
-import { Alert, Stack, TextField, } from '@mui/material'
+import { Stack, TextField, } from '@mui/material'
 
 const initLoginAuthorizationBody = {
     email: '',
     password: ''
 }
 
-const Login = () => {
+const Login = ({onLogin}) => {
 
     const isAuthorized = async (authBody) => {
         const requestOptions = {
@@ -22,6 +22,7 @@ const Login = () => {
     }
 
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
+    const [isError, setIsError ] = useState(false)
 
     const handleChange = (e) => {
         setLoginAuthorizationBody(prevState => ({
@@ -30,26 +31,16 @@ const Login = () => {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault()
-    const { email, password } = loginAuthorizationBody
+    console.log(loginAuthorizationBody)
 
-        if (email === '' || password === ''){
-            <Alert severity='error'>Por favor rellena ambos campos</Alert>
+    setIsError(loginAuthorizationBody.email === '' || loginAuthorizationBody.password === '')
+
+        if (!isError) {
+            const result = await isAuthorized(loginAuthorizationBody)
+            onLogin(result)
         }
-        if (!validateEmail(email)){
-            <Alert severity='error'>Email incorrecto</Alert>
-        }
-        if (isAuthorized(loginAuthorizationBody)){
-            console.log("Is logged")
-        }
-    }
-    const validateEmail = (email) => {
-    const emailRegex = /^\w+([-]?\w+)*@\w+([.-]?\w+)*(\w{2,3})+$/
-    if (email.match(emailRegex)){
-        return true
-    }
-    return false
     }
 
     return(
@@ -63,12 +54,36 @@ const Login = () => {
                 >
                 <Col>
                     <FormGroup floating>
-                        <TextField autoComplete='off' id='userEmailLogin' name='email' label='Email' type='email' variant='standard' color='neutral' value={loginAuthorizationBody.email} onChange={handleChange} /> 
+                        <TextField 
+                        autoComplete='off' 
+                        id='userEmailLogin' 
+                        name='email' 
+                        label='Email' 
+                        type='email' 
+                        variant='standard' 
+                        color='neutral' 
+                        value={loginAuthorizationBody.email} 
+                        onChange={handleChange} 
+                        error={isError}
+                        helperText={isError ? 'Introduce el Email' : ''}
+                        /> 
                     </FormGroup>
                 </Col>
                 <Col>
                     <FormGroup floating>
-                        <TextField autoComplete='off' id='userPasswordLogin' name='password' label='Password' type='text' variant='standard' color='neutral' value={loginAuthorizationBody.password} onChange={handleChange}/> 
+                        <TextField 
+                        autoComplete='off' 
+                        id='userPasswordLogin' 
+                        name='password' 
+                        label='Password' 
+                        type='password' 
+                        variant='standard' 
+                        color='neutral' 
+                        value={loginAuthorizationBody.password} 
+                        onChange={handleChange}
+                        error={isError}
+                        helperText={isError ? 'Introduce la contraseña' : ''}
+                        /> 
                     </FormGroup>
                 </Col>
                 <Col>
