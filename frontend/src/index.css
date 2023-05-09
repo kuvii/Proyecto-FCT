@@ -163,20 +163,19 @@ input:focus, input::placeholder, input:valid {
 } 
 
 .mainContainer {
-  width: 80%;
+  width: 100%;
   background-color: #209d5c;
 }
 
 .headerContainer {
-  border: 1px solid black;
   border-top-right-radius: 10px;
+  margin-top: -8px;
 }
 
 .containerCardAndLastMovements {
   display: flex;
   width: 80%;
-  
-  border-bottom-right-radius: 10px;
+  height: 81.5vh;
   background-color: #209d5c;
 }
 
@@ -239,13 +238,62 @@ input:focus, input::placeholder, input:valid {
   width: 100%;
   height: 350px;
   overflow: scroll;
-  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .containerPage {
-  height: 750px;
   width: 100%;
-  border: 1px solid red;
+  border: 1px solid #000;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerPage2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  width: 20%;
+  color: #fff;
+}
+
+.generalContainer { 
+  display: flex;
+}
+
+.imgUsuario2 {
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+}
+
+.userLinks { 
+  font-size: 25px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.userLinks:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.userLinks:active {
+  color: blue;
+}
+
+.containerUserLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  margin-top: 30px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -262,7 +310,6 @@ input:focus, input::placeholder, input:valid {
   }
 
   .containerPage {
-    height: 730px;
     width: 100%;
   }
 }
