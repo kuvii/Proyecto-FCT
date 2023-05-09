@@ -21,21 +21,36 @@ const Login = ({onLogin}) => {
     }
 
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
-    const [isError, setIsError ] = useState(false)
+    const [emptyField, setEmptyField] = useState('')
+    const [errorText, setErrorText] = useState({
+        email: '',
+        password: ''
+    })
 
     const handleChange = (e) => {
         setLoginAuthorizationBody(prevState => ({
             ...prevState,
             [e.target.name]: e.target.value
         }))
+        setEmptyField('')
+        setErrorText(prevState => ({
+            ...prevState,
+            [e.target.name]: ''
+        }))
     }
 
     const handleSubmit = async (e) => {
     e.preventDefault()
 
-    setIsError(loginAuthorizationBody.email === '' || loginAuthorizationBody.password === '')
+    const emptyFieldName = Object.keys(loginAuthorizationBody).find(key => loginAuthorizationBody[key] === '')
 
-        if (!isError) {
+        if (emptyFieldName) {
+            setEmptyField(emptyFieldName)
+            setErrorText(prevState => ({
+                ...prevState,
+                [emptyFieldName]: 'Este campo es requerido'
+            }))
+        } else {
             const result = await isAuthorized(loginAuthorizationBody)
             onLogin(result)
         }
@@ -47,6 +62,7 @@ const Login = ({onLogin}) => {
                 <Stack 
                 direction={{xs: 'column', sm: 'row'}}
                 spacing={{xs: 1, sm: 2, md: 2}}
+                alignItems='center'
                 useFlexGap
                 flexWrap='wrap'
                 >
@@ -62,8 +78,8 @@ const Login = ({onLogin}) => {
                         color='neutral' 
                         value={loginAuthorizationBody.email} 
                         onChange={handleChange} 
-                        error={isError}
-                        helperText={isError ? 'Introduce el Email' : ''}
+                        error={emptyField === 'email'}
+                        helperText={emptyField === 'email' ? errorText.email : ''}
                         /> 
                     </FormGroup>
                 </Col>
@@ -79,13 +95,13 @@ const Login = ({onLogin}) => {
                         color='neutral' 
                         value={loginAuthorizationBody.password} 
                         onChange={handleChange}
-                        error={isError}
-                        helperText={isError ? 'Introduce la contraseña' : ''}
+                        error={emptyField === 'password'}
+                        helperText={emptyField === 'password' ? errorText.password : ''}
                         /> 
                     </FormGroup>
                 </Col>
                 <Col>
-                    <Button type="submit">
+                    <Button type="submit" color='dark'>
                         Login
                     </Button>
                 </Col>
