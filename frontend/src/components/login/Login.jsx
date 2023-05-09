@@ -17,7 +17,6 @@ const Login = ({onLogin}) => {
         }
         const response = await fetch('http://localhost:8000', requestOptions)
         const result = await response.json()
-        console.log(result)
         return result
     }
 
@@ -33,7 +32,6 @@ const Login = ({onLogin}) => {
 
     const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(loginAuthorizationBody)
 
     setIsError(loginAuthorizationBody.email === '' || loginAuthorizationBody.password === '')
 
