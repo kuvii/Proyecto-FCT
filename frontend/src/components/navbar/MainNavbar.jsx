@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navbar, NavbarBrand, NavbarToggler, } from 'reactstrap'
-import { Avatar, Collapse, Container, ThemeProvider, createTheme, useMediaQuery, useTheme, } from '@mui/material'
+import { Collapse, Container, ThemeProvider, createTheme, useMediaQuery, useTheme, } from '@mui/material'
 import logo from '../../assets/KingsBank_BlancoVerde1.png'
 import Login from '../login/Login'
 
@@ -8,12 +8,6 @@ const MainNavbar = () => {
 
   const defaultTheme = useTheme()
   const widthControlTrigger = useMediaQuery(defaultTheme.breakpoints.up('sm'))
-
-  const [isLogged, setIsLogged ] = useState(false)
-
-  const handleLogin = result => {
-    setIsLogged(result)
-  }
 
   const theme = createTheme({
       palette: {
@@ -38,7 +32,7 @@ const MainNavbar = () => {
         <NavbarToggler onClick={toggleNavBar}/>
         <Container maxWidth='sm'>
           <Collapse in={isOpen} >
-              <Login onLogin={handleLogin} />
+              <Login />
           </Collapse>
         </Container>
       </>
@@ -53,16 +47,10 @@ const MainNavbar = () => {
           KingsBank
         </NavbarBrand>
         <ThemeProvider theme={theme}>
-        {isLogged ? (
-            <Avatar sx={{ bgcolor: '#3f51b5', mr: 2 }}>{'U'}</Avatar>
+          {widthControlTrigger ? (
+            <Login/>
           ) : (
-            <>
-              {widthControlTrigger ? (
-                <Login onLogin={handleLogin}/>
-              ) : (
-                <CollapsedNavbar isOpen={isOpen} />
-              )}
-            </>
+            <CollapsedNavbar isOpen={isOpen} />
           )}
         </ThemeProvider>
     </Navbar>

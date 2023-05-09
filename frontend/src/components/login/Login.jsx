@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Stack, TextField, } from '@mui/material'
+import { useNavigate } from 'react-router'
 
 const initLoginAuthorizationBody = {
     email: '',
     password: ''
 }
 
-const Login = ({onLogin}) => {
+const Login = () => {
+
+    const navigate = useNavigate()
 
     const isAuthorized = async (authBody) => {
         const requestOptions = {
@@ -51,8 +54,14 @@ const Login = ({onLogin}) => {
                 [emptyFieldName]: 'Este campo es requerido'
             }))
         } else {
-            const result = await isAuthorized(loginAuthorizationBody)
-            onLogin(result)
+            try {
+                const result = await isAuthorized(loginAuthorizationBody)
+                if (result) {
+                    navigate("/my")
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
