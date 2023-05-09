@@ -177,6 +177,7 @@ input:focus, input::placeholder, input:valid {
   width: 80%;
   height: 81.5vh;
   background-color: #209d5c;
+  margin-top: 40px;
 }
 
 .containerDataCard {
@@ -309,7 +310,4 @@ input:focus, input::placeholder, input:valid {
     padding-left: 30px;
   }
 
-  .containerPage {
-    width: 100%;
-  }
 }
