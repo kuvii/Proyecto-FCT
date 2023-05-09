@@ -9,6 +9,7 @@ const KingsbankApp = () => {
       <MainNavbar />
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/my' element={<h1>Dashboard</h1>}/>
       </Routes>
     </div>
   )
