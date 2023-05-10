@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
+import isAuthorized from '../../api/auth'
 
 const initLoginAuthorizationBody = {
     email: '',
@@ -12,16 +13,7 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    const isAuthorized = async (authBody) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(authBody)
-        }
-        const response = await fetch('http://localhost:8000', requestOptions)
-        const result = await response.json()
-        return result
-    }
+    
 
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
     const [emptyField, setEmptyField] = useState('')
