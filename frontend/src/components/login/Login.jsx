@@ -13,8 +13,6 @@ const Login = () => {
 
     const navigate = useNavigate()
 
-    
-
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
     const [emptyField, setEmptyField] = useState('')
     const [errorText, setErrorText] = useState({
