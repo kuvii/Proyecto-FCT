@@ -1,9 +1,11 @@
 import React from 'react'
-import './styles.css'
+import SliderPhotos from '../../components/slider/SliderPhotos'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+        <SliderPhotos/>
+    </div>
   )
 }
 
