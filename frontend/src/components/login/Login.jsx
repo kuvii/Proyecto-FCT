@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
-import isAuthorized from '../../api/auth'
+import checkIfUserExists from '../../api/auth'
 
 const initLoginAuthorizationBody = {
     email: '',
@@ -45,8 +45,9 @@ const Login = () => {
             }))
         } else {
             try {
-                const result = await isAuthorized(loginAuthorizationBody)
+                const result = await checkIfUserExists(loginAuthorizationBody)
                 if (result) {
+                    localStorage.setItem("user", JSON.stringify(loginAuthorizationBody))
                     navigate("/my")
                 }
             } catch (error) {

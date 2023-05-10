@@ -1,5 +1,5 @@
 
-const isAuthorized = async (authBody) => {
+const checkIfUserExists = async (authBody) => {
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -10,4 +10,4 @@ const isAuthorized = async (authBody) => {
     return result
 }
 
-export default isAuthorized
+export default checkIfUserExists
