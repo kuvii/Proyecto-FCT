@@ -1,5 +1,5 @@
 import imagenLogo1 from '../../assets/KingsBank_BlancoVerde1.png'
-import imagenUsuario2 from '../../assets/usuario2.png'
+import imagenUsuario1 from '../../assets/usuario1.png'
 
 const HomeUser = () => {
 
@@ -16,54 +16,88 @@ const HomeUser = () => {
                 </nav>
                 <div className='containerCardAndLastMovements'>
                     <div className='containerDataCard'>
-                        <span>Total</span>
+                        <span className='textTitleHomeUser'>Total</span>
                         <div className='card'>
                             <div className='subContainerMoney'>
-                                <span>dinero€</span>
+                                <span className='textBox'>dLoans€</span>
+                                <span className='textBox'>dinero€</span>
                             </div>
+                            <span className='textBoxLoan'>loans</span>
                             <div className='subContainerES'>
-                                <span>número de cuenta ES</span>
+                                <span className='textBox'>número de cuenta ES</span>
                             </div>
                         </div>
-                        <span>Tarjetas</span>
+                        <span className='textTitleHomeUser'>Tarjetas</span>
                         <div className='card2'>
-                            <div className='subcontainerCards'>
-                                cuadrado1
-                            </div>
-                            <div className='subContainerRequestCard'>
-                                cuadrado2
-                            </div>
+                            <a href='/SolicitudTarjeta' className='subContainerRequestCard'><span>Solicitar nueva tarjeta</span></a>
                         </div>
                     </div>
-                    <div className='lastMovements'>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
-                        <p>Contenido dentro del ScrollView</p>
+                    <div className='containerMovements'>
+                        <div className='titleMovements'>
+                            <span className='textTitleHomeUser'>Últimos movimientos</span>
+                        </div>
+                        <div className='lastMovements'>
+                            <div className='movements'>
+                                Pago
+                                <div className='inMovements'>
+                                    Importe
+                                    <span className='date'>fecha</span>
+                                </div>
+                            </div>
+                            <div className='movements'>
+                                Pago
+                                <div className='inMovements'>
+                                    Importe
+                                    <span className='date'>fecha</span>
+                                </div>
+                            </div>
+                            <div className='movements'>
+                                Pago
+                                <div className='inMovements'>
+                                    Importe
+                                    <span className='date'>fecha</span>
+                                </div>
+                            </div>
+                            <div className='movements'>
+                                Pago
+                                <div className='inMovements'>
+                                    Importe
+                                    <span className='date'>fecha</span>
+                                </div>
+                            </div>
+                            <div className='movements'>
+                                Pago
+                                <div className='inMovements'>
+                                    Importe
+                                    <span className='date'>fecha</span>
+                                </div>
+                            </div>
+                            <div className='movements'>
+                                Pago
+                                <div className='inMovements'>
+                                    Importe
+                                    <span className='date'>fecha</span>
+                                </div>
+                            </div>
+                            <div className='movements'>
+                                Pago
+                                <div className='inMovements'>
+                                    Importe
+                                    <span className='date'>fecha</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className='containerPage2'>
-                <img src={imagenUsuario2} alt="usuario2" className='imgUsuario2' />
-                <span className='title'>User</span>
+                <img src={imagenUsuario1} alt="usuario2" className='imgUsuario2' />
+                <span className='titleUser'>User</span>
                 <div className='containerUserLinks'>
                     <a href='/Inicio' className='userLinks'>Inicio</a>
-                    <a href='/' className='userLinks'>Resumen</a>
+                    <a href='/' className='userLinks'>Movimientos</a>
                     <a href='/' className='userLinks'>Tarjetas</a>
+                    <a href='/' className='userLinks'>Préstamos</a>
                 </div>
             </div>
         </div>
