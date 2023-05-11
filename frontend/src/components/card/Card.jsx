@@ -11,6 +11,7 @@ const Card = (props) => {
         width: 350,
         padding: 1
     }
+    const {cardInfo} = props
 
     return (
         <Box>
@@ -24,6 +25,18 @@ const Card = (props) => {
                     Kingsbank
                     <img alt='logo' src={logo} style={{width: 20, height: 20}}/>
                 </Stack>
+                <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                spacing={1}
+                paddingTop={1}
+                marginY={1}
+                >
+                    <WifiPasswordRoundedIcon />
+                    <PixRoundedIcon />
+                </Stack>
+
             </Paper>
         </Box>
     )
