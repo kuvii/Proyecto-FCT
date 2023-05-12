@@ -29,29 +29,26 @@ const Loan = (props) => {
     }
     return (
         <Box>
-        <Paper sx={{margin: 1, padding: 2, backgroundColor: '#3590E4', ...style}}>
-            <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            >
-                <Box>
-                    {(isPc ? content?.customer : content?.customer.substring(0, 12) + '...') || <div>Data not found</div>}
-                </Box>
-                <Box color={setColor}>
-                    {setStatusText || <div>Type</div>}
-                </Box>
-                <Box>
-                    <Stack>
-                        {content?.quantity + '€' || <div>?€</div>}
-                    </Stack>
-                </Box>
-            </Stack>
-            <Stack>
-            </Stack>
-        </Paper>
-    </Box>
-
+            <Paper sx={{margin: 1, padding: 2, backgroundColor: '#3590E4', ...style}}>
+                <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                >
+                    <Box>
+                        {(isPc ? content?.customer : content?.customer.substring(0, 12) + '...') || <div>Data not found</div>}
+                    </Box>
+                    <Box color={setColor}>
+                        {setStatusText || <div>Type</div>}
+                    </Box>
+                    <Box>
+                        <Stack>
+                            {content?.quantity + '€' || <div>?€</div>}
+                        </Stack>
+                    </Box>
+                </Stack>
+            </Paper>
+        </Box>
     )
 }
 
