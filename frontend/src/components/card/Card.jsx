@@ -36,7 +36,24 @@ const Card = (props) => {
                     <WifiPasswordRoundedIcon />
                     <PixRoundedIcon />
                 </Stack>
-
+                <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                spacing={8}
+                >
+                    {<Box>{cardInfo?.num}</Box> || <div>1234123412341234</div>}
+                    {<Box>{cardInfo?.type}</Box> || <div>Type</div>}
+                </Stack>
+                <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                spacing={5}
+                >
+                    Cad: {<Box>{cardInfo?.cad}</Box> || <div>xx/xx</div>}
+                    {<Box>{(cardInfo?.name.substring(0, 21))}</Box> || <div>Aday Enrique Vera Aya</div>}
+                </Stack>
             </Paper>
         </Box>
     )
