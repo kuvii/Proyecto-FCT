@@ -13,7 +13,7 @@ const CustomerEdit = (props) => {
 
     return (
         <Box>
-            <Paper sx={{margin: 1, padding: 2, backgroundColor: '#3590E4', ...style}}>
+            <Paper sx={{margin: 1, padding: 2, backgroundColor: (theme.palette.mode === 'light' ? '#3590E4' : '#000000'), color: '#ffffff', ...style}}>
                 <Stack
                 direction="row"
                 justifyContent="space-evenly"
