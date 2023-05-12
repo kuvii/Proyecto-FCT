@@ -5,17 +5,12 @@ import WifiPasswordRoundedIcon from '@mui/icons-material/WifiPasswordRounded';
 import PixRoundedIcon from '@mui/icons-material/PixRounded';
 
 const Card = (props) => {
-    const styles = {
-        color: '#209d5c',
-        backgroundColor: '#000',
-        width: 350,
-        padding: 1
-    }
-    const {cardInfo} = props
+
+    const {cardInfo, style} = props
 
     return (
         <Box>
-            <Paper sx={styles}>
+            <Paper sx={style}>
                 <Stack
                 direction="row"
                 justifyContent="space-between"
