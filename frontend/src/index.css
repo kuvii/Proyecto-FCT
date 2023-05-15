@@ -1,23 +1,17 @@
-:root {
-  --light-green: #209d5c;
-  --white: #fff;
-  --main-font: 'Space Mono'
-}
-
 body {
   margin: 0;
-  font-family: var(--main-font);
+  font-family: 'Space Mono';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--light-green);
+  background-color: #209d5c;
   text-align: center;
 }
 
 code {
-  font-family: var(--main-font), monospace;
+  font-family: 'Space Mono', monospace;
 }
 
-.logoTitulo {
+.logoTitle {
   display: flex;
   justify-content: space-between;
   width: 45%;
@@ -28,10 +22,39 @@ code {
   width: 150px;
 }
 
-.titulo {
+.title {
   font-size: 50px;
   font-weight: bold;
-  color: var(--white);
+  color: #fff;
+}
+
+.titleUser {
+  font-size: 50px;
+  font-weight: bold;
+  color: #000;
+}
+
+.titleMovements {
+  margin-bottom: 10px;
+  color: #fff;
+  text-align: left;
+}
+
+.textTitleHomeUser {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.textBox {
+  color: #fff;
+  margin-top: 8px;
+}
+
+.textBoxLoan {
+  color: #fff;
+  font-size: 12px;
+  margin-left: 10px;
 }
 
 .header {
@@ -67,13 +90,13 @@ code {
 
 input {
   border: none;
-  border-bottom: 1px solid var(--white);
+  border-bottom: 1px solid #fff;
   outline: none;
-  background-color: var(--light-green);
+  background-color: #209d5c;
 }
 
 input:focus, input::placeholder, input:valid {
-  color: var(--white);
+  color: #fff;
 }
 
 .imagenLogo {
@@ -87,27 +110,27 @@ input:focus, input::placeholder, input:valid {
 
 .botonLogin {
   background-color: black;
-  color: var(--white);
+  color: #fff;
   border-radius: 10px;
   width: 120px;
   height: 35px;
 }
 
 .botonLogin:hover {
-  background-color: var(--white);
+  background-color: #fff;
   color: black;
 }
 
 .botonRegister {
   border: none;
   background-color: transparent;
-  color: var(--white);
+  color: #fff;  
 }
 
 .footer {
   position: absolute;
   bottom: 0px;
-  background-color: var(--white);
+  background-color: #fff;
   width: 100%;
   padding: 0.5%;
 }
@@ -132,7 +155,7 @@ input:focus, input::placeholder, input:valid {
 }
 
 .formRegistro {
-  background-color: var(--white);
+  background-color: white;
   width: 60%;
   border-radius: 10px;
   height: auto;
@@ -140,18 +163,18 @@ input:focus, input::placeholder, input:valid {
 
 .buttonRegister {
   border-radius: 10px;
-  color: var(--white);
-  background-color: var(--light-green);
-  border-color: var(--light-green);
+  color: #fff;
+  background-color: #209d5c;
+  border-color: #209d5c;
   margin-bottom: 15px;
   padding: 0px 10px 0px 10px;
 }
 
 .buttonRegister:hover {
   border-radius: 10px;
-  color: var(--light-green);
-  background-color: var(--white);
-  border-color: var(--light-green);
+  color: #209d5c;
+  background-color: #fff;
+  border-color: #209d5c;
   margin-bottom: 15px;
 }
 
@@ -159,7 +182,7 @@ input:focus, input::placeholder, input:valid {
   border: none;
   border-bottom: 1px solid #000;
   outline: none;
-  background-color: var(--white);
+  background-color: #fff;
   margin-top: 10px;
   margin-bottom: 30px;
 }
@@ -167,3 +190,199 @@ input:focus, input::placeholder, input:valid {
 .inputFormulario:focus, .inputFormulario::placeholder, .inputFormulario:valid {
   color: #000;
 } 
+
+.mainContainer {
+  width: 100%;
+  background-color: #209d5c;
+}
+
+.headerContainer {
+  border-top-right-radius: 10px;
+  margin-top: -8px;
+}
+
+.containerCardAndLastMovements {
+  display: flex;
+  width: 85%;
+  height: 80vh;
+  background-color: #209d5c;
+  margin-top: 40px;
+}
+
+.containerDataCard {
+  text-align: left;
+  padding-left: 50px;
+  padding-right: 30px;
+}
+
+.card {
+  border: 1px solid black;
+  width: 300px;
+  height: 180px;
+  border-radius: 10px;
+  background-color: black;
+}
+
+.card2 {
+  display: flex;
+  border: 1px solid black;
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  background-color: black;
+}
+
+.subContainerMoney {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.subContainerES {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.subcontainerCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  background-color: #fff;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.subContainerRequestCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.subContainerRequestCard:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.containerMovements {
+  width: 100%;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.lastMovements {
+  width: 100%;
+  height: 350px;
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.containerPage {
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.containerPage2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  width: 20%;
+  height: 100vh;
+  color: #fff;
+}
+
+.generalContainer { 
+  display: flex;
+}
+
+.imgUsuario1 {
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+}
+
+.userLinks { 
+  font-size: 25px;
+  color: #000;
+  text-decoration: none;
+}
+
+.userLinks:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
+.userLinks:active {
+  color: blue;
+}
+
+.containerUserLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+  margin-top: 30px;
+}
+
+.imageSimbolPlus { 
+  width: 15px;
+  height: 15px;
+}
+
+.movements {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: #209d5c;
+  background-color: #000;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.inMovements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date {
+  font-size: 12px;
+  margin-bottom: auto;
+  position: absolute;
+  bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .containerCardAndLastMovements {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .containerDataCard {
+    margin-bottom: 15px;
+    padding-left: 30px;
+  }
+
+}
