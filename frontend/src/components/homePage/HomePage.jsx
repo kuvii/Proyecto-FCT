@@ -1,8 +1,8 @@
 import imagenLogo1 from '../../assets/KingsBank_BlancoVerde1.png'
 import imagenUsuario1 from '../../assets/usuario1.png'
 
-const HomePage = () => {
-
+const HomePage = (props) => {
+    const { children } = props
     return (
         <div className='generalContainer'>
             <div className='containerPage'>
@@ -14,6 +14,8 @@ const HomePage = () => {
                         </div>
                     </div>
                 </nav>
+                
+                {children}
                 
             </div>
             <div className='containerPage2'>
