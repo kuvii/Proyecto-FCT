@@ -1,7 +1,7 @@
 import './App.css';
 // import KingsbankApp from './app/KingsbankApp';
 // import { BrowserRouter } from 'react-router-dom'
-import HomePage from './components/homePage/HomePage'
+import HomePage from './components/homePage/HomePage.jsx'
 
 function App() {
   return (

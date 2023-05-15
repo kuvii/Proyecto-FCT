@@ -386,3 +386,8 @@ input:focus, input::placeholder, input:valid {
   }
 
 }
+
+.prueba {
+  display: flex;
+  justify-content: flex-end;
+}
