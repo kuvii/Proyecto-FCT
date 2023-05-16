@@ -3,6 +3,7 @@ import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
 import checkIfUserExists from '../../api/auth'
+import { sha256 } from 'hash.js'
 
 const initLoginAuthorizationBody = {
     email: '',
@@ -47,7 +48,8 @@ const Login = () => {
             try {
                 const result = await checkIfUserExists(loginAuthorizationBody)
                 if (result) {
-                    localStorage.setItem("user", JSON.stringify(loginAuthorizationBody))
+                    const hashedPassword = sha256(loginAuthorizationBody.password)
+                    localStorage.setItem("user", JSON.stringify({ email: loginAuthorizationBody.email, password: hashedPassword.digest('Hex')}))
                     navigate("/my")
                 }
             } catch (error) {
