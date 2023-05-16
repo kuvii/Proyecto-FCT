@@ -196,11 +196,6 @@ input:focus, input::placeholder, input:valid {
   background-color: #209d5c;
 }
 
-.headerContainer {
-  border-top-right-radius: 10px;
-  margin-top: -8px;
-}
-
 .containerCardAndLastMovements {
   display: flex;
   width: 85%;
@@ -293,8 +288,6 @@ input:focus, input::placeholder, input:valid {
 
 .containerPage {
   width: 100%;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -310,7 +303,11 @@ input:focus, input::placeholder, input:valid {
   color: #fff;
 }
 
-.generalContainer { 
+.generalContainer1 { 
+  display: flex;
+}
+
+.generalContainer2 { 
   display: flex;
 }
 
@@ -372,6 +369,20 @@ input:focus, input::placeholder, input:valid {
   bottom: 0;
 }
 
+.dropDown {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.imageSize {
+  width: 40px;
+  height: 40px;
+}
+
+.closeDrawer {
+  display: flex;
+}
+
 @media only screen and (max-width: 768px) {
   .containerCardAndLastMovements {
     display: flex;
@@ -385,9 +396,16 @@ input:focus, input::placeholder, input:valid {
     padding-left: 30px;
   }
 
-}
+  .generalContainer2 {
+    display: none;
+  }
 
-.prueba {
-  display: flex;
-  justify-content: flex-end;
+  .containerPage2 {
+    width: 100%;
+  }
+
+  .mainContainer {
+    font-size: 20px;
+  }
+
 }
