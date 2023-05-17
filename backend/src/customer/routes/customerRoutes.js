@@ -5,7 +5,7 @@ const customerRouter = Router()
 
 customerRouter.post('/', customerController.getAuthCustomer)
 
-customerRouter.get('/my/dashboard/:id', customerController.getCustomerDashboard)
+customerRouter.get('/my/dashboard/:email', customerController.getCustomerDashboard)
 
 customerRouter.get('/my/cards/:id', customerController.getCardsFromCustomer)
 

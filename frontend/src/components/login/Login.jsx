@@ -1,19 +1,26 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
 import checkIfUserExists from '../../api/auth'
 import { sha256 } from 'hash.js'
+import apiCustomer from '../../api/customer'
 
 const initLoginAuthorizationBody = {
     email: '',
     password: ''
 }
 
-const Login = () => {
+const Login = ({setUserInfo, setCardsFromUser}) => {
 
     const navigate = useNavigate()
-
+    
+    useEffect(() => {
+        const userAlreadyLogged = localStorage.getItem('user')
+        if (userAlreadyLogged){
+            navigate("/")
+        }
+    })
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
     const [emptyField, setEmptyField] = useState('')
     const [errorText, setErrorText] = useState({
@@ -48,6 +55,11 @@ const Login = () => {
             try {
                 const result = await checkIfUserExists(loginAuthorizationBody)
                 if (result) {
+                    const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
+                    setUserInfo(userData)
+
+                    const userDataCards = await apiCustomer.getCustomerInfo(userData.id)
+                    setCardsFromUser(userDataCards)
                     const hashedPassword = sha256(loginAuthorizationBody.password)
                     localStorage.setItem("user", JSON.stringify({ email: loginAuthorizationBody.email, password: hashedPassword.digest('Hex')}))
                     navigate("/my")

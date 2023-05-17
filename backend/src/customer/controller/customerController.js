@@ -4,9 +4,9 @@ import HTTP_codes from "../../utils/HTTP_codes.js"
 const { correct_codes, client_errors, server_errors } = HTTP_codes
 
 const getCustomerDashboard = async (req, res) => {
-    const { id } = req.params
+    const { email } = req.params
     try {
-        const data = await customerServices.findCustomerDashboardInfo(id)
+        const data = await customerServices.findCustomerDashboardInfo(email)
         res.status(correct_codes.OK).json(data)
     } catch (error) {
         res.status(server_errors.INTERNAL_ERROR).json({})

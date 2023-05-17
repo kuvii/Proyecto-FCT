@@ -29,7 +29,7 @@ code {
 }
 
 .titleUser {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   color: #000;
 }
@@ -288,7 +288,6 @@ input:focus, input::placeholder, input:valid {
 
 .containerPage {
   width: 100%;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -318,7 +317,7 @@ input:focus, input::placeholder, input:valid {
 }
 
 .userLinks { 
-  font-size: 25px;
+  font-size: 20px;
   color: #000;
   text-decoration: none;
 }

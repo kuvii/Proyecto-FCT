@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../screens/home/Home'
 import Body from '../layout/body/Body'
+import Main from '../screens/main/Main'
+
+const initUserInfo = {
+    id: null,
+    first_name: '',
+    last_name: '',
+    birthdate: '',
+    password: '',
+    email: '',
+    dni: '',
+    phone: '',
+    postal_code: '',
+    address: '',
+    account: {
+      id: null,
+      role: 0,
+      money: '',
+      iban: '',
+      customerId: null,
+      cards: [],
+      loans: [],
+      movements: []
+    }
+}
 
 const KingsbankApp = () => {
 
@@ -9,17 +33,42 @@ const KingsbankApp = () => {
     return localStorage.getItem("user") !== null ? children : <Navigate to="/" replace/>
   }
 
+  const [cardsFromUser, setCardsFromUser] = useState([])
+  const [loansFromUser, setLoansFromUser] = useState([])
+  const [movementsFromUser, setMovementsFromUser] = useState([])
+
+  const [userInfo, setUserInfo] = useState(initUserInfo)
+
   return (
     <div>
       <Routes>
-        <Route element={<Body/>}>
+        <Route element={
+          <Body 
+          setUserInfo={setUserInfo} 
+          setCardsFromUser={setCardsFromUser}
+          setLoansFromUser={setLoansFromUser}
+          setMovementsFromUser={setMovementsFromUser}
+          />
+          }>
           <Route path='/' element={<Home/>}/>
         </Route>
 
         <Route path='/my' 
         element={
             <RequireAuth>
-              <h1>Dashboard</h1>
+              <Main 
+              userInfo={userInfo} 
+              setUserInfo={setUserInfo}
+              
+              cardsFromUser={cardsFromUser} 
+              setCardsFromUser={setCardsFromUser}
+
+              loansFromUser={loansFromUser} 
+              setLoansFromUser={setLoansFromUser}
+              
+              movementsFromUser={movementsFromUser} 
+              setMovementsFromUser={setMovementsFromUser}
+              />
             </RequireAuth>
           }
         />

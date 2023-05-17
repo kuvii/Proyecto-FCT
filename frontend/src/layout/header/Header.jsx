@@ -1,10 +1,15 @@
 import React from 'react'
 import MainNavbar from '../../components/navbar/MainNavbar'
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div>
-        <MainNavbar/>
+        <MainNavbar 
+        setUserInfo={props.setUserInfo}
+        setCardsFromUser={props.setCardsFromUser}
+        setLoansFromUser={props.setLoansFromUser}
+        setMovementsFromUser={props.setMovementsFromUser}
+        />
     </div>
   )
 }
