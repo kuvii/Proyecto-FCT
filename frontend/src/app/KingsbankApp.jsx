@@ -72,6 +72,12 @@ const KingsbankApp = () => {
             </RequireAuth>
           }
         />
+        <Route path='/my/movements' element={
+          <RequireAuth>
+            <h1>Movements</h1>
+          </RequireAuth>
+        }
+        />
       </Routes>
     </div>
   )
