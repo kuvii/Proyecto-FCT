@@ -10,7 +10,7 @@ const Card = (props) => {
 
     return (
         <Box>
-            <Paper sx={style}>
+            <Paper sx={{padding: 1, ...style}}>
                 <Stack
                 direction="row"
                 justifyContent="space-between"
@@ -37,7 +37,7 @@ const Card = (props) => {
                 alignItems="center"
                 spacing={8}
                 >
-                    {<Box>{cardInfo?.num}</Box> || <div>1234123412341234</div>}
+                    {<Box>{cardInfo?.number}</Box> || <div>1234123412341234</div>}
                     {<Box>{cardInfo?.type}</Box> || <div>Type</div>}
                 </Stack>
                 <Stack
@@ -46,8 +46,8 @@ const Card = (props) => {
                 alignItems="center"
                 spacing={5}
                 >
-                    Cad: {<Box>{cardInfo?.cad}</Box> || <div>xx/xx</div>}
-                    {<Box>{(cardInfo?.name.substring(0, 21))}</Box> || <div>Aday Enrique Vera Aya</div>}
+                    Cad: {<Box>{cardInfo?.date_expiration}</Box> || <div>xx/xx</div>}
+                    {<Box>{(cardInfo?.holder_name.substring(0, 21))}</Box> || <div>Aday Enrique Vera Aya</div>}
                 </Stack>
             </Paper>
         </Box>

@@ -4,7 +4,7 @@ import { Collapse, Container, ThemeProvider, createTheme, useMediaQuery, useThem
 import logo from '../../assets/KingsBank_BlancoVerde1.png'
 import Login from '../login/Login'
 
-const MainNavbar = () => {
+const MainNavbar = (props) => {
 
   const defaultTheme = useTheme()
   const widthControlTrigger = useMediaQuery(defaultTheme.breakpoints.up('sm'))
@@ -32,7 +32,12 @@ const MainNavbar = () => {
         <NavbarToggler onClick={toggleNavBar}/>
         <Container maxWidth='sm'>
           <Collapse in={isOpen} >
-              <Login />
+              <Login 
+                setUserInfo={props.setUserInfo}
+                setCardsFromUser={props.setCardsFromUser}
+                setLoansFromUser={props.setLoansFromUser}
+                setMovementsFromUser={props.setMovementsFromUser}
+              />
           </Collapse>
         </Container>
       </>
@@ -48,7 +53,12 @@ const MainNavbar = () => {
         </NavbarBrand>
         <ThemeProvider theme={theme}>
           {widthControlTrigger ? (
-            <Login/>
+            <Login 
+            setUserInfo={props.setUserInfo}
+            setCardsFromUser={props.setCardsFromUser}
+            setLoansFromUser={props.setLoansFromUser}
+            setMovementsFromUser={props.setMovementsFromUser}
+            />
           ) : (
             <CollapsedNavbar isOpen={isOpen} />
           )}

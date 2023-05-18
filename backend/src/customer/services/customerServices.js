@@ -6,11 +6,11 @@ import LoanRequest from "../../models/LoanRequest.js"
 import Movement from "../../models/Movement.js"
 import Account from "../../models/Account.js"
 
-const findCustomerDashboardInfo = async (id) => {
+const findCustomerDashboardInfo = async (email) => {
     try {
         const customer = await Customer.findOne({
             where: {
-                id
+                email: email
             },
             include: [{
                 model: Account,
@@ -136,7 +136,7 @@ const authUser = async (customerToAuth) => {
         if (foundUser){
             const password_valid = await bcrypt.compare(customerToAuth.password, foundUser.password)
             if (password_valid){
-                return true
+                return foundUser
             }
         }
         return false

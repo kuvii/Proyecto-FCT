@@ -12,7 +12,7 @@ const Movement = (props) => {
                 alignItems="center"
                 >
                     <Box>
-                        {content?.message || <div>Message not found</div>}
+                        {content?.description || <div>Message not found</div>}
                     </Box>
                     <Box>
                         <Stack>
