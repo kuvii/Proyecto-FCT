@@ -19,7 +19,6 @@ const getCustomerCards = async (id) => {
         const data = await fetch(BASE_URL + '/my/cards' + id)
         if (data) {
             const customerInfoCards = await data.json()
-            console.log(customerInfoCards)
             return customerInfoCards
         }
         return []
@@ -28,9 +27,22 @@ const getCustomerCards = async (id) => {
     }
 }
 
+const getCustomerMovements = async (id) => {
+    try {
+        const data = await fetch(BASE_URL + '/my/movements/' + id)
+        if (data) {
+            const customerInfoMovements = await data.json()
+            return customerInfoMovements
+        }
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const apiCustomer = {
     getCustomerInfo,
-    getCustomerCards
+    getCustomerCards,
+    getCustomerMovements
 }
 
 export default apiCustomer
