@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../screens/home/Home'
 import Body from '../layout/body/Body'
 import Main from '../screens/main/Main'
+import Dashboard from '../components/dashboard/Dashboard'
 
 const initUserInfo = {
     id: null,
@@ -53,7 +54,7 @@ const KingsbankApp = () => {
           <Route path='/' element={<Home/>}/>
         </Route>
 
-        <Route path='/my' 
+        <Route
         element={
             <RequireAuth>
               <Main 
@@ -71,7 +72,18 @@ const KingsbankApp = () => {
               />
             </RequireAuth>
           }
+        >
+        <Route path='/my' element={
+            <Dashboard userInfo={userInfo} />
+        }/>
+
+        <Route path='/my/movements' element={
+          <RequireAuth>
+            <h1>Movements</h1>
+          </RequireAuth>
+        }
         />
+        </Route>
       </Routes>
     </div>
   )
