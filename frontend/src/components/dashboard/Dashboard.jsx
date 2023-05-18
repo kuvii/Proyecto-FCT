@@ -7,7 +7,7 @@ const Dashboard = ({ userInfo }) => {
     const theme = useTheme()
     const isPc = useMediaQuery(theme.breakpoints.up('sm'))
     return (
-        <Box component='div' sx={{ overflowY: 'auto', marginRight: (isPc ? '205px' : null) }}>
+        <Box component='div' sx={{ overflowY: 'auto' }}>
         <Grid
         container
         columns={{ xs: 4, sm: 8, md: 12 }}
