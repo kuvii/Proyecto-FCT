@@ -1,11 +1,9 @@
-import { Box, Grid, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Grid, } from '@mui/material'
 import React from 'react'
 import Card from '../card/Card'
 import Movement from '../movement/Movement'
 
 const Dashboard = ({ userInfo }) => {
-    const theme = useTheme()
-    const isPc = useMediaQuery(theme.breakpoints.up('sm'))
     return (
         <Box component='div' sx={{ overflowY: 'auto' }}>
         <Grid
