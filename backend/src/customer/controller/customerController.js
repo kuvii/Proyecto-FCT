@@ -94,6 +94,7 @@ const getMovementList = async (req, res) => {
         const movementList = await customerServices.findMovementsFromCustomerId(id)
         if (movementList != []){
             res.status(correct_codes.OK).json(movementList)
+            return
         }
         res.status(correct_codes.NO_CONTENT).json([])
     } catch (error) {

@@ -4,6 +4,7 @@ import Home from '../screens/home/Home'
 import Body from '../layout/body/Body'
 import Main from '../screens/main/Main'
 import Dashboard from '../components/dashboard/Dashboard'
+import MovementsList from '../components/movements_list/MovementsList'
 
 const initUserInfo = {
     id: null,
@@ -79,7 +80,10 @@ const KingsbankApp = () => {
 
         <Route path='/my/movements' element={
           <RequireAuth>
-            <h1>Movements</h1>
+            <MovementsList 
+              movementsFromUser={movementsFromUser} 
+              setMovementsFromUser={setMovementsFromUser}
+            />
           </RequireAuth>
         }
         />

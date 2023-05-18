@@ -11,7 +11,7 @@ const initLoginAuthorizationBody = {
     password: ''
 }
 
-const Login = ({setUserInfo, setCardsFromUser}) => {
+const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
 
     const navigate = useNavigate()
     
@@ -60,6 +60,10 @@ const Login = ({setUserInfo, setCardsFromUser}) => {
 
                     const userDataCards = await apiCustomer.getCustomerInfo(userData.id)
                     setCardsFromUser(userDataCards)
+
+                    const userDataMovements = await apiCustomer.getCustomerMovements(userData.id)
+                    setMovementsFromUser(userDataMovements)
+                    
                     const hashedPassword = sha256(loginAuthorizationBody.password)
                     localStorage.setItem("user", JSON.stringify({ email: loginAuthorizationBody.email, password: hashedPassword.digest('Hex')}))
                     navigate("/my")
