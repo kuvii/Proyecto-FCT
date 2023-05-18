@@ -54,7 +54,7 @@ const KingsbankApp = () => {
           <Route path='/' element={<Home/>}/>
         </Route>
 
-        <Route path='/my' 
+        <Route
         element={
             <RequireAuth>
               <Main 
