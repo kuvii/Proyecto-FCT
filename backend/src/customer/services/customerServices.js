@@ -31,7 +31,7 @@ const findCustomerDashboardInfo = async (email) => {
     }
 }
 
-const findCardsFromCustomerId = async (id) => {
+const findOneCardFromCustomerId = async (id) => {
     try {
         const card = await Card.findOne({
             where: {
@@ -44,6 +44,22 @@ const findCardsFromCustomerId = async (id) => {
         return 0
     } catch (error) {
         throw new Error (error)
+    }
+}
+
+const findAllCardsFromCustomerId = async (id) => {
+    try {
+        const cardList = await Card.findAll({
+            where: {
+                accountId: id
+            }
+        })
+        if (cardList){
+            return cardList
+        }
+        return []
+    } catch (error) {
+        
     }
 }
 
@@ -114,7 +130,7 @@ const findMovementsFromCustomerId = async (id) => {
     try {
         const movementList = Movement.findAll({
             where: {
-                id
+                accountId: id
             }
         })
         if (movementList){
@@ -148,7 +164,8 @@ const authUser = async (customerToAuth) => {
 export const customerServices = {
     findCustomerDashboardInfo,
     authUser,
-    findCardsFromCustomerId,
+    findOneCardFromCustomerId,
+    findAllCardsFromCustomerId,
     createNewCard,
     createNewLoanRequest,
     findLoanRequestsFromCustomer,

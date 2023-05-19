@@ -17,7 +17,7 @@ const getCustomerDashboard = async (req, res) => {
 const getCardsFromCustomer = async (req, res) => {
     const { id } = req.params
     try {
-        const cards = await customerServices.findCardsFromCustomerId(id)
+        const cards = await customerServices.findAllCardsFromCustomerId(id)
         res.status(correct_codes.OK).json(cards)
     } catch (error) {
         res.status(server_errors.INTERNAL_ERROR).json({})
