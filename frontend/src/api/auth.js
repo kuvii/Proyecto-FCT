@@ -10,4 +10,17 @@ const checkIfUserExists = async (authBody) => {
     return result
 }
 
-export default checkIfUserExists
+const checkIfUserIsAdmin = async (id) => {
+    try {
+        const userRole = await fetch('http://localhost:8000/admin/get-role/' + id)
+        return userRole.json()
+    } catch (error) {
+        console.error(error)
+    }
+}
+const apiAuth = {
+    checkIfUserExists,
+    checkIfUserIsAdmin
+}
+
+export default apiAuth
