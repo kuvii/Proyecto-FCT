@@ -58,7 +58,7 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
                     const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
                     setUserInfo(userData)
 
-                    const userDataCards = await apiCustomer.getCustomerInfo(userData.id)
+                    const userDataCards = await apiCustomer.getCustomerCards(userData.id)
                     setCardsFromUser(userDataCards)
 
                     const userDataMovements = await apiCustomer.getCustomerMovements(userData.id)
