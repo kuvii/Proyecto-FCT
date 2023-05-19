@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../screens/home/Home'
 import Body from '../layout/body/Body'
 import Main from '../screens/main/Main'
 import Dashboard from '../components/dashboard/Dashboard'
 import MovementsList from '../components/movements_list/MovementsList'
+import CardsList from '../components/cards_list/CardsList'
 
 const initUserInfo = {
     id: null,
@@ -85,8 +86,18 @@ const KingsbankApp = () => {
               setMovementsFromUser={setMovementsFromUser}
             />
           </RequireAuth>
-        }
-        />
+        }/>
+
+        <Route path='/my/cards' element={
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <RequireAuth>
+              <CardsList 
+              cardsFromUser={cardsFromUser}
+              setCardsFromUser={setCardsFromUser}
+              />
+            </RequireAuth>
+          </Suspense>
+        }/>
         </Route>
       </Routes>
     </div>

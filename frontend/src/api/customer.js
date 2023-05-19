@@ -16,9 +16,10 @@ const getCustomerInfo = async (email) => {
 
 const getCustomerCards = async (id) => {
     try {
-        const data = await fetch(BASE_URL + '/my/cards' + id)
+        const data = await fetch(BASE_URL + '/my/cards/' + id)
         if (data) {
             const customerInfoCards = await data.json()
+            console.log(customerInfoCards)
             return customerInfoCards
         }
         return []
@@ -34,6 +35,7 @@ const getCustomerMovements = async (id) => {
             const customerInfoMovements = await data.json()
             return customerInfoMovements
         }
+        return []
     } catch (error) {
         console.error(error)
     }
