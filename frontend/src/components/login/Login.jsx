@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
-import checkIfUserExists from '../../api/auth'
+import authApi from '../../api/auth'
 import { sha256 } from 'hash.js'
 import apiCustomer from '../../api/customer'
+import apiAuth from '../../api/auth'
 
 const initLoginAuthorizationBody = {
     email: '',
@@ -53,7 +54,7 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
             }))
         } else {
             try {
-                const result = await checkIfUserExists(loginAuthorizationBody)
+                const result = await authApi.checkIfUserExists(loginAuthorizationBody)
                 if (result) {
                     const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
                     setUserInfo(userData)
@@ -66,7 +67,17 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
                     
                     const hashedPassword = sha256(loginAuthorizationBody.password)
                     localStorage.setItem("user", JSON.stringify({ email: loginAuthorizationBody.email, password: hashedPassword.digest('Hex')}))
-                    navigate("/my")
+
+                    const userRole = await apiAuth.checkIfUserIsAdmin(userData.id)
+
+                    if (userRole === 0) {
+                        console.log('Is user')
+                        navigate('/my')
+                    }
+                    if (userRole === 1) {
+                        console.log('Is user')
+                        navigate('/admin')
+                    }
                 }
             } catch (error) {
                 console.log(error)

@@ -26,7 +26,19 @@ const getAllCustomer = async (req, res) => {
     }
 }
 
+const getUserRoleFromId = async (req, res) => {
+    const { id } = req.params
+    try {
+        const customerRole = await adminServices.findUserRoleFromAccountId(id)
+        res.status(correct_codes.OK).json(customerRole)
+    } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json([])
+        console.error(error)
+    }
+}
+
 export const adminController = {
     postNewCustomer,
-    getAllCustomer
+    getAllCustomer,
+    getUserRoleFromId
 }
