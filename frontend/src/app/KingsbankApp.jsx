@@ -99,6 +99,10 @@ const KingsbankApp = () => {
           </Suspense>
         }/>
         </Route>
+
+        <Route path='/admin' element={<h1>Admin</h1>}>
+
+        </Route>
       </Routes>
     </div>
   )
