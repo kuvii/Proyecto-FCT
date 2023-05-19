@@ -1,3 +1,4 @@
+import Account from "../../models/Account.js"
 import Customer from "../../models/Customer.js"
 import bcrypt from 'bcrypt'
 
@@ -38,7 +39,21 @@ const findAllCustomer = async () => {
     }
 }
 
+const findUserRoleFromAccountId = async (id) => {
+    try {
+        const account = await Account.findOne({
+            where: {
+                id
+            }
+        })
+        return account.role
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 export const adminServices = {
     createNewCustomer,
-    findAllCustomer
+    findAllCustomer,
+    findUserRoleFromAccountId
 }
