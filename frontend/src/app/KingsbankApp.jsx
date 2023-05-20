@@ -40,6 +40,8 @@ const KingsbankApp = () => {
   const [loansFromUser, setLoansFromUser] = useState([])
   const [movementsFromUser, setMovementsFromUser] = useState([])
 
+  const [userRole, setUserRole] = useState(null)
+
   const [userInfo, setUserInfo] = useState(initUserInfo)
 
   return (
@@ -51,6 +53,7 @@ const KingsbankApp = () => {
           setCardsFromUser={setCardsFromUser}
           setLoansFromUser={setLoansFromUser}
           setMovementsFromUser={setMovementsFromUser}
+          setUserRole={setUserRole}
           />
           }>
           <Route path='/' element={<Home/>}/>
@@ -98,11 +101,24 @@ const KingsbankApp = () => {
             </RequireAuth>
           </Suspense>
         }/>
+
+          <Route path='/admin' element={
+            <h1>Dashboard</h1>
+          } />
+
+          <Route path='/admin/loans' element={
+            <h1>Prestamos</h1>
+          } />
+
+          <Route path='/admin/clients' element={
+            <h1>Clientes</h1>
+          } />
+
+          <Route path='/admin/cards' element={
+            <h1>Tarjetas</h1>
+          } />
         </Route>
 
-        <Route path='/admin' element={<h1>Admin</h1>}>
-
-        </Route>
       </Routes>
     </div>
   )
