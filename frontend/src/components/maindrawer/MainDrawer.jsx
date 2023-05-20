@@ -39,7 +39,7 @@ const MainDrawer = ({open, handleOpen, userInfo}) => {
                 fontWeight='bold' >
                     {userInfo.first_name}
                 </Typography>
-                {localStorage.getItem('userRole') === 0 ? (
+                {userInfo.account.role === 0 ? (
                     <LinkList />
                     ) :
                     <AdminLinkList />
