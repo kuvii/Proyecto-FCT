@@ -6,6 +6,7 @@ import Main from '../screens/main/Main'
 import Dashboard from '../components/dashboard/Dashboard'
 import MovementsList from '../components/movements_list/MovementsList'
 import CardsList from '../components/cards_list/CardsList'
+import AdminDashboard from '../components/admin_dashboard/AdminDashboard'
 
 const initUserInfo = {
     id: null,
@@ -103,7 +104,7 @@ const KingsbankApp = () => {
         }/>
 
           <Route path='/admin' element={
-            <h1>Dashboard</h1>
+            <AdminDashboard />
           } />
 
           <Route path='/admin/loans' element={
