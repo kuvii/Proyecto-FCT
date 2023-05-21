@@ -32,7 +32,7 @@ const createNewCustomer = async (customerData) => {
 
 const findAllCustomer = async () => {
     try {
-        const customerList = Customer.findAll()
+        const customerList = Customer.findAll({include: Customer.Account})
         return customerList
     } catch (error) {
         throw new Error (error)
