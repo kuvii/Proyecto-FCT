@@ -6,29 +6,30 @@ const dashboardOptions = {
     header: 'Inicio'
 }
 
-const movementsOptions = {
-    header: 'Movimientos'
+const loansOptions = {
+    header: 'Prestamos'
 }
 
 const cardsOptions = {
     header: 'Tarjetas'
 }
 
-const loansOptions = {
-    header: 'Prestamos'
+const clientsOptions = {
+    header: 'Clientes'
 }
 
-const LinkList = () => {
+const AdminLinkList = () => {
 
     const handleNavigation = (index) => {
-        const optionsList = [dashboardOptions, movementsOptions, cardsOptions, loansOptions]
+        const optionsList = [dashboardOptions, loansOptions, cardsOptions, clientsOptions]
         localStorage.setItem('navbar_options', JSON.stringify(optionsList[index]))
     }
-
+    
     return (
         <List>
-            {["Inicio", "Movimientos", "Tarjetas", "Prestamos"].map((text, index) => {
-                const routes = ["/my", "/my/movements", "/my/cards", "/my/loans"]
+            {["Inicio", "Prestamos", "Tarjetas", "Clientes"].map((text, index) => {
+                const routes = ["/admin", "/admin/loans", "/admin/cards", "/admin/clients"]
+                
                 return (
                     <ListItem key={text} disablePadding sx={ { marginY: 5, justifyContent: 'center'} } >
                         <Link to={routes[index]} className='userLinks' onClick={() => handleNavigation(index)} >{text}</Link>
@@ -40,4 +41,4 @@ const LinkList = () => {
     )
 }
 
-export default LinkList
+export default AdminLinkList
