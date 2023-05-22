@@ -71,11 +71,11 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
                     const userRole = await apiAuth.checkIfUserIsAdmin(userData.id)
 
                     if (userRole === 0) {
-                        console.log('Is user')
+                        localStorage.setItem('userRole', 0)
                         navigate('/my')
                     }
                     if (userRole === 1) {
-                        console.log('Is user')
+                        localStorage.setItem('userRole', 1)
                         navigate('/admin')
                     }
                 }

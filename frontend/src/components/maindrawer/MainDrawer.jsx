@@ -3,6 +3,7 @@ import { Box, Drawer, IconButton, Typography, useMediaQuery, useTheme } from '@m
 import imagenUsuario1 from '../../assets/usuario1.png'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LinkList from '../link_list/LinkList';
+import AdminLinkList from '../admin_link_list/AdminLinkList';
 
 
 const MainDrawer = ({open, handleOpen, userInfo}) => {
@@ -38,7 +39,12 @@ const MainDrawer = ({open, handleOpen, userInfo}) => {
                 fontWeight='bold' >
                     {userInfo.first_name}
                 </Typography>
-                <LinkList />
+                {userInfo.account.role === 0 ? (
+                    <LinkList />
+                    ) :
+                    <AdminLinkList />
+                }
+                
         </Drawer>
     )
 }
