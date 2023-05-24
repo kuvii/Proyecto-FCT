@@ -12,8 +12,8 @@ LoanRequest.init({
         allowNull: false
     },
     status: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.ENUM,
+        values: ['accepted', 'pending', 'canceled']
     },
 }, {sequelize, modelName: 'loanRequest'})
 
