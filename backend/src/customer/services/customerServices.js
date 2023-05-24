@@ -69,6 +69,7 @@ const createNewCard = async (card, id) => {
             holder_name: card?.holder_name,
             number: card?.number,
             type: card?.type,
+            status: card?.status,
             cvv: card?.cvv,
             date_expiration: card?.date_expiration,
             accountId: id,

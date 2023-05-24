@@ -37,8 +37,20 @@ const getUserRoleFromId = async (req, res) => {
     }
 }
 
+const updateCardRequest = async (req, res) => {
+    const { id } = req.params
+    const { status } = req.body
+    try {
+        const requestedCard = await adminServices.updateCardRequest(id, status)
+        res.status(correct_codes.OK).json(requestedCard)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export const adminController = {
     postNewCustomer,
     getAllCustomer,
-    getUserRoleFromId
+    getUserRoleFromId,
+    updateCardRequest
 }

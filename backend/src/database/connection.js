@@ -1,5 +1,6 @@
 import createDB_mysql from './create_db_mysql.js'
 import sequelize from '../sequelize/sequelize.js'
+import { adminServices } from '../admin/services/adminServices.js'
 
 const testConnection = async () => {
     try {
@@ -15,10 +16,28 @@ const testConnection = async () => {
     }
 }
 
+const initAdminUser = {
+    first_name: "Admin",
+    last_name: "test",
+    birthdate: "2003-09-11",
+    password: "1234",
+    email: "admin@admin.com",
+    dni: "12345678A",
+    phone: "123123456",
+    postal_code: "12345",
+    address: "calle admin",
+    account: {
+        role: 1,
+        money: 0.0,
+        iban: 23456,
+    }
+}
+
 const initDatabase = async () => {
     try {
         await testConnection()
         await sequelize.sync({force: true})
+        await adminServices.createNewCustomer(initAdminUser)
     } catch (error) {
         console.error('[InitDB]: Error starting DB', error)
     }

@@ -13,6 +13,10 @@ Card.init( {
         type: DataTypes.ENUM,
         values: ['credit', 'debit']
     },
+    status: {
+        type: DataTypes.ENUM,
+        values: ['pending', 'accepted', 'canceled']
+    },
     cvv: {
         type: DataTypes.STRING(3)
     },
