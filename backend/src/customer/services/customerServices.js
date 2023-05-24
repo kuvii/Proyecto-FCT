@@ -80,12 +80,12 @@ const createNewCard = async (card, id) => {
     }
 }
 
-const createNewLoanRequest = async (loanRequest, id) => {
+const createNewLoan = async (loan, id) => {
     try {
-        const newLoanRequest = await LoanRequest.create({
-            total: loanRequest?.total,
-            description: loanRequest?.description,
-            status: 0,
+        const newLoanRequest = await Loan.create({
+            total: loan?.total,
+            description: loan?.description,
+            status: 'pending',
             accountId: id,
         })
         return newLoanRequest
@@ -96,7 +96,7 @@ const createNewLoanRequest = async (loanRequest, id) => {
 
 const findLoanRequestsFromCustomer = async (id) => {
     try {
-        const loanRequests = LoanRequest.findAll({
+        const loanRequests = Loan.findAll({
             where: {
                 accountId: id
             },
@@ -168,7 +168,7 @@ export const customerServices = {
     findOneCardFromCustomerId,
     findAllCardsFromCustomerId,
     createNewCard,
-    createNewLoanRequest,
+    createNewLoan,
     findLoanRequestsFromCustomer,
     createNewMovement,
     findMovementsFromCustomerId

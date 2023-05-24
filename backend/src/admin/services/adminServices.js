@@ -2,6 +2,7 @@ import Account from "../../models/Account.js"
 import Card from "../../models/Card.js"
 import Customer from "../../models/Customer.js"
 import bcrypt from 'bcrypt'
+import Loan from "../../models/Loan.js"
 
 const createNewCustomer = async (customerData) => {
 
@@ -64,9 +65,33 @@ const updateCardRequest = async (id, status) => {
     }
 }
 
+const getLoanRequestsList = async () => {
+    try {
+        const loanList = await Loan.findAll({
+            where: { status: 'pending'}
+        })
+        return loanList
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
+const updateLoan = async (id, status) => {
+    try {
+        const loanUpdated = await Loan.update({status: status}, {
+            where: { id }
+        })
+        return loanUpdated
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 export const adminServices = {
     createNewCustomer,
     findAllCustomer,
     findUserRoleFromAccountId,
-    updateCardRequest
+    updateCardRequest,
+    getLoanRequestsList,
+    updateLoan
 }

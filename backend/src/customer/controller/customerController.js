@@ -45,7 +45,7 @@ const postNewLoanRequest = async (req, res) => {
     const loanRequest = req.body
     const { id } = req.params
     try {
-        const newLoanRequest = await customerServices.createNewLoanRequest(loanRequest, id)
+        const newLoanRequest = await customerServices.createNewLoan(loanRequest, id)
         if (newLoanRequest){
             res.status(correct_codes.CREATED).json(newLoanRequest)
             return

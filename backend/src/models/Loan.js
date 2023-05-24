@@ -8,16 +8,12 @@ Loan.init({
         type: DataTypes.DOUBLE,
         allowNull: false
     },
-    quantity: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
+    status: {
+        type: DataTypes.ENUM,
+        values: ['accepted', 'pending', 'canceled']
     },
     description: {
         type: DataTypes.STRING(40),
-        allowNull: false
-    },
-    status: {
-        type: DataTypes.INTEGER,
         allowNull: false
     },
 }, {sequelize, modelName: 'loan'})
