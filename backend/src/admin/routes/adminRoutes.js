@@ -9,4 +9,6 @@ adminRouter.get('/admin/customers', adminController.getAllCustomer)
 
 adminRouter.get('/admin/get-role/:id', adminController.getUserRoleFromId)
 
+adminRouter.put('/admin/cards/requests/:id', adminController.updateCardRequest)
+
 export default adminRouter
