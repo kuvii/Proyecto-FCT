@@ -9,7 +9,7 @@ CarouselCaption
 
 import imagen1 from '../../assets/imagen1.png'
 import imagen2 from '../../assets/imagen2.jpg'
-import imagen3 from '../../assets/imagen3.png'
+import imagen3 from '../../assets/imagen3.jpg'
 
 const items = [
 {
@@ -20,12 +20,12 @@ const items = [
 {
     src: imagen2,
     altText: 'Slide 2',
-    caption: 'Slide 2'
+    caption: 'Siéntete seguro'
 },
 {
     src: imagen3,
     altText: 'Slide 3',
-    caption: 'Slide 3'
+    caption: 'Financia con nosotros'
 }
 ];
 
@@ -76,7 +76,7 @@ render() {
         key={item.src}
         >
         <img src={item.src} alt={item.altText} className='anuncios'/>
-        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+        <CarouselCaption /* captionText={item.caption} */ captionHeader={item.caption} />
         </CarouselItem>
     );
     });

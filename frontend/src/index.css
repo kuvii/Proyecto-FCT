@@ -444,3 +444,12 @@ input:focus, input::placeholder, input:valid {
   }
 
 }
+
+.carousel-caption {
+  margin-left: -55px;
+}
+
+h3 {
+  text-align: start;
+  padding-bottom: 300px;
+}
