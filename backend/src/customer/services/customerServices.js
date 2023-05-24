@@ -96,7 +96,7 @@ const createNewLoan = async (loan, id) => {
 
 const findLoanRequestsFromCustomer = async (id) => {
     try {
-        const loanRequests = LoanRequest.findAll({
+        const loanRequests = Loan.findAll({
             where: {
                 accountId: id
             },
