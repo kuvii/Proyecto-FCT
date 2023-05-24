@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
-import { Stack, TextField, } from '@mui/material'
+import { Alert, Snackbar, Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
 import authApi from '../../api/auth'
 import { sha256 } from 'hash.js'
@@ -28,6 +28,7 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
         email: '',
         password: ''
     })
+    const [openSnackbar, setOpenSnackbar] = useState(false)
 
     const handleChange = (e) => {
         setLoginAuthorizationBody(prevState => ({
@@ -55,7 +56,11 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
         } else {
             try {
                 const result = await authApi.checkIfUserExists(loginAuthorizationBody)
-                if (result) {
+                if (result === false) {
+                    setOpenSnackbar(true)
+                }
+
+                if (result === true) {
                     const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
                     setUserInfo(userData)
 
@@ -136,6 +141,11 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
                 </Col>
                 </Stack>
             </Row>
+            <Snackbar open={openSnackbar} anchorOrigin={{vertical: 'top', horizontal: 'left'}} autoHideDuration={3000} onClose={() => setOpenSnackbar(false)}>
+                <Alert variant='filled' onClose={() => setOpenSnackbar(false)} severity="error" sx={{ width: '100%' }}>
+                    Este usuario no existe
+                </Alert>
+            </Snackbar>
         </Form>
     )
 }
