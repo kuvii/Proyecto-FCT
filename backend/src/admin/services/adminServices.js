@@ -1,4 +1,5 @@
 import Account from "../../models/Account.js"
+import Card from "../../models/Card.js"
 import Customer from "../../models/Customer.js"
 import bcrypt from 'bcrypt'
 
@@ -52,8 +53,20 @@ const findUserRoleFromAccountId = async (id) => {
     }
 }
 
+const updateCardRequest = async (id, status) => {
+    try {
+        const card = await Card.update({status: status},{
+            where: { id }
+        })
+        return card
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 export const adminServices = {
     createNewCustomer,
     findAllCustomer,
-    findUserRoleFromAccountId
+    findUserRoleFromAccountId,
+    updateCardRequest
 }
