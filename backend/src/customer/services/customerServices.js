@@ -51,7 +51,8 @@ const findAllCardsFromCustomerId = async (id) => {
     try {
         const cardList = await Card.findAll({
             where: {
-                accountId: id
+                accountId: id,
+                status: 'accepted'
             }
         })
         if (cardList){
