@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Drawer, IconButton, Typography, useMediaQuery, useTheme } from '@mui/material'
 import imagenUsuario1 from '../../assets/usuario1.png'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import LinkList from '../link_list/LinkList';
+import LinkList from '../customer-components/LinkList';
 import AdminLinkList from '../admin_link_list/AdminLinkList';
 import LogoutButton from '../logout-button/LogoutButton';
 import { useNavigate } from 'react-router-dom';
