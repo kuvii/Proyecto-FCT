@@ -5,17 +5,23 @@ import Loan from "../../models/Loan.js"
 import LoanRequest from "../../models/LoanRequest.js"
 import Movement from "../../models/Movement.js"
 import Account from "../../models/Account.js"
+import { Op } from "sequelize"
 
 const findCustomerDashboardInfo = async (email) => {
     try {
         const customer = await Customer.findOne({
             where: {
-                email: email
+                email: email,
             },
             include: [{
                 model: Account,
-                include: [
-                    { model: Card },
+                include: [{ 
+                    model: Card, 
+                    where: {
+                            status: {[Op.eq]: ['accepted']}
+                        },
+                        required: false 
+                    },
                     { model: LoanRequest },
                     { model: Loan },
                     { model: Movement },
