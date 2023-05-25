@@ -114,6 +114,7 @@ const Dashboard = () => {
                                         alignItems='center'
                                         justifyContent='center'
                                         borderRadius={2}
+                                        margin={1}
                                         >
                                         No hay tarjetas
                                     </Box>
@@ -146,6 +147,7 @@ const Dashboard = () => {
                                         alignItems='center'
                                         justifyContent='center'
                                         borderRadius={2}
+                                        margin={1}
                                         >
                                         No hay movimientos
                                     </Box>

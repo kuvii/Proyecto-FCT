@@ -24,7 +24,7 @@ const CardsList = () => {
     }, [])
     
     return (
-        <Box marginX={1}>
+        <Box>
             {
                 cardList.length === 0 ? (
                     <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
@@ -36,6 +36,7 @@ const CardsList = () => {
                         alignItems='center'
                         justifyContent='center'
                         borderRadius={2}
+                        margin={1}
                     >
                         No tienes tarjetas
                     </Box>

@@ -26,7 +26,7 @@ const MovementsList = () => {
     return (
         <div>
             {
-                movementList === 0 ? (
+                movementList.length === 0 ? (
                     <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
                               themeHandler.LIGHT_MODE.secondary_color : 
                               themeHandler.DARK_MODE.secondary_color,
@@ -36,6 +36,7 @@ const MovementsList = () => {
                         alignItems='center'
                         justifyContent='center'
                         borderRadius={2}
+                        margin={1}
                     >
                         No hay movimientos
                     </Box>
