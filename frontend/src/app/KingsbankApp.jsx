@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../screens/home/Home'
 import Body from '../layout/body/Body'
@@ -43,11 +43,9 @@ const KingsbankApp = () => {
         }/>
 
         <Route path='/my/cards' element={
-          <Suspense fallback={<h1>Loading...</h1>}>
             <RequireAuth>
               <CardsList />
             </RequireAuth>
-          </Suspense>
         }/>
 
           <Route path='/admin' element={
