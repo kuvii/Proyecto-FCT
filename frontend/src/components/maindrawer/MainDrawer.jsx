@@ -4,14 +4,28 @@ import imagenUsuario1 from '../../assets/usuario1.png'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LinkList from '../link_list/LinkList';
 import AdminLinkList from '../admin_link_list/AdminLinkList';
+import LogoutButton from '../logout-button/LogoutButton';
+import { useNavigate } from 'react-router-dom';
 
 
 const MainDrawer = ({open, handleOpen, userInfo}) => {
     const theme = useTheme()
     const isPc = useMediaQuery(theme.breakpoints.up('sm'))
+    const navigate = useNavigate()
+
+    const handleLogout = async () => {
+        try {
+            localStorage.removeItem("userRole")
+            localStorage.removeItem("navbar_options")
+            localStorage.removeItem("user")
+            navigate('/')
+        } catch (error) {
+            console.error(error)
+        }
+    }
     return (
         <Drawer variant={isPc ? 'permanent' : 'persistent'} open={open} anchor='right' 
-        PaperProps={ { 
+        PaperProps={{ 
                 style: { 
                     borderTopLeftRadius: 20, 
                     borderBottomLeftRadius: 20, 
@@ -19,7 +33,7 @@ const MainDrawer = ({open, handleOpen, userInfo}) => {
                     minWidth: isPc ? 200 : 100,
                     flex: 1
                 }
-            } }>
+            }}>
                 {isPc 
                     ? ''
                     : (
@@ -27,7 +41,6 @@ const MainDrawer = ({open, handleOpen, userInfo}) => {
                         <ChevronRightIcon/>
                     </IconButton>
                     ) 
-                    
                 }
                 <Box alignItems='center' justifyContent='center'>
                     <img src={imagenUsuario1} alt="usuario1" className='imgUsuario1' />
@@ -44,7 +57,7 @@ const MainDrawer = ({open, handleOpen, userInfo}) => {
                     ) :
                     <AdminLinkList />
                 }
-                
+                <LogoutButton handleLogout={handleLogout} />
         </Drawer>
     )
 }
