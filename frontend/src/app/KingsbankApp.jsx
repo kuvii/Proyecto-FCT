@@ -10,53 +10,24 @@ import AdminDashboard from '../screens/admin/AdminDashboard'
 import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
 
-const initUserInfo = {
-    id: null,
-    first_name: '',
-    last_name: '',
-    birthdate: '',
-    password: '',
-    email: '',
-    dni: '',
-    phone: '',
-    postal_code: '',
-    address: '',
-    account: {
-      id: null,
-      role: 0,
-      money: '',
-      iban: '',
-      customerId: null,
-      cards: [],
-      loans: [],
-      movements: []
-    }
-}
-
 const KingsbankApp = () => {
 
   function RequireAuth ({ children }) {
-    return localStorage.getItem("user") !== null ? children : <Navigate to="/" replace/>
+    return localStorage.getItem("userLogged") !== null ? children : <Navigate to="/" replace/>
   }
 
   const [cardsFromUser, setCardsFromUser] = useState([])
   const [loansFromUser, setLoansFromUser] = useState([])
   const [movementsFromUser, setMovementsFromUser] = useState([])
 
-  const [userRole, setUserRole] = useState(null)
-
-  const [userInfo, setUserInfo] = useState(initUserInfo)
-
   return (
     <div>
       <Routes>
         <Route element={
           <Body 
-          setUserInfo={setUserInfo} 
           setCardsFromUser={setCardsFromUser}
           setLoansFromUser={setLoansFromUser}
           setMovementsFromUser={setMovementsFromUser}
-          setUserRole={setUserRole}
           />
           }>
           <Route path='/' element={<Home/>}/>
@@ -66,9 +37,6 @@ const KingsbankApp = () => {
         element={
             <RequireAuth>
               <Main 
-              userInfo={userInfo} 
-              setUserInfo={setUserInfo}
-              
               cardsFromUser={cardsFromUser} 
               setCardsFromUser={setCardsFromUser}
 
@@ -82,7 +50,7 @@ const KingsbankApp = () => {
           }
         >
         <Route path='/my' element={
-            <Dashboard userInfo={userInfo} />
+            <Dashboard />
         }/>
 
         <Route path='/my/movements' element={
