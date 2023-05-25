@@ -6,7 +6,7 @@ import Main from '../screens/main/Main'
 import Dashboard from '../components/dashboard/Dashboard'
 import MovementsList from '../components/movements_list/MovementsList'
 import CardsList from '../components/cards_list/CardsList'
-import AdminDashboard from '../components/admin_dashboard/AdminDashboard'
+import AdminDashboard from '../screens/admin/AdminDashboard'
 import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
 

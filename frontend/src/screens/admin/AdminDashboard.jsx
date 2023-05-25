@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import apiAdmin from '../../api/admin'
 import { Box, Stack, useMediaQuery, useTheme } from '@mui/material'
-import Customer from '../customer/Customer'
+import Customer from '../../components/customer/Customer'
 
 const AdminDashboard = () => {
 
@@ -26,24 +26,26 @@ const AdminDashboard = () => {
     return (
         <Box>
             <Box marginX={2}>
-                <Stack spacing={isPc ? 18 : 8} direction='row'>
-                    <Box>
+                <Stack direction='row'>
+                    <Box flex={1}>
                         Nombre
                     </Box>
-                    <Box>
+                    <Box flex={1}>
                         Apellidos
                     </Box>
                     {isPc ? (
                         <>
-
-                        <Box>
+                        <Box flex={1}>
                             Email
                         </Box>
-                        <Box>
+                        <Box flex={1}>
                             Iban
                         </Box>
                         </>
                     ): null}
+                    <Box flex={1}>
+                        Info
+                    </Box>
                 </Stack>
             </Box>
             {customersList && customersList.map((customer) => (
