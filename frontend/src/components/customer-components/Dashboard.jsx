@@ -102,11 +102,30 @@ const Dashboard = () => {
                         loading ? (
                             <Skeleton variant="rectangular" width='95%' height={isPc ? boxHeightPc : boxHeightPhone} />
                         ) : (
-                            <Box height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
-                                {userInfo.account.cards && userInfo.account.cards.map((card) => (
-                                    <Card cardInfo={card} key={card.id} style={ {marginY: 1} } />
-                                ))}
-                            </Box>
+                            <>
+                            {
+                                userInfo.account.cards.length === 0 ? (
+                                    <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
+                                            themeHandler.LIGHT_MODE.secondary_color : 
+                                            themeHandler.DARK_MODE.secondary_color,
+                                            }}
+                                        height={50}
+                                        display='flex'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        borderRadius={2}
+                                        >
+                                        No hay tarjetas
+                                    </Box>
+                                ) : (
+                                    <Box height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
+                                        {userInfo.account.cards && userInfo.account.cards.map((card) => (
+                                            <Card cardInfo={card} key={card.id} style={ {marginY: 1} } />
+                                        ))}
+                                    </Box>
+                                )
+                            }
+                            </>
                         )
                     }
                 </Grid>
@@ -115,11 +134,30 @@ const Dashboard = () => {
                         loading ? (
                             <Skeleton variant="rectangular" width='95%' height={isPc ? boxHeightPc : boxHeightPhone} />
                         ) : (
-                            <Box height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
-                                {userInfo.account.movements && userInfo.account.movements.map((move) => (
-                                    <Movement content={move} key={move.id} style={ {marginY: 1} } />
-                                ))}
-                            </Box>
+                            <>
+                            {
+                                userInfo.account.movements.length === 0 ? (
+                                    <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
+                                            themeHandler.LIGHT_MODE.secondary_color : 
+                                            themeHandler.DARK_MODE.secondary_color,
+                                            }}
+                                        height={50}
+                                        display='flex'
+                                        alignItems='center'
+                                        justifyContent='center'
+                                        borderRadius={2}
+                                        >
+                                        No hay movimientos
+                                    </Box>
+                                ) : (
+                                    <Box height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
+                                        {userInfo.account.movements && userInfo.account.movements.map((move) => (
+                                            <Movement content={move} key={move.id} style={ {marginY: 1} } />
+                                        ))}
+                                    </Box>
+                                )
+                            }
+                            </>
                         )
                     }
                 </Grid>
