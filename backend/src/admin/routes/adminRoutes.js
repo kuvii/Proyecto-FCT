@@ -9,6 +9,8 @@ adminRouter.get('/admin/customers', adminController.getAllCustomer)
 
 adminRouter.get('/admin/get-role/:id', adminController.getUserRoleFromId)
 
+adminRouter.get('/admin/cards/requests', adminController.getCardRequestsList)
+
 adminRouter.put('/admin/cards/requests/:id', adminController.updateCardRequest)
 
 adminRouter.get('/admin/loan-requests', adminController.getLoanRequestsList)
