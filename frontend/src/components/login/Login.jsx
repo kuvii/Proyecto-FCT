@@ -63,7 +63,7 @@ const Login = () => {
                 const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
                 
                 localStorage.setItem('userLogged', loginAuthorizationBody.email)
-                localStorage.setItem('userInfo', JSON.stringify({first_name: userData.first_name, role: userData.account.role}))
+                localStorage.setItem('userInfo', JSON.stringify({id: userData.id, first_name: userData.first_name, role: userData.account.role}))
 
                 if (userRole.account.role === 0) {
                     navigate('/my')
