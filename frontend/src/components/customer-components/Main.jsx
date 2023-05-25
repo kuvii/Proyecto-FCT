@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 // import Dashboard from '../../components/dashboard/Dashboard
-import MainScreenNavbar from '../../components/main_screen_navbar/MainScreenNavbar';
-import MainDrawer from '../../components/maindrawer/MainDrawer';
+import MainScreenNavbar from '../main_screen_navbar/MainScreenNavbar';
+import MainDrawer from '../maindrawer/MainDrawer';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import { Outlet } from 'react-router';
 
