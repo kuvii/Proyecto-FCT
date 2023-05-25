@@ -1,12 +1,14 @@
-import { Box, Paper, Stack, useMediaQuery, useTheme } from '@mui/material'
+import { Box, IconButton, Paper, Stack, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const Loan = (props) => {
 
     const theme = useTheme();
     const isPc = useMediaQuery(theme.breakpoints.up('sm'));
 
-    const {content, style } = props
+    const {content, style, handleUpdate } = props
     let setColor = ''
     let setStatusText = ''
     switch (content?.status){
@@ -27,6 +29,7 @@ const Loan = (props) => {
             setStatusText = 'type'
             break
     }
+
     return (
         <Box>
             <Paper sx={{margin: 1, padding: 2, backgroundColor: '#3590E4', ...style}}>
@@ -45,6 +48,14 @@ const Loan = (props) => {
                         <Stack>
                             {content?.total + '€' || <div>?€</div>}
                         </Stack>
+                    </Box>
+                    <Box>
+                        <IconButton onClick={() => handleUpdate(content.id, 'accepted')}>
+                            <CheckCircleIcon/>
+                        </IconButton>
+                        <IconButton onClick={() => handleUpdate(content.id, 'canceled')}>
+                            <CancelIcon/>
+                        </IconButton>
                     </Box>
                 </Stack>
             </Paper>

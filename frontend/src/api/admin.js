@@ -19,9 +19,25 @@ const getLoanList = async () => {
     }
 }
 
+const updateLoanRequestStatus = async (id, status) => {
+    try {
+        const result = await fetch(BASE_URL + '/admin/loan-requests/loan/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({status})
+        })
+        return result.json()
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const apiAdmin = {
     getAllCustomer,
-    getLoanList
+    getLoanList,
+    updateLoanRequestStatus
 }
 
 export default apiAdmin
