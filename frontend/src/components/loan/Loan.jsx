@@ -1,24 +1,26 @@
-import { Box, Paper, Stack, useMediaQuery, useTheme } from '@mui/material'
+import { Box, IconButton, Paper, Stack, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const Loan = (props) => {
 
     const theme = useTheme();
     const isPc = useMediaQuery(theme.breakpoints.up('sm'));
 
-    const {content, style } = props
+    const {content, style, handleUpdate } = props
     let setColor = ''
     let setStatusText = ''
     switch (content?.status){
-        case 1:
+        case 'accepted':
             setColor = '#106036'
             setStatusText ='Aprovado'
             break
-        case 2:
+        case 'pending':
             setColor = '#FFFF00'
             setStatusText = 'Esperando'
             break
-        case 3:
+        case 'canceled':
             setColor = '#FF5F5F'
             setStatusText = 'Cancelada'
             break
@@ -27,6 +29,7 @@ const Loan = (props) => {
             setStatusText = 'type'
             break
     }
+
     return (
         <Box>
             <Paper sx={{margin: 1, padding: 2, backgroundColor: '#3590E4', ...style}}>
@@ -36,15 +39,23 @@ const Loan = (props) => {
                 alignItems="center"
                 >
                     <Box>
-                        {(isPc ? content?.customer : content?.customer.substring(0, 12) + '...') || <div>Data not found</div>}
+                        {(isPc ? content?.description : content?.customer.substring(0, 12) + '...') || <div>Data not found</div>}
                     </Box>
                     <Box color={setColor}>
                         {setStatusText || <div>Type</div>}
                     </Box>
                     <Box>
                         <Stack>
-                            {content?.quantity + '€' || <div>?€</div>}
+                            {content?.total + '€' || <div>?€</div>}
                         </Stack>
+                    </Box>
+                    <Box>
+                        <IconButton onClick={() => handleUpdate(content.id, 'accepted')}>
+                            <CheckCircleIcon/>
+                        </IconButton>
+                        <IconButton onClick={() => handleUpdate(content.id, 'canceled')}>
+                            <CancelIcon/>
+                        </IconButton>
                     </Box>
                 </Stack>
             </Paper>

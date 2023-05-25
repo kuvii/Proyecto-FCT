@@ -7,6 +7,7 @@ import Dashboard from '../components/dashboard/Dashboard'
 import MovementsList from '../components/movements_list/MovementsList'
 import CardsList from '../components/cards_list/CardsList'
 import AdminDashboard from '../components/admin_dashboard/AdminDashboard'
+import LoansPage from '../screens/admin/LoansPage'
 
 const initUserInfo = {
     id: null,
@@ -108,7 +109,7 @@ const KingsbankApp = () => {
           } />
 
           <Route path='/admin/loans' element={
-            <h1>Prestamos</h1>
+            <LoansPage />
           } />
 
           <Route path='/admin/clients' element={
