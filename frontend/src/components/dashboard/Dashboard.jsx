@@ -1,9 +1,35 @@
-import { Box, Grid, useMediaQuery, useTheme, } from '@mui/material'
-import React from 'react'
+import { Box, Grid, Skeleton, Typography, useMediaQuery, useTheme, } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import Card from '../card/Card'
 import Movement from '../movement/Movement'
+import themeHandler from '../../utils/theme'
+import apiCustomer from '../../api/customer'
 
-const Dashboard = ({ userInfo }) => {
+const initUserInfo = {
+    id: null,
+    first_name: '',
+    last_name: '',
+    birthdate: '',
+    password: '',
+    email: '',
+    dni: '',
+    phone: '',
+    postal_code: '',
+    address: '',
+    account: {
+      id: null,
+      role: 0,
+      money: '',
+      iban: '',
+      customerId: null,
+      cards: [],
+      loans: [],
+      movements: []
+    }
+}
+
+
+const Dashboard = () => {
 
     const boxHeightPc = '400px'
     const boxHeightPhone = '300px'
@@ -11,28 +37,94 @@ const Dashboard = ({ userInfo }) => {
     const theme = useTheme()
     const isPc = useMediaQuery(theme.breakpoints.up('sm'))
 
+    const { LIGHT_MODE, DARK_MODE } = themeHandler
+
+    const [userInfo, setUserInfo] = useState(initUserInfo)
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const loadUserInfo = async () => {
+            try {
+                const loginInfo = JSON.parse(localStorage.getItem("user"))
+                const user = await apiCustomer.getCustomerInfo(loginInfo.email)
+                setUserInfo(user)
+                setLoading(false)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        loadUserInfo()
+    }, [])
+
     return (
-        <Box component='div' sx={{ overflowY: 'auto' }}>
-        <Grid
-        container
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-            <Grid item xs={4} sm={4} md={6}>
-                <Box marginX={1} height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
-                    {userInfo.account.cards && userInfo.account.cards.map((card) => (
-                        <Card cardInfo={card} key={card.id} style={ {marginY: 1} } />
-                    ))}
-                </Box>
+        <Box display='grid' alignItems='center' sx={{ overflowY: 'auto' }}>
+            <Box 
+            justifyContent='center' 
+            display='flex'
+            margin={1}
+            >
+                {
+                    loading ? (
+                        <Skeleton 
+                        variant="rectangular" 
+                        width={isPc ? 500 : 300} 
+                        height={100} 
+                        sx={{ borderRadius: 5}}
+                        />
+                    ) : (
+                        <Box sx={{
+                            borderRadius: 5,
+                            backgroundColor: theme.palette.mode === 'light' ? 
+                                LIGHT_MODE.secondary_color : 
+                                DARK_MODE.secondary_color,
+                            flex: 1,
+                            maxWidth: isPc ? 500 : 300,
+                            height: 100
+                        }}
+                        display='grid'
+                        alignItems='center'
+                        >
+                            <Typography
+                            fontSize={40}
+                            >
+                                {userInfo.account.money}€
+                            </Typography>
+                        </Box>
+                    )
+                }
+            </Box>
+            <Grid
+            container
+            columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+                <Grid item xs={4} sm={4} md={6}>
+                    {
+                        loading ? (
+                            <Skeleton variant="rectangular" width='95%' height={isPc ? boxHeightPc : boxHeightPhone} />
+                        ) : (
+                            <Box height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
+                                {userInfo.account.cards && userInfo.account.cards.map((card) => (
+                                    <Card cardInfo={card} key={card.id} style={ {marginY: 1} } />
+                                ))}
+                            </Box>
+                        )
+                    }
+                </Grid>
+                <Grid item xs={4} sm={4} md={6}>
+                    {
+                        loading ? (
+                            <Skeleton variant="rectangular" width='95%' height={isPc ? boxHeightPc : boxHeightPhone} />
+                        ) : (
+                            <Box height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
+                                {userInfo.account.movements && userInfo.account.movements.map((move) => (
+                                    <Movement content={move} key={move.id} style={ {marginY: 1} } />
+                                ))}
+                            </Box>
+                        )
+                    }
+                </Grid>
             </Grid>
-            <Grid item xs={4} sm={4} md={6}>
-                <Box height={isPc ? boxHeightPc : boxHeightPhone} sx={{ overflowY: 'auto'}}>
-                    {userInfo.account.movements && userInfo.account.movements.map((move) => (
-                        <Movement content={move} key={move.id} style={ {marginY: 1} } />
-                    ))}
-                </Box>
-            </Grid>
-        </Grid>
-    </Box>
+        </Box>
     )
 }
 
