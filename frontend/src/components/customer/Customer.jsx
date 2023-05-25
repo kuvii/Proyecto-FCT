@@ -12,34 +12,26 @@ const Customer = (props) => {
     return (
         <Box>
             <Paper sx={{margin: 1, padding: 2}}>
-                <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                >
-                    <Box>
-                        <Stack spacing={isPc ? 15 : 8} direction='row'>
-                            <Box>
-                                {customerData?.first_name}
-                            </Box>
-                            <Box>
-                                {customerData?.last_name}
-                            </Box>
-                            {isPc ? (
-                                <>
-                                    <Box>
-                                        {customerData?.email}
-                                    </Box>
-                                    <Box>
-                                        {customerData?.account.iban}
-                                    </Box>
-                                </>
-                            ): null}
-                            <IconButton sx={{ height: 20, width: 20}} >
-                                <InfoIcon />
-                            </IconButton>
-                        </Stack>
+                <Stack direction='row'>
+                    <Box flex={1}>
+                        {customerData?.first_name}
                     </Box>
+                    <Box flex={1}>
+                        {customerData?.last_name}
+                    </Box>
+                    {isPc ? (
+                        <>
+                            <Box flex={1}>
+                                {customerData?.email}
+                            </Box>
+                            <Box flex={1}>
+                                {customerData?.account.iban}
+                            </Box>
+                        </>
+                    ): null}
+                    <IconButton sx={{ height: 20, width: 20, flex: 1}} >
+                        <InfoIcon />
+                    </IconButton>
                 </Stack>
             </Paper>
         </Box>
