@@ -120,6 +120,17 @@ const getAuthCustomer = async (req, res) => {
     }
 }
 
+const putUserMoney = async (req, res) => {
+    const { id } = req.params
+    const { money } = req.body
+    try {
+        await customerServices.userUpdateMoney(id, money)
+    } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
+        console.error(error)
+    }
+}
+
 const customerController = {
     getCustomerDashboard,
     getAuthCustomer,
@@ -128,7 +139,8 @@ const customerController = {
     postNewLoanRequest,
     getLoanRequests,
     postNewMovement,
-    getMovementList
+    getMovementList,
+    putUserMoney
 }
 
 export default customerController
