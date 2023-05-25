@@ -6,7 +6,6 @@ const Body = (props) => {
   return (
     <div>
         <Header 
-        setUserInfo={props.setUserInfo}
         setCardsFromUser={props.setCardsFromUser}
         setLoansFromUser={props.setLoansFromUser}
         setMovementsFromUser={props.setMovementsFromUser}
