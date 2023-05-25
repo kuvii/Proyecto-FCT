@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Drawer, IconButton, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Drawer, IconButton, Typography, useMediaQuery, useTheme } from '@mui/material'
 import imagenUsuario1 from '../../assets/usuario1.png'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import LinkList from '../link_list/LinkList';
