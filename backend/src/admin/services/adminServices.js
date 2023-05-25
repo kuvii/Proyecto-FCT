@@ -65,6 +65,17 @@ const updateCardRequest = async (id, status) => {
     }
 }
 
+const getCardRequestsList = async () => {
+    try {
+        const cardList = await Card.findAll({
+            where: { status: 'pending'}
+        })
+        return cardList
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 const getLoanRequestsList = async () => {
     try {
         const loanList = await Loan.findAll({
@@ -91,6 +102,7 @@ export const adminServices = {
     createNewCustomer,
     findAllCustomer,
     findUserRoleFromAccountId,
+    getCardRequestsList,
     updateCardRequest,
     getLoanRequestsList,
     updateLoan
