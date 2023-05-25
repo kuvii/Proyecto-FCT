@@ -10,8 +10,18 @@ const getAllCustomer = async () => {
     }
 }
 
+const getLoanList = async () => {
+    try {
+        const data = await fetch(BASE_URL + '/admin/loan-requests')
+        return data.json()
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const apiAdmin = {
-    getAllCustomer
+    getAllCustomer,
+    getLoanList
 }
 
 export default apiAdmin
