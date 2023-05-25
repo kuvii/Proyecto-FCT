@@ -45,8 +45,8 @@ const Dashboard = () => {
     useEffect(() => {
         const loadUserInfo = async () => {
             try {
-                const loginInfo = JSON.parse(localStorage.getItem("user"))
-                const user = await apiCustomer.getCustomerInfo(loginInfo.email)
+                const loginInfo = localStorage.getItem("userLogged")
+                const user = await apiCustomer.getCustomerInfo(loginInfo)
                 setUserInfo(user)
                 setLoading(false)
             } catch (error) {
