@@ -8,16 +8,19 @@ import LogoutButton from '../logout-button/LogoutButton';
 import { useNavigate } from 'react-router-dom';
 
 
-const MainDrawer = ({open, handleOpen, userInfo}) => {
+const MainDrawer = ({open, handleOpen}) => {
     const theme = useTheme()
     const isPc = useMediaQuery(theme.breakpoints.up('sm'))
     const navigate = useNavigate()
+    
+    const {first_name, role} = JSON.parse(localStorage.getItem("userInfo"))
+
 
     const handleLogout = async () => {
         try {
-            localStorage.removeItem("userRole")
+            localStorage.removeItem("userLogged")
             localStorage.removeItem("navbar_options")
-            localStorage.removeItem("user")
+            localStorage.removeItem("userInfo")
             navigate('/')
         } catch (error) {
             console.error(error)
@@ -50,9 +53,9 @@ const MainDrawer = ({open, handleOpen, userInfo}) => {
                 fontSize={isPc ? '40px' : '30px'} 
                 fontFamily='Space Mono' 
                 fontWeight='bold' >
-                    {userInfo.first_name}
+                    {first_name}
                 </Typography>
-                {userInfo.account.role === 0 ? (
+                {role === 0 ? (
                     <LinkList />
                     ) :
                     <AdminLinkList />
