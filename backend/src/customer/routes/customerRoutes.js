@@ -19,4 +19,6 @@ customerRouter.post('/my/movements/new-movement/:id', customerController.postNew
 
 customerRouter.get('/my/movements/:id', customerController.getMovementList)
 
+customerRouter.put('/customer/account/update/money/:id', customerController.putUserMoney)
+
 export default customerRouter

@@ -163,6 +163,18 @@ const authUser = async (customerToAuth) => {
     }
 }
 
+const userUpdateMoney = async (id, money) => {
+    try {
+        await Account.increment({money: money},{
+            where: {
+                id
+            }
+        })
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 export const customerServices = {
     findCustomerDashboardInfo,
     authUser,
@@ -172,5 +184,6 @@ export const customerServices = {
     createNewLoan,
     findLoanRequestsFromCustomer,
     createNewMovement,
-    findMovementsFromCustomerId
+    findMovementsFromCustomerId,
+    userUpdateMoney
 }
