@@ -10,7 +10,7 @@ const Card = (props) => {
 
     return (
         <Box>
-            <Paper sx={{padding: 1, ...style}}>
+            <Paper sx={{padding: 1, margin: 1, ...style}}>
                 <Stack
                 direction="row"
                 justifyContent="space-between"
