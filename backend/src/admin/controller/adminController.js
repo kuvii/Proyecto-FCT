@@ -37,6 +37,16 @@ const getUserRoleFromId = async (req, res) => {
     }
 }
 
+const getCardRequestsList = async (req, res) => {
+    try {
+        const cardList = await adminServices.getCardRequestsList()
+        res.status(correct_codes.OK).json(cardList)
+    } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json([])
+        console.error(error)
+    }
+}
+
 const updateCardRequest = async (req, res) => {
     const { id } = req.params
     const { status } = req.body
@@ -72,6 +82,7 @@ export const adminController = {
     postNewCustomer,
     getAllCustomer,
     getUserRoleFromId,
+    getCardRequestsList,
     updateCardRequest,
     getLoanRequestsList,
     updateLoan
