@@ -5,7 +5,6 @@ const Header = (props) => {
   return (
     <div>
         <MainNavbar 
-        setUserInfo={props.setUserInfo}
         setCardsFromUser={props.setCardsFromUser}
         setLoansFromUser={props.setLoansFromUser}
         setMovementsFromUser={props.setMovementsFromUser}
