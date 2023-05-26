@@ -47,7 +47,7 @@ const Card = (props) => {
                 spacing={5}
                 >
                     Cad: {<Box>{cardInfo?.date_expiration}</Box> || <div>xx/xx</div>}
-                    {<Box>{(cardInfo?.holder_name.substring(0, 21))}</Box> || <div>Aday Enrique Vera Aya</div>}
+                    {<Box>{(cardInfo?.holder_name.substring(0, 21))}</Box> || <div>User Name</div>}
                 </Stack>
             </Paper>
         </Box>

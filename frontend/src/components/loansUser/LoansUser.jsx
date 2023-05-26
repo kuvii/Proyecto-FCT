@@ -1,9 +1,13 @@
-import { Box, Paper, Stack, Typography, Button } from '@mui/material'
+import { Box, useTheme, Button } from '@mui/material'
 import { useState } from 'react';
 import Loan from '../loan/Loan'
+import themeHandler from '../../utils/theme'
 
-const LoansUser = (loansFromUser, setLoansFromUser) => {
+const LoansUser = () => {
 
+    const theme = useTheme()
+
+    const [loansList, setLoansList] = useState([])
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => {
@@ -46,11 +50,29 @@ const LoansUser = (loansFromUser, setLoansFromUser) => {
                 </div>
             )}
 
-            <div>
-                {loansFromUser && loansFromUser.map((loan) => (
-                    <Loan content={loan} key={loan.id} style={ {marginY: 1} } />
-                ))}
-            </div>  
+            {
+                loansList.length === 0 ? (
+                    <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
+                                themeHandler.LIGHT_MODE.secondary_color : 
+                                themeHandler.DARK_MODE.secondary_color,
+                            }}
+                        height={50}
+                        display='flex'
+                        alignItems='center'
+                        justifyContent='center'
+                        borderRadius={2}
+                        margin={1}
+                    >
+                        No hay préstamos
+                    </Box>
+                ) : (
+                    <>
+                    {loansList && loansList.map((loans) => (
+                        <Loan content={loans} key={loans.id} style={ {marginY: 1} } />
+                    ))}
+                    </>
+                )
+            } 
         </Box>
     )
 }

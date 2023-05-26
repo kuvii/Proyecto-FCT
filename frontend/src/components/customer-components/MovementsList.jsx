@@ -28,8 +28,8 @@ const MovementsList = () => {
             {
                 movementList.length === 0 ? (
                     <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
-                              themeHandler.LIGHT_MODE.secondary_color : 
-                              themeHandler.DARK_MODE.secondary_color,
+                                themeHandler.LIGHT_MODE.secondary_color : 
+                                themeHandler.DARK_MODE.secondary_color,
                             }}
                         height={50}
                         display='flex'
