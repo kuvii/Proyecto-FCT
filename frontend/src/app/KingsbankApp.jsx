@@ -51,10 +51,7 @@ const KingsbankApp = () => {
 
         <Route path='/my/loans' element={
           <RequireAuth>
-            <LoansUser 
-              loansFromUser={loansFromUser} 
-              setLoansFromUser={setLoansFromUser}
-            />
+            <LoansUser/>
           </RequireAuth>
         }/>
 
