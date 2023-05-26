@@ -33,7 +33,6 @@ const MainNavbar = (props) => {
         <Container maxWidth='sm'>
           <Collapse in={isOpen} >
               <Login 
-                setUserInfo={props.setUserInfo}
                 setCardsFromUser={props.setCardsFromUser}
                 setLoansFromUser={props.setLoansFromUser}
                 setMovementsFromUser={props.setMovementsFromUser}
@@ -54,7 +53,6 @@ const MainNavbar = (props) => {
         <ThemeProvider theme={theme}>
           {widthControlTrigger ? (
             <Login 
-            setUserInfo={props.setUserInfo}
             setCardsFromUser={props.setCardsFromUser}
             setLoansFromUser={props.setLoansFromUser}
             setMovementsFromUser={props.setMovementsFromUser}

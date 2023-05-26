@@ -26,13 +26,14 @@ const getAllCustomer = async (req, res) => {
     }
 }
 
-const getUserRoleFromId = async (req, res) => {
-    const { id } = req.params
+const getUserRoleFromEmail = async (req, res) => {
+    const { email } = req.params
+    console.log(email)
     try {
-        const customerRole = await adminServices.findUserRoleFromAccountId(id)
+        const customerRole = await adminServices.findUserRoleFromCustomerEmail(email)
         res.status(correct_codes.OK).json(customerRole)
     } catch (error) {
-        res.status(server_errors.INTERNAL_ERROR).json([])
+        res.status(server_errors.INTERNAL_ERROR).json({})
         console.error(error)
     }
 }
@@ -81,7 +82,7 @@ const updateLoan = async (req, res) => {
 export const adminController = {
     postNewCustomer,
     getAllCustomer,
-    getUserRoleFromId,
+    getUserRoleFromEmail,
     getCardRequestsList,
     updateCardRequest,
     getLoanRequestsList,

@@ -3,16 +3,15 @@ import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Alert, Snackbar, Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
 import authApi from '../../api/auth'
-import { sha256 } from 'hash.js'
-import apiCustomer from '../../api/customer'
 import apiAuth from '../../api/auth'
+import apiCustomer from '../../api/customer'
 
 const initLoginAuthorizationBody = {
     email: '',
     password: ''
 }
 
-const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
+const Login = () => {
 
     const navigate = useNavigate()
     
@@ -60,29 +59,17 @@ const Login = ({setUserInfo, setCardsFromUser, setMovementsFromUser}) => {
                     setOpenSnackbar(true)
                 }
 
-                if (result === true) {
-                    const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
-                    setUserInfo(userData)
+                const userRole = await apiAuth.checkIfUserIsAdmin(loginAuthorizationBody.email)
+                const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
+                
+                localStorage.setItem('userLogged', loginAuthorizationBody.email)
+                localStorage.setItem('userInfo', JSON.stringify({id: userData.id, first_name: userData.first_name, role: userData.account.role}))
 
-                    const userDataCards = await apiCustomer.getCustomerCards(userData.id)
-                    setCardsFromUser(userDataCards)
-
-                    const userDataMovements = await apiCustomer.getCustomerMovements(userData.id)
-                    setMovementsFromUser(userDataMovements)
-                    
-                    const hashedPassword = sha256(loginAuthorizationBody.password)
-                    localStorage.setItem("user", JSON.stringify({ email: loginAuthorizationBody.email, password: hashedPassword.digest('Hex')}))
-
-                    const userRole = await apiAuth.checkIfUserIsAdmin(userData.id)
-
-                    if (userRole === 0) {
-                        localStorage.setItem('userRole', 0)
-                        navigate('/my')
-                    }
-                    if (userRole === 1) {
-                        localStorage.setItem('userRole', 1)
-                        navigate('/admin')
-                    }
+                if (userRole.account.role === 0) {
+                    navigate('/my')
+                }
+                if (userRole.account.role === 1) {
+                    navigate('/admin')
                 }
             } catch (error) {
                 console.log(error)

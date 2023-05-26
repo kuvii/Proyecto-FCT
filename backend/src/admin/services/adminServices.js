@@ -41,14 +41,17 @@ const findAllCustomer = async () => {
     }
 }
 
-const findUserRoleFromAccountId = async (id) => {
+const findUserRoleFromCustomerEmail = async (email) => {
     try {
-        const account = await Account.findOne({
-            where: {
-                id
-            }
+        const customer = await Customer.findOne({
+            where: { email },
+            include: [{
+                model: Account,
+                attributes: ['role']
+            }],
+            attributes: [],
         })
-        return account.role
+        return customer
     } catch (error) {
         throw new Error (error)
     }
@@ -101,7 +104,7 @@ const updateLoan = async (id, status) => {
 export const adminServices = {
     createNewCustomer,
     findAllCustomer,
-    findUserRoleFromAccountId,
+    findUserRoleFromCustomerEmail,
     getCardRequestsList,
     updateCardRequest,
     getLoanRequestsList,

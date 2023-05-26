@@ -7,7 +7,7 @@ adminRouter.post('/admin/new-customer', adminController.postNewCustomer)
 
 adminRouter.get('/admin/customers', adminController.getAllCustomer)
 
-adminRouter.get('/admin/get-role/:id', adminController.getUserRoleFromId)
+adminRouter.get('/admin/get-role/:email', adminController.getUserRoleFromEmail)
 
 adminRouter.get('/admin/cards/requests', adminController.getCardRequestsList)
 

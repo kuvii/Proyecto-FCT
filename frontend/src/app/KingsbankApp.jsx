@@ -1,64 +1,27 @@
-import React, { Suspense, useState } from 'react'
+import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../screens/home/Home'
 import Body from '../layout/body/Body'
-import Main from '../screens/main/Main'
-import Dashboard from '../components/dashboard/Dashboard'
-import MovementsList from '../components/movements_list/MovementsList'
-import CardsList from '../components/cards_list/CardsList'
+import Main from '../components/customer-components/Main'
+import Dashboard from '../components/customer-components/Dashboard'
+import MovementsList from '../components/customer-components/MovementsList'
+import CardsList from '../components/customer-components/CardsList'
 import AdminDashboard from '../screens/admin/AdminDashboard'
 import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
 import LoansUser from '../components/loansUser/LoansUser'
 
-const initUserInfo = {
-    id: null,
-    first_name: '',
-    last_name: '',
-    birthdate: '',
-    password: '',
-    email: '',
-    dni: '',
-    phone: '',
-    postal_code: '',
-    address: '',
-    account: {
-      id: null,
-      role: 0,
-      money: '',
-      iban: '',
-      customerId: null,
-      cards: [],
-      loans: [],
-      movements: []
-    }
-}
-
 const KingsbankApp = () => {
 
   function RequireAuth ({ children }) {
-    return localStorage.getItem("user") !== null ? children : <Navigate to="/" replace/>
+    return localStorage.getItem("userLogged") !== null ? children : <Navigate to="/" replace/>
   }
-
-  const [cardsFromUser, setCardsFromUser] = useState([])
-  const [loansFromUser, setLoansFromUser] = useState([])
-  const [movementsFromUser, setMovementsFromUser] = useState([])
-
-  const [userRole, setUserRole] = useState(null)
-
-  const [userInfo, setUserInfo] = useState(initUserInfo)
 
   return (
     <div>
       <Routes>
         <Route element={
-          <Body 
-          setUserInfo={setUserInfo} 
-          setCardsFromUser={setCardsFromUser}
-          setLoansFromUser={setLoansFromUser}
-          setMovementsFromUser={setMovementsFromUser}
-          setUserRole={setUserRole}
-          />
+          <Body />
           }>
           <Route path='/' element={<Home/>}/>
         </Route>
@@ -66,44 +29,24 @@ const KingsbankApp = () => {
         <Route
         element={
             <RequireAuth>
-              <Main 
-              userInfo={userInfo} 
-              setUserInfo={setUserInfo}
-              
-              cardsFromUser={cardsFromUser} 
-              setCardsFromUser={setCardsFromUser}
-
-              loansFromUser={loansFromUser} 
-              setLoansFromUser={setLoansFromUser}
-              
-              movementsFromUser={movementsFromUser} 
-              setMovementsFromUser={setMovementsFromUser}
-              />
+              <Main />
             </RequireAuth>
           }
         >
         <Route path='/my' element={
-            <Dashboard userInfo={userInfo} />
+            <Dashboard />
         }/>
 
         <Route path='/my/movements' element={
           <RequireAuth>
-            <MovementsList 
-              movementsFromUser={movementsFromUser} 
-              setMovementsFromUser={setMovementsFromUser}
-            />
+            <MovementsList />
           </RequireAuth>
         }/>
 
         <Route path='/my/cards' element={
-          <Suspense fallback={<h1>Loading...</h1>}>
             <RequireAuth>
-              <CardsList 
-              cardsFromUser={cardsFromUser}
-              setCardsFromUser={setCardsFromUser}
-              />
+              <CardsList />
             </RequireAuth>
-          </Suspense>
         }/>
 
         <Route path='/my/loans' element={

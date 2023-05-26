@@ -10,9 +10,9 @@ const checkIfUserExists = async (authBody) => {
     return result
 }
 
-const checkIfUserIsAdmin = async (id) => {
+const checkIfUserIsAdmin = async (email) => {
     try {
-        const userRole = await fetch('http://localhost:8000/admin/get-role/' + id)
+        const userRole = await fetch('http://localhost:8000/admin/get-role/' + email)
         return userRole.json()
     } catch (error) {
         console.error(error)
