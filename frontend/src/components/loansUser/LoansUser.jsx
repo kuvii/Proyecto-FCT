@@ -26,23 +26,23 @@ const LoansUser = (props) => {
                     <div className='boxRequestLoan'> 
                         <div className='part1OfRequest'>
                             <span>
-                                <label>Reason: </label>
-                                <input type='text' placeholder='What is a reason?' style={{backgroundColor: '#000'}}/>
+                                <label>Razón: </label>
+                                <input type='text' placeholder='Añade la razón' style={{backgroundColor: '#000'}}/>
                             </span>
 
                             <span>
-                                <label>Date: </label>
-                                <input type='text' placeholder='Date...' style={{backgroundColor: '#000'}}/>
+                                <label>Fecha: </label>
+                                <input type='text' placeholder='Fecha...' style={{backgroundColor: '#000'}}/>
                             </span>
                         </div>
                         <div className='part2OfRequest'>
-                            <label>Description: </label>
-                            <textarea type='text' placeholder='Description...'/>
+                            <label>Descripción: </label>
+                            <textarea type='text' placeholder='Añada la descripción...'/>
                         </div>
                     </div>
                     <div className='btnRequestLoans'>
                         <button onClick={closeModal} className="cancelCreateUser">Cancelar</button>
-                        <button onClick={closeModal} className="cancelCreateUser">OK</button>
+                        <button onClick={closeModal} className="cancelCreateUser">Enviar</button>
                     </div>
                 </div>
             )}
