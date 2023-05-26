@@ -9,6 +9,7 @@ import CardsList from '../components/cards_list/CardsList'
 import AdminDashboard from '../screens/admin/AdminDashboard'
 import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
+import LoansUser from '../components/loansUser/LoansUser'
 
 const initUserInfo = {
     id: null,
@@ -103,6 +104,15 @@ const KingsbankApp = () => {
               />
             </RequireAuth>
           </Suspense>
+        }/>
+
+        <Route path='/my/loans' element={
+          <RequireAuth>
+            <LoansUser 
+              loansFromUser={loansFromUser} 
+              setLoansFromUser={setLoansFromUser}
+            />
+          </RequireAuth>
         }/>
 
           <Route path='/admin' element={

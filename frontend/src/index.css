@@ -267,6 +267,7 @@ input:focus, input::placeholder, input:valid {
 .subContainerRequestCard:hover {
   color: blue;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .containerMovements {
