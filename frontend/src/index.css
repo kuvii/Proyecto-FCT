@@ -418,33 +418,6 @@ input:focus, input::placeholder, input:valid {
   transition: 0.5s;
 }
 
-@media only screen and (max-width: 768px) {
-  .containerCardAndLastMovements {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-  }
-
-  .containerDataCard {
-    margin-bottom: 15px;
-    padding-left: 30px;
-  }
-
-  .generalContainer2 {
-    display: none;
-  }
-
-  .containerPage2 {
-    width: 100%;
-  }
-
-  .mainContainer {
-    font-size: 20px;
-  }
-
-}
-
 .carousel-caption {
   margin-left: -55px;
 }
@@ -452,4 +425,84 @@ input:focus, input::placeholder, input:valid {
 h3 {
   text-align: start;
   padding-bottom: 300px;
+}
+
+.loansBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.loans {
+  border: 1px solid #000;
+  margin-bottom: 20px;
+  background-color: #000;
+  color: #209d5c;
+  width: 80%;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.btnRequestLoan {
+  display: "flex";
+  flex-direction: 'column';
+  width: 120px;
+}
+
+.boxRequestLoan {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  background-color: #000;
+  color: #fff;
+  width: 60%;
+}
+
+.containerModalRequestLoan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.part1OfRequest {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.btnRequestLoans {
+  width: 60%;
+  text-align: end;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .containerCardAndLastMovements {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .containerDataCard {
+    margin-bottom: 15px;
+    padding-left: 30px;
+  }
+  
+  .generalContainer2 {
+    display: none;
+  }
+  
+  .containerPage2 {
+    width: 100%;
+  }
+  
+  .mainContainer {
+    font-size: 20px;
+  }
+
+  .boxRequestLoan {
+    width: 100%;
+  }
+
 }

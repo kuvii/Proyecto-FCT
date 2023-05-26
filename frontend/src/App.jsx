@@ -1,16 +1,12 @@
 import './App.css';
-// import KingsbankApp from './app/KingsbankApp';
-// import { BrowserRouter } from 'react-router-dom'
-import LoansUser from './components/loansUser/LoansUser';
-
-
+import KingsbankApp from './app/KingsbankApp';
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <KingsbankApp/>
-    // </BrowserRouter>
-    <LoansUser/>
+    <BrowserRouter>
+      <KingsbankApp/>
+    </BrowserRouter>
   );
 }
 

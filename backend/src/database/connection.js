@@ -27,7 +27,7 @@ const initAdminUser = {
     postal_code: "12345",
     address: "calle admin",
     account: {
-        role: 0,
+        role: 1,
         money: 0.0,
         iban: 23456,
     }
