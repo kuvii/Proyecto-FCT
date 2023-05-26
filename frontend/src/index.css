@@ -253,23 +253,6 @@ input:focus, input::placeholder, input:valid {
   border-radius: 10px;
 }
 
-.subContainerRequestCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #fff;
-  width: 100%;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #000;
-}
-
-.subContainerRequestCard:hover {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .containerMovements {
   width: 100%;
   margin-left: 20px;
