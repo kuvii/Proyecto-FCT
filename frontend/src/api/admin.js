@@ -58,12 +58,27 @@ const updateCardStatus = async (id, status) => {
     }
 }
 
+const createNewUser = async (customerInfo) => {
+    try {
+        await fetch(`${BASE_URL}/admin/new-customer`,{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({customerInfo})
+        })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const apiAdmin = {
     getAllCustomer,
     getLoanList,
     getCardsList,
     updateCardStatus,
     updateLoanRequestStatus,
+    createNewUser
 }
 
 export default apiAdmin
