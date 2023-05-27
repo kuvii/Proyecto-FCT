@@ -40,10 +40,55 @@ const getCustomerMovements = async (id) => {
     }
 }
 
+const createNewMovement = async (customerId, movementInfo) => {
+    try {
+        await fetch(BASE_URL + '/my/movements/new-movement/' + customerId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: { movementInfo }
+        })
+        updateMoney(movementInfo?.quantity, movementInfo?.type, customerId)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const requestNewCard = async (cardInfo, customerId) => {
+    try {
+        const data = await fetch(`${BASE_URL}/my/cards/new-card/${customerId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: { cardInfo }
+        })
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const updateMoney = async (quantity, type, customerId) => {
+    try {
+        if (type === 'substract'){
+            quantity *= -1
+        }
+        const result = await fetch(BASE_URL + '/customer/account/update/money/' + customerId)
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const apiCustomer = {
     getCustomerInfo,
     getCustomerCards,
-    getCustomerMovements
+    getCustomerMovements,
+    createNewMovement,
+    updateMoney,
+    requestNewCard
 }
 
 export default apiCustomer
