@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import { List, ListItem } from "@mui/material"
 import { Link } from "react-router-dom"
+import { ColorModeContext } from "../../app/KingsbankApp"
 
 const dashboardOptions = {
     header: 'Inicio'
@@ -20,6 +21,8 @@ const clientsOptions = {
 
 const AdminLinkList = () => {
 
+    const { mode } = useContext(ColorModeContext)
+
     const handleNavigation = (index) => {
         const optionsList = [dashboardOptions, loansOptions, cardsOptions, clientsOptions]
         localStorage.setItem('navbar_options', JSON.stringify(optionsList[index]))
@@ -32,7 +35,7 @@ const AdminLinkList = () => {
                 
                 return (
                     <ListItem key={text} disablePadding sx={ { marginY: 5, justifyContent: 'center'} } >
-                        <Link to={routes[index]} className='userLinks' onClick={() => handleNavigation(index)} >{text}</Link>
+                        <Link to={routes[index]} className={`${mode === 'dark' ? 'dark-mode' : ''} userLinks`} onClick={() => handleNavigation(index)} >{text}</Link>
                     </ListItem>
                 )
             })
