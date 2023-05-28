@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Formulario = () => {
+const Formulario = ({closeModal}) => {
 
     const [nombre, setNombre] = useState("");
     const [apellidos, setApellidos] = useState("");
@@ -141,8 +141,9 @@ const Formulario = () => {
                         </div>
                     </form>
                 </div>
-                    <div>
+                    <div className='buttonsFormulary'>
                         <button className="buttonRegister" onClick={handleSubmit}>Enviar</button>
+                        <button onClick={closeModal} className="cancelCreateUser">Cancelar</button>
                     </div>
             </div>
         </div>

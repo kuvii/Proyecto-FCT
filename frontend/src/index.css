@@ -152,13 +152,14 @@ input:focus, input::placeholder, input:valid {
 .contenedorRegistro {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .formRegistro {
   background-color: white;
   width: 60%;
   border-radius: 10px;
-  height: auto;
 }
 
 .buttonRegister {
@@ -166,7 +167,6 @@ input:focus, input::placeholder, input:valid {
   color: #fff;
   background-color: #209d5c;
   border-color: #209d5c;
-  margin-bottom: 15px;
   padding: 0px 10px 0px 10px;
 }
 
@@ -175,7 +175,6 @@ input:focus, input::placeholder, input:valid {
   color: #209d5c;
   background-color: #fff;
   border-color: #209d5c;
-  margin-bottom: 15px;
 }
 
 .inputFormulario {
@@ -382,19 +381,6 @@ input:focus, input::placeholder, input:valid {
   display: flex;
 }
 
-.btnCreateUser {
-  color: rgb(232, 232, 7);
-  border-color: rgb(232, 232, 7);
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.btnCreateUser:hover {
-  background-color: rgb(232, 232, 7);
-  color: #fff;
-  transition: 0.5s;
-}
-
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -406,7 +392,6 @@ input:focus, input::placeholder, input:valid {
 }
 
 .cancelCreateUser {
-  margin-top: 10px;
   color: #fff;
   background-color: #000;
   border-radius: 10px;
@@ -443,4 +428,10 @@ input:focus, input::placeholder, input:valid {
     font-size: 20px;
   }
 
+}
+
+.buttonsFormulary {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px
 }
