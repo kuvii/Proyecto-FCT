@@ -1,16 +1,20 @@
 import { Box, Paper, Stack } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from '../../assets/KingsBank_BlancoVerde1.png'
 import WifiPasswordRoundedIcon from '@mui/icons-material/WifiPasswordRounded';
 import PixRoundedIcon from '@mui/icons-material/PixRounded';
+import { ColorModeContext } from '../../app/KingsbankApp';
+import themeHandler from '../../utils/theme';
 
 const Card = (props) => {
 
     const {cardInfo, style} = props
 
+    const { mode } = useContext(ColorModeContext);
+
     return (
         <Box>
-            <Paper sx={{padding: 1, margin: 1, ...style}}>
+            <Paper sx={{padding: 1, margin: 1, backgroundColor: mode === 'dark' ? themeHandler.DARK_MODE.secondary_color : themeHandler.LIGHT_MODE.secondary_color, ...style}}>
                 <Stack
                 direction="row"
                 justifyContent="space-between"
