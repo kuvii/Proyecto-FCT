@@ -6,6 +6,9 @@ import LinkList from '../customer-components/LinkList';
 import AdminLinkList from '../admin_link_list/AdminLinkList';
 import LogoutButton from '../logout-button/LogoutButton';
 import { useNavigate } from 'react-router-dom';
+import ColorModeButton from '../color-mode-button/ColorModeButton';
+import { Stack } from '@mui/system';
+import themeHandler from '../../utils/theme';
 
 
 const MainDrawer = ({open, handleOpen}) => {
@@ -32,7 +35,7 @@ const MainDrawer = ({open, handleOpen}) => {
                 style: { 
                     borderTopLeftRadius: 20, 
                     borderBottomLeftRadius: 20, 
-                    backgroundColor: theme.palette.mode === 'light' ? '#ffffff' : '#000000' ,
+                    backgroundColor: theme.palette.mode === 'dark' ? themeHandler.LIGHT_MODE.primary_color : themeHandler.LIGHT_MODE.secondary_color ,
                     minWidth: isPc ? 200 : 100,
                     flex: 1
                 }
@@ -60,7 +63,11 @@ const MainDrawer = ({open, handleOpen}) => {
                     ) :
                     <AdminLinkList />
                 }
-                <LogoutButton handleLogout={handleLogout} />
+                <Stack direction='row' marginX={1}>
+                    <ColorModeButton/>
+                    <LogoutButton handleLogout={handleLogout} />
+                </Stack>
+                
         </Drawer>
     )
 }

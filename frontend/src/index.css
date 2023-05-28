@@ -1,14 +1,24 @@
+:root {
+  --primary-color: #209d5c;
+  --light-secondary-color: #ffffff;
+  --dark-primary-color: #000000;
+  --error-color: #FF5F5F;
+  --warning-color: #FFFF00;
+  --complement-color: #3590E4;
+  --main-font-family: 'Space Mono';
+}
+
 body {
   margin: 0;
   font-family: 'Space Mono';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #209d5c;
+  background-color: var(--primary-color);
   text-align: center;
 }
 
 code {
-  font-family: 'Space Mono', monospace;
+  font-family: var(--main-font-family), monospace;
 }
 
 .logoTitle {
@@ -25,34 +35,34 @@ code {
 .title {
   font-size: 50px;
   font-weight: bold;
-  color: #fff;
+  color: var(--light-secondary-color);
 }
 
 .titleUser {
   font-size: 40px;
   font-weight: bold;
-  color: #000;
+  color: var(--dark-primary-color);
 }
 
 .titleMovements {
   margin-bottom: 10px;
-  color: #fff;
+  color: var(--light-secondary-color);
   text-align: left;
 }
 
 .textTitleHomeUser {
   font-size: 20px;
-  color: #fff;
+  color: var(--light-secondary-color);
   font-weight: bold;
 }
 
 .textBox {
-  color: #fff;
+  color: var(--light-secondary-color);
   margin-top: 8px;
 }
 
 .textBoxLoan {
-  color: #fff;
+  color: var(--light-secondary-color);
   font-size: 12px;
   margin-left: 10px;
 }
@@ -90,13 +100,13 @@ code {
 
 input {
   border: none;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--light-secondary-color);
   outline: none;
   background-color: #209d5c;
 }
 
 input:focus, input::placeholder, input:valid {
-  color: #fff;
+  color: var(--light-secondary-color);
 }
 
 .imagenLogo {
@@ -110,27 +120,27 @@ input:focus, input::placeholder, input:valid {
 
 .botonLogin {
   background-color: black;
-  color: #fff;
+  color: var(--light-secondary-color);
   border-radius: 10px;
   width: 120px;
   height: 35px;
 }
 
 .botonLogin:hover {
-  background-color: #fff;
+  background-color: var(--light-secondary-color);
   color: black;
 }
 
 .botonRegister {
   border: none;
   background-color: transparent;
-  color: #fff;  
+  color: var(--light-secondary-color);  
 }
 
 .footer {
   position: absolute;
   bottom: 0px;
-  background-color: #fff;
+  background-color: var(--light-secondary-color);
   width: 100%;
   padding: 0.5%;
 }
@@ -163,7 +173,7 @@ input:focus, input::placeholder, input:valid {
 
 .buttonRegister {
   border-radius: 10px;
-  color: #fff;
+  color: var(--light-secondary-color);
   background-color: #209d5c;
   border-color: #209d5c;
   margin-bottom: 15px;
@@ -173,22 +183,22 @@ input:focus, input::placeholder, input:valid {
 .buttonRegister:hover {
   border-radius: 10px;
   color: #209d5c;
-  background-color: #fff;
+  background-color: var(--light-secondary-color);
   border-color: #209d5c;
   margin-bottom: 15px;
 }
 
 .inputFormulario {
   border: none;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--dark-primary-color);
   outline: none;
-  background-color: #fff;
+  background-color: var(--light-secondary-color);
   margin-top: 10px;
   margin-bottom: 30px;
 }
 
 .inputFormulario:focus, .inputFormulario::placeholder, .inputFormulario:valid {
-  color: #000;
+  color: var(--dark-primary-color);
 } 
 
 .mainContainer {
@@ -248,7 +258,7 @@ input:focus, input::placeholder, input:valid {
   flex-direction: column;
   justify-content: center;
   width: 50%;
-  background-color: #fff;
+  background-color: var(--light-secondary-color);
   margin-right: 10px;
   border-radius: 10px;
 }
@@ -257,11 +267,11 @@ input:focus, input::placeholder, input:valid {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #fff;
+  background-color: var(--light-secondary-color);
   width: 100%;
   border-radius: 10px;
   text-decoration: none;
-  color: #000;
+  color: var(--dark-primary-color);
 }
 
 .subContainerRequestCard:hover {
@@ -296,10 +306,10 @@ input:focus, input::placeholder, input:valid {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--light-secondary-color);
   width: 20%;
   height: 100vh;
-  color: #fff;
+  color: var(--light-secondary-color);
 }
 
 .generalContainer1 { 
@@ -318,7 +328,7 @@ input:focus, input::placeholder, input:valid {
 
 .userLinks { 
   font-size: 20px;
-  color: #000;
+  color: var(--dark-primary-color);
   text-decoration: none;
 }
 
@@ -349,7 +359,7 @@ input:focus, input::placeholder, input:valid {
   justify-content: space-between;
   margin-bottom: 20px;
   color: #209d5c;
-  background-color: #000;
+  background-color: var(--dark-primary-color);
   padding: 20px;
   position: relative;
   border-radius: 8px;
@@ -391,7 +401,7 @@ input:focus, input::placeholder, input:valid {
 
 .btnCreateUser:hover {
   background-color: rgb(232, 232, 7);
-  color: #fff;
+  color: var(--light-secondary-color);
   transition: 0.5s;
 }
 
@@ -407,14 +417,14 @@ input:focus, input::placeholder, input:valid {
 
 .cancelCreateUser {
   margin-top: 10px;
-  color: #fff;
-  background-color: #000;
+  color: var(--light-secondary-color);
+  background-color: var(--dark-primary-color);
   border-radius: 10px;
 }
 
 .cancelCreateUser:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--light-secondary-color);
+  color: var(--dark-primary-color);
   transition: 0.5s;
 }
 
@@ -433,9 +443,9 @@ h3 {
 }
 
 .loans {
-  border: 1px solid #000;
+  border: 1px solid var(--dark-primary-color);
   margin-bottom: 20px;
-  background-color: #000;
+  background-color: var(--dark-primary-color);
   color: #209d5c;
   width: 80%;
   border-radius: 5px;
@@ -452,8 +462,8 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: baseline;
-  background-color: #000;
-  color: #fff;
+  background-color: var(--dark-primary-color);
+  color: var(--light-secondary-color);
   width: 60%;
 }
 
@@ -506,7 +516,15 @@ h3 {
   }
 
 }
+.links-dark-mode {
+  color: var(--light-secondary-color);
+  background-color: none;
+}
 
+.dark-mode {
+  background-color: var(--dark-primary-color);
+  color: var(--light-secondary-color);
+  
 .modal {
   position: fixed;
   top: 0;

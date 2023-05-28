@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Alert, Snackbar, Stack, TextField, } from '@mui/material'
 import { useNavigate } from 'react-router'
 import authApi from '../../api/auth'
 import apiAuth from '../../api/auth'
 import apiCustomer from '../../api/customer'
+import { ColorModeContext } from '../../app/KingsbankApp'
+import ColorModeButton from '../color-mode-button/ColorModeButton'
 
 const initLoginAuthorizationBody = {
     email: '',
@@ -14,6 +16,8 @@ const initLoginAuthorizationBody = {
 const Login = () => {
 
     const navigate = useNavigate()
+
+    const { mode } = useContext(ColorModeContext)
     
     useEffect(() => {
         const userAlreadyLogged = localStorage.getItem('user')
@@ -122,9 +126,10 @@ const Login = () => {
                     </FormGroup>
                 </Col>
                 <Col>
-                    <Button type="submit" color='dark'>
+                    <Button type="submit" color={mode === 'dark' ? 'success' : 'dark' }>
                         Login
                     </Button>
+                    <ColorModeButton/>
                 </Col>
                 </Stack>
             </Row>

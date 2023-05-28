@@ -1,12 +1,17 @@
 import { Box, IconButton, Paper, Stack, useMediaQuery, useTheme } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import themeHandler from '../../utils/theme';
+import { ColorModeContext } from '../../app/KingsbankApp';
 
 const Loan = (props) => {
 
     const theme = useTheme();
     const isPc = useMediaQuery(theme.breakpoints.up('sm'));
+
+    const { mode } = useContext(ColorModeContext);
+
 
     const {content, style, handleUpdate } = props
     let setColor = ''
@@ -32,7 +37,7 @@ const Loan = (props) => {
 
     return (
         <Box>
-            <Paper sx={{margin: 1, padding: 2, backgroundColor: '#3590E4', ...style}}>
+            <Paper sx={{margin: 1, padding: 2, backgroundColor: mode === 'dark' ? themeHandler.DARK_MODE.secondary_color : themeHandler.LIGHT_MODE.complement_color, ...style}}>
                 <Stack
                 direction="row"
                 justifyContent="space-between"
