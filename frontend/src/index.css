@@ -168,6 +168,7 @@ input:focus, input::placeholder, input:valid {
   background-color: #209d5c;
   border-color: #209d5c;
   padding: 0px 10px 0px 10px;
+  margin-right: 20px;
 }
 
 .buttonRegister:hover {
@@ -403,6 +404,12 @@ input:focus, input::placeholder, input:valid {
   transition: 0.5s;
 }
 
+.buttonsFormulary {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px
+}
+
 @media only screen and (max-width: 768px) {
   .containerCardAndLastMovements {
     display: flex;
@@ -428,10 +435,4 @@ input:focus, input::placeholder, input:valid {
     font-size: 20px;
   }
 
-}
-
-.buttonsFormulary {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px
 }
