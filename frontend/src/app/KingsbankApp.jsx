@@ -11,6 +11,7 @@ import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
 import { ThemeProvider, createTheme } from '@mui/material'
 import LoansUser from '../components/loansUser/LoansUser'
+import ButtonCreateUser from '../components/buttonCreateUser/ButtonCreateUser'
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {}, mode: 'light' })
 
@@ -89,6 +90,7 @@ const KingsbankApp = () => {
 
             <Route path='/admin' element={
               <RequireAuth>
+                <ButtonCreateUser/>
                 <AdminDashboard />
               </RequireAuth>
             }/>
