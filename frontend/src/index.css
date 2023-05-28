@@ -134,7 +134,7 @@ input:focus, input::placeholder, input:valid {
 .botonRegister {
   border: none;
   background-color: transparent;
-  color: var(--light-secondary-color);  
+  color: var(--light-secondary-color);   
 }
 
 .footer {
@@ -162,6 +162,8 @@ input:focus, input::placeholder, input:valid {
 .contenedorRegistro {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .formRegistro {
@@ -178,6 +180,7 @@ input:focus, input::placeholder, input:valid {
   border-color: #209d5c;
   margin-bottom: 15px;
   padding: 0px 10px 0px 10px;
+  margin-right: 20px;
 }
 
 .buttonRegister:hover {
@@ -392,19 +395,6 @@ input:focus, input::placeholder, input:valid {
   display: flex;
 }
 
-.btnCreateUser {
-  color: rgb(232, 232, 7);
-  border-color: rgb(232, 232, 7);
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.btnCreateUser:hover {
-  background-color: rgb(232, 232, 7);
-  color: var(--light-secondary-color);
-  transition: 0.5s;
-}
-
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -429,6 +419,7 @@ input:focus, input::placeholder, input:valid {
 }
 
 .carousel-caption {
+
   margin-left: -55px;
 }
 
@@ -485,6 +476,11 @@ h3 {
   text-align: end;
 }
 
+.buttonsFormulary {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px
+}
 
 @media only screen and (max-width: 768px) {
   .containerCardAndLastMovements {
@@ -493,29 +489,29 @@ h3 {
     width: 100%;
     align-items: center;
   }
-  
+
   .containerDataCard {
     margin-bottom: 15px;
     padding-left: 30px;
   }
-  
+
   .generalContainer2 {
     display: none;
   }
-  
+
   .containerPage2 {
     width: 100%;
   }
-  
+
   .mainContainer {
     font-size: 20px;
   }
 
-  .boxRequestLoan {
+.boxRequestLoan {
     width: 100%;
   }
-
 }
+
 .links-dark-mode {
   color: var(--light-secondary-color);
   background-color: none;
@@ -561,4 +557,5 @@ h3 {
   color: #fff;
   cursor: pointer;
   width: 250px;
+
 }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Formulary from "../formulary/Formulary";
 
+import Button from '@mui/material/Button';
+
 const ButtonCreateUser = () => {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -14,17 +16,14 @@ const ButtonCreateUser = () => {
     };
 
     return (
-        <div>
-
-            <button className="btnCreateUser" onClick={openModal}>Crear Usuario</button>
+        <div style={{display: 'flex'}}>
+            <Button variant='contained' size='small' onClick={openModal}>Crear usuario</Button>
     
             {isOpen && (
                 <div className="modal-backdrop">
-                    <Formulary/>
-                    <button onClick={closeModal} className="cancelCreateUser">Cancelar</button>
+                    <Formulary closeModal={closeModal}/>
                 </div>
             )}
-
         </div>
     )
 }
