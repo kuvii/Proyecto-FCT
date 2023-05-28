@@ -81,6 +81,12 @@ const KingsbankApp = () => {
               </RequireAuth>
             }/>
 
+            <Route path='/my/loans' element={
+              <RequireAuth>
+                <LoansUser/>
+              </RequireAuth>
+            }/>
+
             <Route path='/admin' element={
               <RequireAuth>
                 <AdminDashboard />

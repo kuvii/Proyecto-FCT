@@ -3,7 +3,6 @@ import Card from '../card/Card'
 import { Alert, Box, Snackbar, useMediaQuery, useTheme } from '@mui/material'
 import apiCustomer from '../../api/customer'
 import themeHandler from '../../utils/theme'
-import { maxWidth } from '@mui/system'
 import RequestCard from '../requestCard/ButtonRequestCard'
 
 const CardsList = () => {

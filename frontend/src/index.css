@@ -524,7 +524,8 @@ h3 {
 .dark-mode {
   background-color: var(--dark-primary-color);
   color: var(--light-secondary-color);
-  
+}
+
 .modal {
   position: fixed;
   top: 0;
