@@ -9,6 +9,7 @@ import CardsList from '../components/customer-components/CardsList'
 import AdminDashboard from '../screens/admin/AdminDashboard'
 import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
+import LoansUser from '../components/loansUser/LoansUser'
 
 const KingsbankApp = () => {
 
@@ -46,6 +47,12 @@ const KingsbankApp = () => {
             <RequireAuth>
               <CardsList />
             </RequireAuth>
+        }/>
+
+        <Route path='/my/loans' element={
+          <RequireAuth>
+            <LoansUser />
+          </RequireAuth>
         }/>
 
           <Route path='/admin' element={
