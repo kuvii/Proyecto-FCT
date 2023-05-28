@@ -8,6 +8,7 @@ import LogoutButton from '../logout-button/LogoutButton';
 import { useNavigate } from 'react-router-dom';
 import ColorModeButton from '../color-mode-button/ColorModeButton';
 import { Stack } from '@mui/system';
+import themeHandler from '../../utils/theme';
 
 
 const MainDrawer = ({open, handleOpen}) => {
@@ -34,7 +35,7 @@ const MainDrawer = ({open, handleOpen}) => {
                 style: { 
                     borderTopLeftRadius: 20, 
                     borderBottomLeftRadius: 20, 
-                    backgroundColor: theme.palette.mode === 'light' ? '#ffffff' : '#000000' ,
+                    backgroundColor: theme.palette.mode === 'dark' ? themeHandler.LIGHT_MODE.primary_color : themeHandler.LIGHT_MODE.secondary_color ,
                     minWidth: isPc ? 200 : 100,
                     flex: 1
                 }
