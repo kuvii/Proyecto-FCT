@@ -3,6 +3,7 @@ import Card from '../card/Card'
 import { Alert, Box, Snackbar, useTheme } from '@mui/material'
 import apiCustomer from '../../api/customer'
 import themeHandler from '../../utils/theme'
+import RequestCard from '../requestCard/ButtonRequestCard'
 
 const CardsList = () => {
 
@@ -25,11 +26,12 @@ const CardsList = () => {
     
     return (
         <Box>
+            <RequestCard/>
             {
                 cardList.length === 0 ? (
                     <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
-                              themeHandler.LIGHT_MODE.secondary_color : 
-                              themeHandler.DARK_MODE.secondary_color,
+                                themeHandler.LIGHT_MODE.secondary_color : 
+                                themeHandler.DARK_MODE.secondary_color,
                             }}
                         height={50}
                         display='flex'

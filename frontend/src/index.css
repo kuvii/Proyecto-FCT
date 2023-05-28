@@ -520,6 +520,7 @@ h3 {
 }
 
 .modal-content {
+  display: flex;
   background-color: #fff;
   padding: 20px;
   border-radius: 4px;
