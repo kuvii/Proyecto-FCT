@@ -4,6 +4,7 @@ import { Alert, Box, Snackbar, useMediaQuery, useTheme } from '@mui/material'
 import apiCustomer from '../../api/customer'
 import themeHandler from '../../utils/theme'
 import { maxWidth } from '@mui/system'
+import RequestCard from '../requestCard/ButtonRequestCard'
 
 const CardsList = () => {
 
@@ -27,11 +28,12 @@ const CardsList = () => {
     
     return (
         <Box display='flex' {... isPc ? {maxWidth: 500} : ''}>
+            <RequestCard/>
             {
                 cardList.length === 0 ? (
                     <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
-                              themeHandler.LIGHT_MODE.secondary_color : 
-                              themeHandler.DARK_MODE.secondary_color,
+                                themeHandler.LIGHT_MODE.secondary_color : 
+                                themeHandler.DARK_MODE.secondary_color,
                             }}
                         height={50}
                         display='flex'
