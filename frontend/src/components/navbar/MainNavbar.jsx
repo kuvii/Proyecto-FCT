@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Navbar, NavbarBrand, NavbarToggler, } from 'reactstrap'
-import { Collapse, Container, ThemeProvider, Typography, createTheme, useMediaQuery, useTheme, } from '@mui/material'
+import { Collapse, Container, ThemeProvider, createTheme, useMediaQuery, useTheme, } from '@mui/material'
 import logo from '../../assets/KingsBank_BlancoVerde1.png'
 import Login from '../login/Login'
 import { ColorModeContext } from '../../app/KingsbankApp'

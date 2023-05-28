@@ -28,7 +28,7 @@ const MainScreenNavbar = ({open, handleOpen}) => {
     const customTheme = createTheme({
         palette: {
             background: {
-                paper: mode === 'dark' ? '#000000' : '#209d5c',
+                paper: mode === 'dark' ? themeHandler.DARK_MODE.secondary_color : themeHandler.LIGHT_MODE.primary_color,
             },
         },
     })
