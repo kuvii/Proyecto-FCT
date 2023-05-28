@@ -6,6 +6,8 @@ import LinkList from '../customer-components/LinkList';
 import AdminLinkList from '../admin_link_list/AdminLinkList';
 import LogoutButton from '../logout-button/LogoutButton';
 import { useNavigate } from 'react-router-dom';
+import ColorModeButton from '../color-mode-button/ColorModeButton';
+import { Stack } from '@mui/system';
 
 
 const MainDrawer = ({open, handleOpen}) => {
@@ -60,7 +62,11 @@ const MainDrawer = ({open, handleOpen}) => {
                     ) :
                     <AdminLinkList />
                 }
-                <LogoutButton handleLogout={handleLogout} />
+                <Stack direction='row' marginX={1}>
+                    <ColorModeButton/>
+                    <LogoutButton handleLogout={handleLogout} />
+                </Stack>
+                
         </Drawer>
     )
 }
