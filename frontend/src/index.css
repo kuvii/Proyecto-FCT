@@ -178,7 +178,6 @@ input:focus, input::placeholder, input:valid {
   color: var(--light-secondary-color);
   background-color: #209d5c;
   border-color: #209d5c;
-  margin-bottom: 15px;
   padding: 0px 10px 0px 10px;
   margin-right: 20px;
 }
@@ -188,7 +187,6 @@ input:focus, input::placeholder, input:valid {
   color: #209d5c;
   background-color: var(--light-secondary-color);
   border-color: #209d5c;
-  margin-bottom: 15px;
 }
 
 .inputFormulario {
@@ -406,7 +404,6 @@ input:focus, input::placeholder, input:valid {
 }
 
 .cancelCreateUser {
-  margin-top: 10px;
   color: var(--light-secondary-color);
   background-color: var(--dark-primary-color);
   border-radius: 10px;
