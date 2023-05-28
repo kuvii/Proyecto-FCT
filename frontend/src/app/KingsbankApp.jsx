@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext, useContext, useMemo, useState, } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from '../screens/home/Home'
 import Body from '../layout/body/Body'
@@ -9,6 +9,9 @@ import CardsList from '../components/customer-components/CardsList'
 import AdminDashboard from '../screens/admin/AdminDashboard'
 import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
+import { ThemeProvider, createTheme } from '@mui/material'
+
+export const ColorModeContext = React.createContext({ toggleColorMode: () => {}, mode: 'light' })
 
 const KingsbankApp = () => {
 
@@ -16,56 +19,95 @@ const KingsbankApp = () => {
     return localStorage.getItem("userLogged") !== null ? children : <Navigate to="/" replace/>
   }
 
+  const [mode, setMode] = useState('light');
+
+  const toggleColorMode = () => {
+    setMode(prevMode => {
+      const newMode = prevMode === 'light' ? 'dark' : 'light'
+
+      const body = document.querySelector('body')
+      if (newMode === 'light') {
+        body.classList.remove('dark-mode')
+      } else {
+        body.classList.add('dark-mode')
+      }
+
+      return newMode
+    })
+  }
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode],
+  )
+
   return (
     <div>
-      <Routes>
-        <Route element={
-          <Body />
-          }>
-          <Route path='/' element={<Home/>}/>
-        </Route>
+      <ThemeProvider theme={theme}>
+        <ColorModeContext.Provider value={{ toggleColorMode, mode}}>
+          <Routes>
 
-        <Route
-        element={
-            <RequireAuth>
-              <Main />
-            </RequireAuth>
-          }
-        >
-        <Route path='/my' element={
-            <Dashboard />
-        }/>
+            <Route element={ <Body /> }>
+              <Route path='/' element={<Home/>}/>
+            </Route>
 
-        <Route path='/my/movements' element={
-          <RequireAuth>
-            <MovementsList />
-          </RequireAuth>
-        }/>
+            <Route element={
+              <RequireAuth>
+                <Main />
+              </RequireAuth>
+            }>
 
-        <Route path='/my/cards' element={
-            <RequireAuth>
-              <CardsList />
-            </RequireAuth>
-        }/>
+            <Route path='/my' element={ 
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }/>
 
-          <Route path='/admin' element={
-            <AdminDashboard />
-          } />
+            <Route path='/my/movements' element={
+              <RequireAuth>
+                <MovementsList />
+              </RequireAuth>
+            }/>
 
-          <Route path='/admin/loans' element={
-            <LoansPage />
-          } />
+            <Route path='/my/cards' element={
+              <RequireAuth>
+                <CardsList />
+              </RequireAuth>
+            }/>
 
-          <Route path='/admin/clients' element={
-            <h1>Clientes</h1>
-          } />
+            <Route path='/admin' element={
+              <RequireAuth>
+                <AdminDashboard />
+              </RequireAuth>
+            }/>
 
-          <Route path='/admin/cards' element={
-            <CardsPage/>
-          } />
-        </Route>
+            <Route path='/admin/loans' element={
+              <RequireAuth>
+                <LoansPage />
+              </RequireAuth>
+            }/>
 
-      </Routes>
+            <Route path='/admin/clients' element={
+              <RequireAuth>
+                <h1>Clientes</h1>
+              </RequireAuth>
+            }/>
+
+            <Route path='/admin/cards' element={
+              <RequireAuth>
+                <CardsPage/>
+              </RequireAuth>
+            }/>
+
+            </Route>
+          </Routes>
+        </ColorModeContext.Provider>
+      </ThemeProvider>
     </div>
   )
 }
