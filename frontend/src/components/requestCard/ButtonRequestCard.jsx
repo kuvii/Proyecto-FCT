@@ -21,14 +21,16 @@ const ButtonRequestCard = () => {
     
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <Button variant='contained' size='small' onClick={openModal} style={{width: '100px'}}>Nuevo</Button>
+            <Button variant='contained' size='small' onClick={openModal} style={{width: '150px'}}>Nueva Tarjeta</Button>
     
             {showModal && (
-            <div className="modal">
+                <div className="modal">
                 <div className="modal-content">
                     <h2>Selecciona una opción</h2>
-                    <button onClick={() => saveOption('Débito')} className='selectionCard'>Débito</button>
-                    <button onClick={() => saveOption('Crédito')} className='selectionCard'>Crédito</button>
+                    <div className='buttonsOption'>
+                        <button onClick={() => saveOption('Débito')} className='selectionCard'>Débito</button>
+                        <button onClick={() => saveOption('Crédito')} className='selectionCard'>Crédito</button>
+                    </div>
                 </div>
             </div>
             )}
