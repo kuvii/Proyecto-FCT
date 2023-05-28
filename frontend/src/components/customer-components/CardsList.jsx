@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../card/Card'
-import { Alert, Box, Snackbar, useTheme } from '@mui/material'
+import { Alert, Box, Snackbar, useMediaQuery, useTheme } from '@mui/material'
 import apiCustomer from '../../api/customer'
 import themeHandler from '../../utils/theme'
+import { maxWidth } from '@mui/system'
 
 const CardsList = () => {
 
     const theme = useTheme()
+    const isPc = useMediaQuery(theme.breakpoints.up('sm'));
 
     const [openErrorSnackbar, setOpenErrorSnackbar] = useState(false)
     const [cardList, setCardList] = useState([])
@@ -24,7 +26,7 @@ const CardsList = () => {
     }, [])
     
     return (
-        <Box>
+        <Box display='flex' {... isPc ? {maxWidth: 500} : ''}>
             {
                 cardList.length === 0 ? (
                     <Box sx={{backgroundColor: theme.palette.mode === 'light' ? 
