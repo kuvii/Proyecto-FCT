@@ -20,7 +20,7 @@ const ButtonRequestCard = () => {
     };
     
     return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{display: 'flex'}}>
             <Button variant='contained' size='small' onClick={openModal} style={{width: '150px'}}>Nueva Tarjeta</Button>
     
             {showModal && (
