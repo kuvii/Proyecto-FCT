@@ -17,14 +17,14 @@ const initUserInfo = {
     postal_code: '',
     address: '',
     account: {
-      id: null,
-      role: 0,
-      money: '',
-      iban: '',
-      customerId: null,
-      cards: [],
-      loans: [],
-      movements: []
+        id: null,
+        role: 0,
+        money: '',
+        iban: '',
+        customerId: null,
+        cards: [],
+        loans: [],
+        movements: []
     }
 }
 
