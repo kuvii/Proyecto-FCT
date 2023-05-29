@@ -23,6 +23,16 @@ const AdminDashboard = () => {
         loadUsers()
     }, [])
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
     return (
         <Box>
             <Box marginX={2}>
@@ -49,7 +59,17 @@ const AdminDashboard = () => {
                 </Stack>
             </Box>
             {customersList && customersList.map((customer) => (
-                <Customer customerData={customer}/>
+                <div>
+                    <span onClick={openModal}><Customer customerData={customer}/></span>
+                    {isOpen && (
+                        <div className="boxEditCustomer">
+                            <div className='editCustomer'>
+                                {console.log(customer.first_name)}
+                                <button onClick={closeModal}>cerrar</button>
+                            </div>
+                    </div>
+                    )}
+                </div>
             ))}
         </Box>
     )
