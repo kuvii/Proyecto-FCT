@@ -82,13 +82,42 @@ const updateMoney = async (quantity, type, customerId) => {
     }
 }
 
+const transferMoney = async (customerId, receptorEmail, quantity) => {
+    try {
+        const receptorCustomer = await getCustomerInfo(receptorEmail)
+
+        if (!receptorCustomer) {
+            return -1
+        }
+
+        const transaction = {
+            senderId: customerId,
+            receptorId: receptorCustomer?.id,
+            quantity: parseInt(quantity)
+        }
+
+        await fetch(BASE_URL + '/transfer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(transaction)
+        })
+
+        return 1
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const apiCustomer = {
     getCustomerInfo,
     getCustomerCards,
     getCustomerMovements,
     createNewMovement,
     updateMoney,
-    requestNewCard
+    requestNewCard,
+    transferMoney
 }
 
 export default apiCustomer
