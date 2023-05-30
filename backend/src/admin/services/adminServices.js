@@ -6,14 +6,18 @@ import Loan from "../../models/Loan.js"
 
 const createNewCustomer = async (customerData) => {
 
-    const salt = await bcrypt.genSalt(10)
+    const salt = 10
+
+    const password = await bcrypt.hash(customerData?.password, salt)
+
+    console.log({customerData});
 
     try {
         await Customer.create({
             first_name: customerData?.first_name,
             last_name: customerData?.last_name,
             birthdate: customerData?.birthdate,
-            password: await bcrypt.hash(customerData?.password, salt),
+            password:password,
             email: customerData?.email,
             dni: customerData?.dni,
             phone: customerData?.phone,
