@@ -28,7 +28,6 @@ const ButtonRequestCard = () => {
                 const randomNumbers = Math.floor(Math.random() * 9); // Genera un número aleatorio entre 1 y 100
                 numbers.push(randomNumbers);
             }
-            console.log("Este es el numero CARD", numbers.join("").toString());
         return parseInt(numbers.join("").toString())
     };
 
@@ -38,7 +37,6 @@ const ButtonRequestCard = () => {
                 const randomNumbers = Math.floor(Math.random() * 9); // Genera un número aleatorio entre 1 y 100
                 numbers.push(randomNumbers);
             }
-            console.log("Este es el numero CVV", numbers.join("").toString());
         return parseInt(numbers.join("").toString())
     };
 
@@ -60,8 +58,6 @@ const ButtonRequestCard = () => {
             }
             const response = await apiCustomer.requestNewCard(cardInfo, user.id);
             
-            console.log(response);
-            console.log("info de card", cardInfo);
             } catch (error) {
             console.error(error);
             }

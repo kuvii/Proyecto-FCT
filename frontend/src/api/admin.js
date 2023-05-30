@@ -75,7 +75,6 @@ const createNewUser = async (customerInfo) => {
 
 const updateCustomer = async (customerData, customerId) => {
     try {
-        console.log("SIUUUU", customerData, customerId);
         return await fetch(`${BASE_URL}/admin/edit-customer/${customerId}`,{
             method: 'PUT',
             headers: {
