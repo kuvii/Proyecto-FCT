@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
-const Formulario = ({closeModal}) => {
+const Formulario = ({closeModal, createUser}) => {
 
-    const [nombre, setNombre] = useState("");
-    const [apellidos, setApellidos] = useState("");
+    const [first_name, setNombre] = useState("");
+    const [password, setPassword] = useState("");
+    const [last_name, setApellidos] = useState("");
     const [fechaNacimiento, setFechaNacimiento] = useState("");
     const [telefono, setTelefono] = useState("");
     const [dni, setDni] = useState("");
@@ -13,33 +14,32 @@ const Formulario = ({closeModal}) => {
 
     let lUsuarios = [];
 
-    const handleSubmit = (e) => {
+    const handleInputChange = (e) => {
         e.preventDefault();
 
-        if (nombre === "" || apellidos === "" || fechaNacimiento === "" || telefono === "" || dni === "" || email === "" || codigoPostal === "" || direccion === "") {
+        if (first_name === "" || password === "" || last_name === "" || fechaNacimiento === "" || telefono === "" || dni === "" || email === "" || codigoPostal === "" || direccion === "") {
             alert("Tiene que rellenar todos los campos para poder registrarse")
         } else {
-            setNombre(nombre);
-            setApellidos(apellidos);
-            setFechaNacimiento(fechaNacimiento);
-            setTelefono(telefono);
-            setDni(dni);
-            setEmail(email);
-            setCodigoPostal(codigoPostal);
-            setDireccion(direccion);
 
             let nuevoUsuario = {
-                nombre: nombre,
-                apellidos: apellidos,
-                fechaNac: fechaNacimiento,
-                telf: telefono,
+                first_name: first_name,
+                password: password,
+                last_name: last_name,
+                birthdate: fechaNacimiento,
+                phone: telefono,
                 dni: dni,
                 email: email,
-                cPostal: codigoPostal,
-                direcc: direccion
+                postal_code: codigoPostal,
+                address: direccion,
+                account: {
+                    role: 0,
+                    money: 0.0
+                }
             }
+            createUser(nuevoUsuario)
             
             setNombre("");
+            setPassword("")
             setApellidos("");
             setFechaNacimiento("");
             setTelefono("");
@@ -49,12 +49,11 @@ const Formulario = ({closeModal}) => {
             setDireccion("");
             
             lUsuarios.push(nuevoUsuario)
-
+    
             // Check if the new user is stored
             console.log(nuevoUsuario);
             console.log("*****************");
         }
-        
     };
 
     return (
@@ -65,9 +64,9 @@ const Formulario = ({closeModal}) => {
                         <div className="form-group">
                             <input type="text" 
                             className="form-control inputFormulario" 
-                            id="nombre" 
-                            placeholder="Nombre:"
-                            value={nombre}
+                            id="first_name" 
+                            placeholder="first_name:"
+                            value={first_name}
                             onChange={(e) => setNombre(e.target.value)}
                             />
                         </div>
@@ -106,9 +105,9 @@ const Formulario = ({closeModal}) => {
                         <div className="form-group">
                             <input type="text" 
                             className="form-control inputFormulario" 
-                            id="apellidos"  
-                            placeholder="Apellidos:"
-                            value={apellidos}
+                            id="last_name"  
+                            placeholder="last_name:"
+                            value={last_name}
                             onChange={(e) => setApellidos(e.target.value)}
                             />
                         </div>
@@ -139,10 +138,20 @@ const Formulario = ({closeModal}) => {
                             onChange={(e) => setDireccion(e.target.value)}
                             />
                         </div>
+                        <div className="form-group">
+                            <input
+                                type="password"
+                                id="password"
+                                className="form-control inputFormulario"
+                                placeholder="Password:"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
                     </form>
                 </div>
                     <div className='buttonsFormulary'>
-                        <button className="buttonRegister" onClick={handleSubmit}>Enviar</button>
+                        <button className="buttonRegister" onClick={handleInputChange}>Enviar</button>
                         <button onClick={closeModal} className="cancelCreateUser">Cancelar</button>
                     </div>
             </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import apiAdmin from '../../api/admin'
 import { Box, Stack, useMediaQuery, useTheme } from '@mui/material'
 import Customer from '../../components/customer/Customer'
+import ButtonCreateUser from '../../components/buttonCreateUser/ButtonCreateUser'
 
 const AdminDashboard = () => {
 
@@ -25,6 +26,7 @@ const AdminDashboard = () => {
 
     return (
         <Box>
+            <ButtonCreateUser/>
             <Box marginX={2}>
                 <Stack direction='row'>
                     <Box flex={1}>

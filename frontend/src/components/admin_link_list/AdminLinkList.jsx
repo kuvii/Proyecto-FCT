@@ -15,23 +15,20 @@ const cardsOptions = {
     header: 'Tarjetas'
 }
 
-const clientsOptions = {
-    header: 'Clientes'
-}
 
 const AdminLinkList = () => {
 
     const { mode } = useContext(ColorModeContext)
 
     const handleNavigation = (index) => {
-        const optionsList = [dashboardOptions, loansOptions, cardsOptions, clientsOptions]
+        const optionsList = [dashboardOptions, loansOptions, cardsOptions]
         localStorage.setItem('navbar_options', JSON.stringify(optionsList[index]))
     }
     
     return (
         <List>
-            {["Inicio", "Prestamos", "Tarjetas", "Clientes"].map((text, index) => {
-                const routes = ["/admin", "/admin/loans", "/admin/cards", "/admin/clients"]
+            {["Inicio", "Prestamos", "Tarjetas"].map((text, index) => {
+                const routes = ["/admin", "/admin/loans", "/admin/cards"]
                 
                 return (
                     <ListItem key={text} disablePadding sx={ { marginY: 5, justifyContent: 'center'} } >

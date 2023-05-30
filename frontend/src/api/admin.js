@@ -60,12 +60,13 @@ const updateCardStatus = async (id, status) => {
 
 const createNewUser = async (customerInfo) => {
     try {
+        console.log(customerInfo);
         await fetch(`${BASE_URL}/admin/new-customer`,{
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({customerInfo})
+            body: JSON.stringify(customerInfo)
         })
     } catch (error) {
         console.error(error)
