@@ -90,7 +90,6 @@ const KingsbankApp = () => {
 
             <Route path='/admin' element={
               <RequireAuth>
-                <ButtonCreateUser/>
                 <AdminDashboard />
               </RequireAuth>
             }/>
@@ -98,12 +97,6 @@ const KingsbankApp = () => {
             <Route path='/admin/loans' element={
               <RequireAuth>
                 <LoansPage />
-              </RequireAuth>
-            }/>
-
-            <Route path='/admin/clients' element={
-              <RequireAuth>
-                <h1>Clientes</h1>
               </RequireAuth>
             }/>
 

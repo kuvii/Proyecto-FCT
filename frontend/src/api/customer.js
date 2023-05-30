@@ -62,7 +62,7 @@ const requestNewCard = async (cardInfo, customerId) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: { cardInfo }
+            body: JSON.stringify(cardInfo)
         })
         return data
     } catch (error) {

@@ -14,21 +14,12 @@ const Formulario = ({closeModal, createUser}) => {
 
     let lUsuarios = [];
 
-    const handleSubmit = (e) => {
+    const handleInputChange = (e) => {
         e.preventDefault();
 
         if (first_name === "" || password === "" || last_name === "" || fechaNacimiento === "" || telefono === "" || dni === "" || email === "" || codigoPostal === "" || direccion === "") {
             alert("Tiene que rellenar todos los campos para poder registrarse")
         } else {
-            setNombre(first_name);
-            setPassword(password);
-            setApellidos(last_name);
-            setFechaNacimiento(fechaNacimiento);
-            setTelefono(telefono);
-            setDni(dni);
-            setEmail(email);
-            setCodigoPostal(codigoPostal);
-            setDireccion(direccion);
 
             let nuevoUsuario = {
                 first_name: first_name,
@@ -42,11 +33,9 @@ const Formulario = ({closeModal, createUser}) => {
                 address: direccion,
                 account: {
                     role: 0,
-                    money: 0.0,
-                    iban: "ES" + toString(Math.random()**22)
+                    money: 0.0
                 }
             }
-
             createUser(nuevoUsuario)
             
             setNombre("");
@@ -60,12 +49,11 @@ const Formulario = ({closeModal, createUser}) => {
             setDireccion("");
             
             lUsuarios.push(nuevoUsuario)
-
+    
             // Check if the new user is stored
             console.log(nuevoUsuario);
             console.log("*****************");
         }
-        
     };
 
     return (
@@ -163,7 +151,7 @@ const Formulario = ({closeModal, createUser}) => {
                     </form>
                 </div>
                     <div className='buttonsFormulary'>
-                        <button className="buttonRegister" onClick={handleSubmit}>Enviar</button>
+                        <button className="buttonRegister" onClick={handleInputChange}>Enviar</button>
                         <button onClick={closeModal} className="cancelCreateUser">Cancelar</button>
                     </div>
             </div>
