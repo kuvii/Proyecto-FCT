@@ -21,4 +21,6 @@ customerRouter.get('/my/movements/:id', customerController.getMovementList)
 
 customerRouter.put('/customer/account/update/money/:id', customerController.putUserMoney)
 
+customerRouter.post('/transfer', customerController.transferMoneyToCustomer)
+
 export default customerRouter

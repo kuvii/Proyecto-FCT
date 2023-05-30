@@ -181,6 +181,59 @@ const userUpdateMoney = async (id, money) => {
     }
 }
 
+const transferMoneyToCustomer = async (senderId, receptorId, quantity) => {
+    try {
+        const senderCustomer = await Customer.findOne({
+            where: {
+                id: senderId
+            },
+            include: [
+                {model: Account},
+            ]
+        })
+        const receptorCustomer = await Customer.findOne({
+            where: {
+                id: receptorId
+            }
+        })
+
+        if (senderCustomer && receptorCustomer) {
+            
+            const senderMoney = senderCustomer.account.money
+            
+            if (senderMoney <= 0 || senderMoney < quantity) {
+                return 0
+            }
+            
+            await userUpdateMoney(senderId, (quantity * -1))
+            await userUpdateMoney(receptorId, quantity)
+
+            const senderMovement = {
+                quantity: quantity,
+                description: `${quantity}€ send to ${receptorCustomer.first_name}`,
+                type: "substract",
+                date: new Date(),
+            }
+
+            const receptorMovement = {
+                quantity: quantity,
+                description: `${quantity}€ received from ${senderCustomer.first_name}`,
+                type: "add",
+                date: new Date(),
+            }
+
+            await createNewMovement(senderMovement, senderId)
+            await createNewMovement(receptorMovement, receptorId)
+
+            return true
+        }
+
+        return 0
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 export const customerServices = {
     findCustomerDashboardInfo,
     authUser,
@@ -191,5 +244,6 @@ export const customerServices = {
     findLoanRequestsFromCustomer,
     createNewMovement,
     findMovementsFromCustomerId,
-    userUpdateMoney
+    userUpdateMoney,
+    transferMoneyToCustomer
 }

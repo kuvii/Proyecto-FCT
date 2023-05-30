@@ -131,6 +131,16 @@ const putUserMoney = async (req, res) => {
     }
 }
 
+const transferMoneyToCustomer = async (req, res) => {
+    const { senderId, receptorId, quantity } = req.body
+    try {
+        await customerServices.transferMoneyToCustomer(senderId, receptorId, quantity)
+    } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
+        console.error(error)
+    }
+}
+
 const customerController = {
     getCustomerDashboard,
     getAuthCustomer,
@@ -140,7 +150,8 @@ const customerController = {
     getLoanRequests,
     postNewMovement,
     getMovementList,
-    putUserMoney
+    putUserMoney,
+    transferMoneyToCustomer
 }
 
 export default customerController
