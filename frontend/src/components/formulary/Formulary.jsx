@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import apiAdmin from '../../api/admin';
 
-const Formulario = ({closeModal, createUser}) => {
+const Formulario = ({ closeModal }) => {
 
     const [first_name, setNombre] = useState("");
     const [password, setPassword] = useState("");
@@ -12,7 +13,16 @@ const Formulario = ({closeModal, createUser}) => {
     const [codigoPostal, setCodigoPostal] = useState("");
     const [direccion, setDireccion] = useState("");
 
-    let lUsuarios = [];
+    const [newCustomer, setNewCustomer] = useState({});
+
+    const generateRandomNumbers = () => {
+        const numbers = [];
+        for (let i = 0; i < 22; i++) {
+            const randomNumber = Math.floor(Math.random() * 9) + 1;
+            numbers.push(randomNumber);
+        }
+        return numbers.join("").toString();
+    };
 
     const handleInputChange = (e) => {
         e.preventDefault();
@@ -21,7 +31,7 @@ const Formulario = ({closeModal, createUser}) => {
             alert("Tiene que rellenar todos los campos para poder registrarse")
         } else {
 
-            let nuevoUsuario = {
+            let newUser = {
                 first_name: first_name,
                 password: password,
                 last_name: last_name,
@@ -33,10 +43,12 @@ const Formulario = ({closeModal, createUser}) => {
                 address: direccion,
                 account: {
                     role: 0,
-                    money: 0.0
+                    money: 0.0,
+                    iban: "ES" + generateRandomNumbers()
                 }
             }
-            createUser(nuevoUsuario)
+
+            setNewCustomer(newUser)
             
             setNombre("");
             setPassword("")
@@ -47,13 +59,18 @@ const Formulario = ({closeModal, createUser}) => {
             setEmail("");
             setCodigoPostal("");
             setDireccion("");
-            
-            lUsuarios.push(nuevoUsuario)
-    
-            // Check if the new user is stored
-            console.log(nuevoUsuario);
-            console.log("*****************");
+
+            createUser(newUser)
         }
+    };
+
+    const createUser = async (customer) => {
+        try {
+            const response = await apiAdmin.createNewUser(customer);
+
+            } catch (error) {
+            console.error(error);
+            }
     };
 
     return (
