@@ -20,11 +20,11 @@ const Login = () => {
     const { mode } = useContext(ColorModeContext)
     
     useEffect(() => {
-        const userAlreadyLogged = localStorage.getItem('user')
+        const userAlreadyLogged = localStorage.getItem('userInfo')
         if (userAlreadyLogged){
             navigate("/")
         }
-    })
+    }, [])
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
     const [emptyField, setEmptyField] = useState('')
     const [errorText, setErrorText] = useState({
