@@ -4,6 +4,7 @@ import Loan from '../../components/loan/Loan'
 import { Alert, Box, Snackbar } from '@mui/material'
 import { ColorModeContext } from '../../app/KingsbankApp'
 import themeHandler from '../../utils/theme'
+import apiCustomer from '../../api/customer'
 
 const LoansPage = () => {
     const [loanList, setLoanList] = useState([])
@@ -23,9 +24,12 @@ const LoansPage = () => {
 
     const [openErrorSnackbar, setOpenErrorSnackbar] = useState(false)
 
-    const handleUpdate = async (id, status) => {
+    const handleUpdate = async (id, customerId, status, quantity) => {
         try {
             await apiAdmin.updateLoanRequestStatus(id, status)
+            if (status === 'accepted'){
+                apiCustomer.updateMoney(customerId, quantity)
+            }
             setLoanList(loanList.filter((loan) => loan.id !== id))
         } catch (error) {
             setOpenErrorSnackbar(true)

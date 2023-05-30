@@ -94,12 +94,15 @@ const requestNewCard = async (cardInfo, customerId) => {
     }
 }
 
-const updateMoney = async (quantity, type, customerId) => {
+const updateMoney = async (customerId, money) => {
     try {
-        if (type === 'substract'){
-            quantity *= -1
-        }
-        const result = await fetch(BASE_URL + '/customer/account/update/money/' + customerId)
+        const result = await fetch(BASE_URL + '/customer/account/update/money/' + customerId, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify({money})
+        })
         return result
     } catch (error) {
         console.error(error)

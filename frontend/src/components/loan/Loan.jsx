@@ -55,10 +55,10 @@ const Loan = (props) => {
                         </Stack>
                     </Box>
                     <Box>
-                        <IconButton onClick={() => handleUpdate(content.id, 'accepted')}>
+                        <IconButton onClick={() => handleUpdate(content.id, content.accountId, 'accepted', content.total)}>
                             <CheckCircleIcon/>
                         </IconButton>
-                        <IconButton onClick={() => handleUpdate(content.id, 'canceled')}>
+                        <IconButton onClick={() => handleUpdate(content.id, content.accountId, 'canceled', content.total)}>
                             <CancelIcon/>
                         </IconButton>
                     </Box>

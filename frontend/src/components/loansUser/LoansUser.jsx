@@ -1,4 +1,4 @@
-import { Box, Paper, Stack, Typography, } from '@mui/material'
+import { Box, Paper, Stack, } from '@mui/material'
 
 const LoansUser = (props) => {
 
