@@ -40,6 +40,30 @@ const getCustomerMovements = async (id) => {
     }
 }
 
+const createNewLoan = async (customerId, loanInfo) => {
+    try {
+        await fetch(BASE_URL + '/my/new-loan-request/' + customerId, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loanInfo)
+        })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const getCustomerLoans = async (customerId) => {
+    try {
+        const data = await fetch(BASE_URL + '/my/loans/' + customerId)
+        const result = data.json()
+        return result
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const createNewMovement = async (customerId, movementInfo) => {
     try {
         await fetch(BASE_URL + '/my/movements/new-movement/' + customerId, {
@@ -70,12 +94,15 @@ const requestNewCard = async (cardInfo, customerId) => {
     }
 }
 
-const updateMoney = async (quantity, type, customerId) => {
+const updateMoney = async (customerId, money) => {
     try {
-        if (type === 'substract'){
-            quantity *= -1
-        }
-        const result = await fetch(BASE_URL + '/customer/account/update/money/' + customerId)
+        const result = await fetch(BASE_URL + '/customer/account/update/money/' + customerId, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify({money})
+        })
         return result
     } catch (error) {
         console.error(error)
@@ -117,7 +144,9 @@ const apiCustomer = {
     createNewMovement,
     updateMoney,
     requestNewCard,
-    transferMoney
+    transferMoney,
+    createNewLoan,
+    getCustomerLoans
 }
 
 export default apiCustomer
