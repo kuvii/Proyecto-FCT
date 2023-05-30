@@ -1,4 +1,5 @@
 import { useState } from "react";
+import apiAdmin from "../../api/admin";
 
 const EditCustomer = ({ closeModal, customerData }) => {
 
@@ -11,9 +12,15 @@ const EditCustomer = ({ closeModal, customerData }) => {
         })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(newCustomer);
+    const editCustomer = async () => {
+        try {
+            const response = await apiAdmin.updateCustomer(newCustomer, customerData.id);
+
+            closeModal()
+            } catch (error) {
+            console.error(error);
+            }
+        
     };
 
     return (
@@ -110,7 +117,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                         </form>
                     </div>
                         <div className='buttonsFormulary'>
-                            <button className="buttonRegister" onClick={handleSubmit}>Actualizar</button>
+                            <button className="buttonRegister" onClick={() => editCustomer()}>Actualizar</button>
                             <button onClick={closeModal} className="cancelCreateUser">Cancelar</button>
                         </div>
                 </div>

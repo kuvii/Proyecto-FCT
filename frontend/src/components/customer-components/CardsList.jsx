@@ -4,7 +4,6 @@ import { Alert, Box, Snackbar, Stack, useMediaQuery, useTheme } from '@mui/mater
 import apiCustomer from '../../api/customer'
 import themeHandler from '../../utils/theme'
 import RequestCard from '../requestCard/ButtonRequestCard'
-import { style } from '@mui/system'
 
 const CardsList = () => {
 

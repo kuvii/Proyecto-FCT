@@ -73,13 +73,29 @@ const createNewUser = async (customerInfo) => {
     }
 }
 
+const updateCustomer = async (customerData, customerId) => {
+    try {
+        console.log("SIUUUU", customerData, customerId);
+        return await fetch(`${BASE_URL}/admin/edit-customer/${customerId}`,{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(customerData)
+        });
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 const apiAdmin = {
     getAllCustomer,
     getLoanList,
     getCardsList,
     updateCardStatus,
     updateLoanRequestStatus,
-    createNewUser
+    createNewUser,
+    updateCustomer
 }
 
 export default apiAdmin
