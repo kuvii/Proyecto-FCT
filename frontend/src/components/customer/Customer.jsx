@@ -1,10 +1,22 @@
 import { Box, IconButton, Paper, Stack, useTheme, useMediaQuery } from '@mui/material'
 import InfoIcon from '@mui/icons-material/Info';
+import { useState } from 'react';
+import EditCustomer from '../editCustomer/EditCustomer';
 
 
 const Customer = (props) => {
 
     const { customerData } = props
+
+    const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
 
     const theme = useTheme()
     const isPc = useMediaQuery(theme.breakpoints.up('sm'))
@@ -29,10 +41,15 @@ const Customer = (props) => {
                             </Box>
                         </>
                     ): null}
-                    <IconButton sx={{ height: 20, width: 20, flex: 1}} >
+                    <IconButton sx={{ height: 20, width: 20, flex: 1}} onClick={openModal}>
                         <InfoIcon />
                     </IconButton>
                 </Stack>
+                {showModal && (
+                <div className="modal-backdrop">
+                    <EditCustomer closeModal={closeModal} customerData={customerData}/>
+                </div>
+                )}
             </Paper>
         </Box>
     )
