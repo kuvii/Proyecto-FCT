@@ -5,6 +5,8 @@ const adminRouter = Router()
 
 adminRouter.post('/admin/new-customer', adminController.postNewCustomer)
 
+adminRouter.put('/admin/edit-customer/:id', adminController.putCustomer)
+
 adminRouter.get('/admin/customers', adminController.getAllCustomer)
 
 adminRouter.get('/admin/get-role/:email', adminController.getUserRoleFromEmail)

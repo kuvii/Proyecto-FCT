@@ -16,6 +16,19 @@ const postNewCustomer = async (req, res) => {
     }
 }
 
+const putCustomer = async (req, res) => {
+    const { id } = req.params
+    const newCustomerData = req.body
+    // console.log(newCustomerData)
+    try {
+        const newCustomer = await adminServices.updateCustomer(newCustomerData, id)
+        res.json(newCustomer)
+    } catch (error) {
+        res.status(server_errors.INTERNAL_ERROR).json({})
+        console.log(error)
+    }
+}
+
 const getAllCustomer = async (req, res) => {
     try {
         const customerList = await adminServices.findAllCustomer()
@@ -86,5 +99,6 @@ export const adminController = {
     getCardRequestsList,
     updateCardRequest,
     getLoanRequestsList,
-    updateLoan
+    updateLoan,
+    putCustomer
 }

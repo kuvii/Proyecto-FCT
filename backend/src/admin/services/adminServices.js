@@ -34,6 +34,20 @@ const createNewCustomer = async (customerData) => {
     }
 }
 
+
+
+const updateCustomer = async (newCustomerData, customerId) => {
+    try {
+        await Customer.update(newCustomerData, {
+            where: {
+                id: customerId
+            }
+        });
+    } catch (error) {
+        throw new Error (error)
+    }
+}
+
 const findAllCustomer = async () => {
     try {
         const customerList = Customer.findAll({include: Customer.Account})
@@ -110,5 +124,6 @@ export const adminServices = {
     getCardRequestsList,
     updateCardRequest,
     getLoanRequestsList,
-    updateLoan
+    updateLoan,
+    updateCustomer
 }
