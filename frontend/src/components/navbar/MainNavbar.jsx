@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Navbar, NavbarBrand, NavbarToggler, } from 'reactstrap'
 import { Collapse, Container, ThemeProvider, createTheme, useMediaQuery, useTheme, } from '@mui/material'
 import logo from '../../assets/KingsBank_BlancoVerde1.png'
+import logo_dark from '../../assets/KingsBank_BlancoNegro.png'
 import Login from '../login/Login'
 import { ColorModeContext } from '../../app/KingsbankApp'
 import themeHandler from '../../utils/theme'
@@ -77,7 +78,7 @@ const MainNavbar = (props) => {
       <Navbar container={'fluid'} >
         <NavbarBrand href='/'>
           <Stack direction='row' alignItems='center' marginLeft={1} >
-              <img alt='kingsbankLogo' src={logo} style={{height: 70, width: 80}}/>
+              <img alt='kingsbankLogo' src={mode === 'dark' ? logo_dark : logo} style={{height: 70, width: 80}}/>
               <div className={`${mode === 'dark' ? 'dark-mode' : ''}`}>
                 KingsBank
               </div>

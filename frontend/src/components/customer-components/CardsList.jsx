@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../card/Card'
-import { Alert, Box, Snackbar, Stack, useMediaQuery, useTheme } from '@mui/material'
+import { Alert, Box, Snackbar, useMediaQuery, useTheme } from '@mui/material'
 import apiCustomer from '../../api/customer'
 import themeHandler from '../../utils/theme'
 import RequestCard from '../requestCard/ButtonRequestCard'

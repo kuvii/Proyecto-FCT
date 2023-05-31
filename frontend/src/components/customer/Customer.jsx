@@ -1,12 +1,15 @@
 import { Box, IconButton, Paper, Stack, useTheme, useMediaQuery } from '@mui/material'
 import InfoIcon from '@mui/icons-material/Info';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import EditCustomer from '../editCustomer/EditCustomer';
+import themeHandler from '../../utils/theme';
+import { ColorModeContext } from '../../app/KingsbankApp';
 
 
 const Customer = (props) => {
 
     const { customerData } = props
+    const { mode } = useContext(ColorModeContext)
 
     const [showModal, setShowModal] = useState(false);
 
@@ -23,7 +26,7 @@ const Customer = (props) => {
 
     return (
         <Box>
-            <Paper sx={{margin: 1, padding: 2}}>
+            <Paper sx={{margin: 1, padding: 2, backgroundColor: mode === 'dark' ? themeHandler.DARK_MODE.secondary_color : themeHandler.LIGHT_MODE.secondary_color}}>
                 <Stack direction='row'>
                     <Box flex={1}>
                         {customerData?.first_name}

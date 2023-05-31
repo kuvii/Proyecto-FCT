@@ -23,15 +23,15 @@ const TransactionMenu = ({ onClose }) => {
         console.error(error)
     }
 
-    // Restablecer los campos y el error después de enviar el TransactionMenu
+    
     setEmail('');
     setQuantity('');
     setError(false);
-    // Aquí puedes realizar alguna acción con los valores del TransactionMenu, como enviarlos al servidor
+    onClose();
   };
 
   const inputStyles = {
-    color: 'black', // Cambia el color del texto aquí
+    color: 'black',
   };
 
   return (

@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppBar, IconButton, Stack, ThemeProvider, Typography, createTheme, useMediaQuery, useTheme } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
-import imagenLogo1 from '../../assets/KingsBank_BlancoVerde1.png'
+import logo from '../../assets/KingsBank_BlancoVerde1.png'
+import logo_dark from '../../assets/KingsBank_BlancoNegro.png'
 import { useLocation } from "react-router-dom";
 import { ColorModeContext } from "../../app/KingsbankApp";
 import themeHandler from "../../utils/theme";
@@ -42,7 +43,7 @@ const MainScreenNavbar = ({open, handleOpen}) => {
                 mr: `${drawerWidth}px`}} 
                 open={open} >
                 <Stack direction='row' justifyContent='space-between' alignItems='center'>
-                    <img src={imagenLogo1} alt='logoImage' height={isPc ? 100 : 70} width={isPc ? 100 : 70} />
+                    <img src={mode === 'dark' ? logo_dark : logo} alt='logoImage' height={isPc ? 100 : 70} width={isPc ? 100 : 70} />
                     <Typography
                     fontFamily='Space Mono'
                     fontSize={isPc ? 42 : 24}

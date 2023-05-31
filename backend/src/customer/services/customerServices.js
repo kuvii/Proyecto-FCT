@@ -210,14 +210,14 @@ const transferMoneyToCustomer = async (senderId, receptorId, quantity) => {
 
             const senderMovement = {
                 quantity: quantity,
-                description: `${quantity}€ send to ${receptorCustomer.first_name}`,
+                description: `Transaccion de ${quantity}€ a ${receptorCustomer.first_name}`,
                 type: "substract",
                 date: new Date(),
             }
 
             const receptorMovement = {
                 quantity: quantity,
-                description: `${quantity}€ received from ${senderCustomer.first_name}`,
+                description: `Has recibido ${quantity}€ de ${senderCustomer.first_name}`,
                 type: "add",
                 date: new Date(),
             }

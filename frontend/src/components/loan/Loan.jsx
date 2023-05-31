@@ -44,7 +44,7 @@ const Loan = (props) => {
                 alignItems="center"
                 >
                     <Box>
-                        {(isPc ? content?.description : content?.customer.substring(0, 12) + '...') || <div>Data not found</div>}
+                        {content?.description}
                     </Box>
                     <Box color={setColor}>
                         {setStatusText || <div>Type</div>}

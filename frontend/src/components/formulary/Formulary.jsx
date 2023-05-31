@@ -61,6 +61,7 @@ const Formulario = ({ closeModal }) => {
             setDireccion("");
 
             createUser(newUser)
+            closeModal()
         }
     };
 
@@ -82,7 +83,7 @@ const Formulario = ({ closeModal }) => {
                             <input type="text" 
                             className="form-control inputFormulario" 
                             id="first_name" 
-                            placeholder="first_name:"
+                            placeholder="Nombre:"
                             value={first_name}
                             onChange={(e) => setNombre(e.target.value)}
                             />
@@ -123,7 +124,7 @@ const Formulario = ({ closeModal }) => {
                             <input type="text" 
                             className="form-control inputFormulario" 
                             id="last_name"  
-                            placeholder="last_name:"
+                            placeholder="Apellido:"
                             value={last_name}
                             onChange={(e) => setApellidos(e.target.value)}
                             />

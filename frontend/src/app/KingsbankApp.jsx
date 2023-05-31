@@ -10,7 +10,6 @@ import AdminDashboard from '../screens/admin/AdminDashboard'
 import LoansPage from '../screens/admin/LoansPage'
 import CardsPage from '../screens/admin/CardsPage'
 import { ThemeProvider, createTheme } from '@mui/material'
-import ButtonCreateUser from '../components/buttonCreateUser/ButtonCreateUser'
 import LoanList from '../components/customer-components/LoanList'
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {}, mode: 'light' })
