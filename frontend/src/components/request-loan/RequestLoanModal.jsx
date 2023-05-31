@@ -7,8 +7,8 @@ const RequestLoanModal = ({ isOpen, closeModal }) => {
     const [description, setDescription] = useState('')
 
     const inputStyles = {
-      color: 'black', // Cambia el color del texto aquí
-    };
+      color: 'black',
+    }
 
     const handleSubmit = async () => {
         try {

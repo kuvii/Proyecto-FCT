@@ -22,12 +22,13 @@ const Login = () => {
     
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('userInfo'))
-        if (user?.role === 0){
+        const role = user.role
+        if (role === 0){
             navigate("/my")
-        }
-        if(user?.role === 1){
+        } else if (role === 1){
             navigate("/admin")
         }
+
     }, [])
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
     const [emptyField, setEmptyField] = useState('')
@@ -68,17 +69,18 @@ const Login = () => {
                 }
 
                 const userRole = await apiAuth.checkIfUserIsAdmin(loginAuthorizationBody.email)
+                const role = userRole.account.role
                 const userData = await apiCustomer.getCustomerInfo(loginAuthorizationBody.email)
                 
                 localStorage.setItem('userLogged', loginAuthorizationBody.email)
                 localStorage.setItem('userInfo', JSON.stringify({id: userData.id, first_name: userData.first_name, last_name: userData.last_name, role: userData.account.role}))
 
-                if (userRole.account.role === 0) {
+                if (role === 0) {
                     navigate('/my')
-                }
-                if (userRole.account.role === 1) {
+                } else if (role === 1){
                     navigate('/admin')
                 }
+                
             } catch (error) {
                 console.log(error)
             }
@@ -95,46 +97,46 @@ const Login = () => {
                 useFlexGap
                 flexWrap='wrap'
                 >
-                <Col>
-                    <FormGroup floating>
-                        <TextField 
-                        autoComplete='off' 
-                        id='userEmailLogin' 
-                        name='email' 
-                        label='Email' 
-                        type='email' 
-                        variant='standard' 
-                        color='neutral' 
-                        value={loginAuthorizationBody.email} 
-                        onChange={handleChange} 
-                        error={emptyField === 'email'}
-                        helperText={emptyField === 'email' ? errorText.email : ''}
-                        /> 
-                    </FormGroup>
-                </Col>
-                <Col>
-                    <FormGroup floating>
-                        <TextField 
-                        autoComplete='off' 
-                        id='userPasswordLogin' 
-                        name='password' 
-                        label='Password' 
-                        type='password' 
-                        variant='standard' 
-                        color='neutral' 
-                        value={loginAuthorizationBody.password} 
-                        onChange={handleChange}
-                        error={emptyField === 'password'}
-                        helperText={emptyField === 'password' ? errorText.password : ''}
-                        /> 
-                    </FormGroup>
-                </Col>
-                <Col>
-                    <Button type="submit" color={mode === 'dark' ? 'success' : 'dark' }>
-                        Login
-                    </Button>
-                    <ColorModeButton/>
-                </Col>
+                    <Col>
+                        <FormGroup floating>
+                            <TextField 
+                            autoComplete='off' 
+                            id='userEmailLogin' 
+                            name='email' 
+                            label='Email' 
+                            type='email' 
+                            variant='standard' 
+                            color='neutral' 
+                            value={loginAuthorizationBody.email} 
+                            onChange={handleChange} 
+                            error={emptyField === 'email'}
+                            helperText={emptyField === 'email' ? errorText.email : ''}
+                            /> 
+                        </FormGroup>
+                    </Col>
+                    <Col>
+                        <FormGroup floating>
+                            <TextField 
+                            autoComplete='off' 
+                            id='userPasswordLogin' 
+                            name='password' 
+                            label='Password' 
+                            type='password' 
+                            variant='standard' 
+                            color='neutral' 
+                            value={loginAuthorizationBody.password} 
+                            onChange={handleChange}
+                            error={emptyField === 'password'}
+                            helperText={emptyField === 'password' ? errorText.password : ''}
+                            /> 
+                        </FormGroup>
+                    </Col>
+                    <Col>
+                        <Button type="submit" color={mode === 'dark' ? 'success' : 'dark' }>
+                            Login
+                        </Button>
+                        <ColorModeButton/>
+                    </Col>
                 </Stack>
             </Row>
             <Snackbar open={openSnackbar} anchorOrigin={{vertical: 'top', horizontal: 'left'}} autoHideDuration={3000} onClose={() => setOpenSnackbar(false)}>

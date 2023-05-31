@@ -6,7 +6,6 @@ import apiCustomer from '../../api/customer';
 const ButtonRequestCard = () => {
 
     const [showModal, setShowModal] = useState(false);
-    const [select, setSelect] = useState(''); // Aquí se queda guardada la opcion escogida.
 
     const openModal = () => {
         setShowModal(true);
@@ -17,7 +16,6 @@ const ButtonRequestCard = () => {
     };
 
     const saveOption = (option) => {
-        setSelect(option);
         closeModal();
         requestNewCard(option);
     };
@@ -25,7 +23,7 @@ const ButtonRequestCard = () => {
     const generateNumberCard = () => {
         const numbers = [];
             for (let i = 0; i < 12; i++) {
-                const randomNumbers = Math.floor(Math.random() * 9); // Genera un número aleatorio entre 1 y 100
+                const randomNumbers = Math.floor(Math.random() * 9);
                 numbers.push(randomNumbers);
             }
         return parseInt(numbers.join("").toString())
@@ -34,7 +32,7 @@ const ButtonRequestCard = () => {
     const generateNumberCVV = () => {
         const numbers = [];
             for (let i = 0; i < 3; i++) {
-                const randomNumbers = Math.floor(Math.random() * 9); // Genera un número aleatorio entre 1 y 100
+                const randomNumbers = Math.floor(Math.random() * 9);
                 numbers.push(randomNumbers);
             }
         return parseInt(numbers.join("").toString())
@@ -56,10 +54,10 @@ const ButtonRequestCard = () => {
                 cvv: generateNumberCVV(),
                 date_expiration: dateExpiration
             }
-            const response = await apiCustomer.requestNewCard(cardInfo, user.id);
+            await apiCustomer.requestNewCard(cardInfo, user.id)
             
             } catch (error) {
-            console.error(error);
+                console.error(error)
             }
         
     };

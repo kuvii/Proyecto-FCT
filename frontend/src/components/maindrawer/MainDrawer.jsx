@@ -59,15 +59,15 @@ const MainDrawer = ({open, handleOpen}) => {
                     {first_name}
                 </Typography>
                 {role === 0 ? (
-                    <LinkList />
-                    ) :
-                    <AdminLinkList />
+                        <LinkList />
+                    ) : (
+                        <AdminLinkList />
+                    )
                 }
                 <Stack direction='row' marginX={1}>
                     <ColorModeButton/>
                     <LogoutButton handleLogout={handleLogout} />
                 </Stack>
-                
         </Drawer>
     )
 }

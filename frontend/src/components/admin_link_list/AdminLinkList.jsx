@@ -35,8 +35,7 @@ const AdminLinkList = () => {
                         <Link to={routes[index]} className={`${mode === 'dark' ? 'links-dark-mode' : ''} userLinks`} onClick={() => handleNavigation(index)} >{text}</Link>
                     </ListItem>
                 )
-            })
-            }
+            })}
         </List>
     )
 }
