@@ -6,7 +6,6 @@ const { correct_codes, server_errors } = HTTP_codes
 
 const postNewCustomer = async (req, res) => {
     const newCustomerData = req.body
-    // console.log(newCustomerData)
     try {
         const newCustomer = await adminServices.createNewCustomer(newCustomerData)
         res.json(newCustomer)
@@ -19,7 +18,7 @@ const postNewCustomer = async (req, res) => {
 const putCustomer = async (req, res) => {
     const { id } = req.params
     const newCustomerData = req.body
-    // console.log(newCustomerData)
+
     try {
         const newCustomer = await adminServices.updateCustomer(newCustomerData, id)
         res.json(newCustomer)
@@ -41,7 +40,6 @@ const getAllCustomer = async (req, res) => {
 
 const getUserRoleFromEmail = async (req, res) => {
     const { email } = req.params
-    console.log(email)
     try {
         const customerRole = await adminServices.findUserRoleFromCustomerEmail(email)
         res.status(correct_codes.OK).json(customerRole)

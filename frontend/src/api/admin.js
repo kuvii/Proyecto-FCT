@@ -60,7 +60,6 @@ const updateCardStatus = async (id, status) => {
 
 const createNewUser = async (customerInfo) => {
     try {
-        console.log(customerInfo);
         await fetch(`${BASE_URL}/admin/new-customer`,{
             method: 'POST',
             headers: {

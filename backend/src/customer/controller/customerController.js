@@ -105,7 +105,6 @@ const getMovementList = async (req, res) => {
 
 const getAuthCustomer = async (req, res) => {
     const customerRequestedToAuthInfo = req.body
-    console.log(customerRequestedToAuthInfo)
 
     try {
         const isAuthorized = await customerServices.authUser(customerRequestedToAuthInfo)
