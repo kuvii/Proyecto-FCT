@@ -10,8 +10,6 @@ const createNewCustomer = async (customerData) => {
 
     const password = await bcrypt.hash(customerData?.password, salt)
 
-    console.log({customerData});
-
     try {
         await Customer.create({
             first_name: customerData?.first_name,

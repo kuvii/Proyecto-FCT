@@ -1,4 +1,4 @@
-import { Box, IconButton, Paper, Stack, useMediaQuery, useTheme } from '@mui/material'
+import { Box, IconButton, Paper, Stack, } from '@mui/material'
 import React, { useContext } from 'react'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -7,8 +7,6 @@ import { ColorModeContext } from '../../app/KingsbankApp';
 
 const Loan = (props) => {
 
-    const theme = useTheme();
-    const isPc = useMediaQuery(theme.breakpoints.up('sm'));
 
     const { mode } = useContext(ColorModeContext);
 

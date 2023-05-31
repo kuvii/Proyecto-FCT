@@ -13,8 +13,6 @@ const Formulario = ({ closeModal }) => {
     const [codigoPostal, setCodigoPostal] = useState("");
     const [direccion, setDireccion] = useState("");
 
-    const [newCustomer, setNewCustomer] = useState({});
-
     const generateRandomNumbers = () => {
         const numbers = [];
         for (let i = 0; i < 22; i++) {
@@ -48,7 +46,6 @@ const Formulario = ({ closeModal }) => {
                 }
             }
 
-            setNewCustomer(newUser)
             
             setNombre("");
             setPassword("")
@@ -67,7 +64,7 @@ const Formulario = ({ closeModal }) => {
 
     const createUser = async (customer) => {
         try {
-            const response = await apiAdmin.createNewUser(customer);
+            await apiAdmin.createNewUser(customer);
 
             } catch (error) {
             console.error(error);

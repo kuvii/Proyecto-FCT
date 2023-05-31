@@ -18,7 +18,7 @@ const TransactionMenu = ({ onClose }) => {
     }
 
     try {
-        const result = apiCustomer.transferMoney(JSON.parse(localStorage.getItem("userInfo")).id, email, quantity)
+        apiCustomer.transferMoney(JSON.parse(localStorage.getItem("userInfo")).id, email, quantity)
     } catch (error) {
         console.error(error)
     }
