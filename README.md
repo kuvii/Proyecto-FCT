@@ -32,3 +32,16 @@ De forma predeterminada ya hay un adminstrador creado en la base de datos y con 
 - Administra las solicitudes de tarjetas de los clientes.
 
 En resumen, la aplicación permite al administrador del banco gestionar las cuentas y transacciones de los clientes, así como procesar las solicitudes de préstamos y tarjetas. Los clientes, por su parte, pueden realizar transacciones y solicitar servicios adicionales a través de la plataforma.
+
+### Instalación 
+Para instalar la aplicación "KingsBank" debemos descargarlo desde el repositorio de Github.
+
+Nos encontramos con dos carpetas `Frontend` y `Backend` en ambas haremos:
+
+`npm install`
+
+Y con esto ya tendremos la aplicacion instalada.
+
+### Como ejecutar la App
+para ejecutarla tendremos que abrir dos terminales, una en situada en la carpeta "frontend" y otra situada en "backend" y escribiremos la siguiente línea de comando.
+`npm start` en ambos y ya se ejecutaría.
