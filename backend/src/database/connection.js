@@ -25,11 +25,11 @@ const initAdminUser = {
     dni: "12345678A",
     phone: "123123456",
     postal_code: "12345",
-    address: "calle admin",
+    address: "KinsBank HC",
     account: {
         role: 1,
         money: 0.0,
-        iban: 23456,
+        iban: "ES12345678912345678912",
     }
 }
 

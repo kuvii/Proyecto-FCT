@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from 'react'
 import { Col, Form, FormGroup, Row, Button } from 'reactstrap'
 import { Alert, Snackbar, Stack, TextField, } from '@mui/material'
@@ -20,9 +21,12 @@ const Login = () => {
     const { mode } = useContext(ColorModeContext)
     
     useEffect(() => {
-        const userAlreadyLogged = localStorage.getItem('userInfo')
-        if (userAlreadyLogged){
-            navigate("/")
+        const user = JSON.parse(localStorage.getItem('userInfo'))
+        if (user?.role === 0){
+            navigate("/my")
+        }
+        if(user?.role === 1){
+            navigate("/admin")
         }
     }, [])
     const [loginAuthorizationBody, setLoginAuthorizationBody] = useState(initLoginAuthorizationBody)
