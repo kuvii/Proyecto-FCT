@@ -25,13 +25,13 @@ const EditCustomer = ({ closeModal, customerData }) => {
 
     return (
         <div className="boxEditCustomer">
-            <div className="contenedorRegistro">
-                <div className="row formRegistro">
+            <div className="containerRegister">
+                <div className="row formRegister">
                     <div className="col-md-6">
                         <form id="form1">
                             <div className="form-group">
                                 <input type="text" 
-                                className="form-control inputFormulario" 
+                                className="form-control inputForm" 
                                 id="name" 
                                 name="first_name"
                                 placeholder={customerData?.first_name}
@@ -44,7 +44,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                                     type="date"
                                     id="birthdate"
                                     name="birthdate"
-                                    className="form-control inputFormulario"
+                                    className="form-control inputForm"
                                     placeholder={customerData?.birthdate}
                                     value={newCustomer.birthdate}
                                     onChange={handleChange}
@@ -52,7 +52,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                             </div>
                             <div className="form-group">
                                 <input type="text" 
-                                className="form-control inputFormulario" 
+                                className="form-control inputForm" 
                                 id="dni" 
                                 name="dni"
                                 placeholder={customerData?.dni}
@@ -62,7 +62,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                             </div>
                             <div className="form-group">
                                 <input type="text" 
-                                className="form-control inputFormulario" 
+                                className="form-control inputForm" 
                                 id="postalCode"  
                                 name="postal_code"
                                 placeholder={customerData?.postal_code}
@@ -76,7 +76,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                         <form id="form2">
                             <div className="form-group">
                                 <input type="text" 
-                                className="form-control inputFormulario" 
+                                className="form-control inputForm" 
                                 id="lastName"  
                                 name="last_name"
                                 placeholder={customerData?.last_name}
@@ -86,7 +86,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                             </div>
                             <div className="form-group">
                                 <input type="tel" 
-                                className="form-control inputFormulario" 
+                                className="form-control inputForm" 
                                 id="phone"  
                                 name="phone"
                                 placeholder={customerData?.phone}
@@ -96,7 +96,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                             </div>
                             <div className="form-group">
                                 <input type="email" 
-                                className="form-control inputFormulario" 
+                                className="form-control inputForm" 
                                 id="email" 
                                 name="email"
                                 placeholder={customerData?.email}
@@ -106,7 +106,7 @@ const EditCustomer = ({ closeModal, customerData }) => {
                             </div>
                             <div className="form-group">
                                 <input type="text" 
-                                className="form-control inputFormulario" 
+                                className="form-control inputForm" 
                                 id="direction"  
                                 name="direction"
                                 placeholder={customerData?.address}

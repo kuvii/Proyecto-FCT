@@ -49,7 +49,7 @@ const MainDrawer = ({open, handleOpen}) => {
                     ) 
                 }
                 <Box alignItems='center' justifyContent='center'>
-                    <img src={imagenUsuario1} alt="usuario1" className='imgUsuario1' />
+                    <img src={imagenUsuario1} alt="usuario1" className='imgUser1' />
                 </Box>
                 <Typography 
                 alignItems='center' 

@@ -3,15 +3,15 @@ import apiAdmin from '../../api/admin';
 
 const Formulario = ({ closeModal }) => {
 
-    const [first_name, setNombre] = useState("");
+    const [first_name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [last_name, setApellidos] = useState("");
-    const [fechaNacimiento, setFechaNacimiento] = useState("");
-    const [telefono, setTelefono] = useState("");
+    const [last_name, setLastName] = useState("");
+    const [bitrhdate, setBirthdate] = useState("");
+    const [phone, setPhone] = useState("");
     const [dni, setDni] = useState("");
     const [email, setEmail] = useState("");
-    const [codigoPostal, setCodigoPostal] = useState("");
-    const [direccion, setDireccion] = useState("");
+    const [postalCode, setPostalCode] = useState("");
+    const [direction, setDirection] = useState("");
 
     const generateRandomNumbers = () => {
         const numbers = [];
@@ -25,7 +25,7 @@ const Formulario = ({ closeModal }) => {
     const handleInputChange = (e) => {
         e.preventDefault();
 
-        if (first_name === "" || password === "" || last_name === "" || fechaNacimiento === "" || telefono === "" || dni === "" || email === "" || codigoPostal === "" || direccion === "") {
+        if (first_name === "" || password === "" || last_name === "" || bitrhdate === "" || phone === "" || dni === "" || email === "" || postalCode === "" || direction === "") {
             alert("Tiene que rellenar todos los campos para poder registrarse")
         } else {
 
@@ -33,12 +33,12 @@ const Formulario = ({ closeModal }) => {
                 first_name: first_name,
                 password: password,
                 last_name: last_name,
-                birthdate: fechaNacimiento,
-                phone: telefono,
+                birthdate: bitrhdate,
+                phone: phone,
                 dni: dni,
                 email: email,
-                postal_code: codigoPostal,
-                address: direccion,
+                postal_code: postalCode,
+                address: direction,
                 account: {
                     role: 0,
                     money: 0.0,
@@ -47,15 +47,15 @@ const Formulario = ({ closeModal }) => {
             }
 
             
-            setNombre("");
+            setName("");
             setPassword("")
-            setApellidos("");
-            setFechaNacimiento("");
-            setTelefono("");
+            setLastName("");
+            setBirthdate("");
+            setPhone("");
             setDni("");
             setEmail("");
-            setCodigoPostal("");
-            setDireccion("");
+            setPostalCode("");
+            setDirection("");
 
             createUser(newUser)
             closeModal()
@@ -72,32 +72,32 @@ const Formulario = ({ closeModal }) => {
     };
 
     return (
-        <div className="contenedorRegistro">
-            <div className="row formRegistro">
+        <div className="containerRegister">
+            <div className="row formRegister">
                 <div className="col-md-6">
                     <form id="form1">
                         <div className="form-group">
                             <input type="text" 
-                            className="form-control inputFormulario" 
+                            className="form-control inputForm" 
                             id="first_name" 
                             placeholder="Nombre:"
                             value={first_name}
-                            onChange={(e) => setNombre(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                             />
                         </div>
                         <div className="form-group">
                             <input
                                 type="date"
-                                id="fechaNacimiento"
-                                className="form-control inputFormulario"
+                                id="bitrhdate"
+                                className="form-control inputForm"
                                 placeholder="Fecha de Nacimiento:"
-                                value={fechaNacimiento}
-                                onChange={(e) => setFechaNacimiento(e.target.value)}
+                                value={bitrhdate}
+                                onChange={(e) => setBirthdate(e.target.value)}
                             />
                         </div>
                         <div className="form-group">
                             <input type="text" 
-                            className="form-control inputFormulario" 
+                            className="form-control inputForm" 
                             id="dni" 
                             placeholder="Dni:"
                             value={dni}
@@ -106,11 +106,11 @@ const Formulario = ({ closeModal }) => {
                         </div>
                         <div className="form-group">
                             <input type="text" 
-                            className="form-control inputFormulario" 
-                            id="codigoPostal"  
+                            className="form-control inputForm" 
+                            id="postalCode"  
                             placeholder="Código Postal:"
-                            value={codigoPostal}
-                            onChange={(e) => setCodigoPostal(e.target.value)}
+                            value={postalCode}
+                            onChange={(e) => setPostalCode(e.target.value)}
                             />
                         </div>
                     </form>
@@ -119,25 +119,25 @@ const Formulario = ({ closeModal }) => {
                     <form id="form2">
                         <div className="form-group">
                             <input type="text" 
-                            className="form-control inputFormulario" 
+                            className="form-control inputForm" 
                             id="last_name"  
                             placeholder="Apellido:"
                             value={last_name}
-                            onChange={(e) => setApellidos(e.target.value)}
+                            onChange={(e) => setLastName(e.target.value)}
                             />
                         </div>
                         <div className="form-group">
                             <input type="tel" 
-                            className="form-control inputFormulario" 
-                            id="telefono"  
+                            className="form-control inputForm" 
+                            id="phone"  
                             placeholder="Teléfono:"
-                            value={telefono}
-                            onChange={(e) => setTelefono(e.target.value)}
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
                             />
                         </div>
                         <div className="form-group">
                             <input type="email" 
-                            className="form-control inputFormulario" 
+                            className="form-control inputForm" 
                             id="email" 
                             placeholder="Email:"
                             value={email}
@@ -146,18 +146,18 @@ const Formulario = ({ closeModal }) => {
                         </div>
                         <div className="form-group">
                             <input type="text" 
-                            className="form-control inputFormulario" 
-                            id="direccion"  
+                            className="form-control inputForm" 
+                            id="direction"  
                             placeholder="Dirección:"
-                            value={direccion}
-                            onChange={(e) => setDireccion(e.target.value)}
+                            value={direction}
+                            onChange={(e) => setDirection(e.target.value)}
                             />
                         </div>
                         <div className="form-group">
                             <input
                                 type="password"
                                 id="password"
-                                className="form-control inputFormulario"
+                                className="form-control inputForm"
                                 placeholder="Password:"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}

@@ -28,7 +28,7 @@ code {
   align-items: center;
 }
 
-.imagenKingBank {
+.imgKingBank {
   width: 150px;
 }
 
@@ -109,32 +109,9 @@ input:focus, input::placeholder, input:valid {
   color: var(--light-secondary-color);
 }
 
-.imagenLogo {
-  width: 20px;
-}
-
 .containerRegisterLogin {
   display: flex;
   flex-direction: column;
-}
-
-.botonLogin {
-  background-color: black;
-  color: var(--light-secondary-color);
-  border-radius: 10px;
-  width: 120px;
-  height: 35px;
-}
-
-.botonLogin:hover {
-  background-color: var(--light-secondary-color);
-  color: black;
-}
-
-.botonRegister {
-  border: none;
-  background-color: transparent;
-  color: var(--light-secondary-color);   
 }
 
 .footer {
@@ -154,19 +131,19 @@ input:focus, input::placeholder, input:valid {
   justify-content: flex-end;
 }
 
-.anuncios {
+.advertisements {
   width: 90%;
   height: 550px;
 }
 
-.contenedorRegistro {
+.containerRegister {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.formRegistro {
+.formRegister {
   background-color: white;
   width: 60%;
   border-radius: 10px;
@@ -189,7 +166,7 @@ input:focus, input::placeholder, input:valid {
   border-color: #209d5c;
 }
 
-.inputFormulario {
+.inputForm {
   border: none;
   border-bottom: 1px solid var(--dark-primary-color);
   outline: none;
@@ -198,7 +175,7 @@ input:focus, input::placeholder, input:valid {
   margin-bottom: 30px;
 }
 
-.inputFormulario:focus, .inputFormulario::placeholder, .inputFormulario:valid {
+.inputForm:focus, .inputForm::placeholder, .inputForm:valid {
   color: var(--dark-primary-color);
 } 
 
@@ -313,15 +290,7 @@ input:focus, input::placeholder, input:valid {
   color: var(--light-secondary-color);
 }
 
-.generalContainer1 { 
-  display: flex;
-}
-
-.generalContainer2 { 
-  display: flex;
-}
-
-.imgUsuario1 {
+.imgUser1 {
   width: 100px;
   height: 100px;
   margin-top: 30px;
@@ -415,7 +384,6 @@ input:focus, input::placeholder, input:valid {
 }
 
 .carousel-caption {
-
   margin-left: -55px;
 }
 
@@ -525,10 +493,6 @@ h3 {
   .containerDataCard {
     margin-bottom: 15px;
     padding-left: 30px;
-  }
-
-  .generalContainer2 {
-    display: none;
   }
 
   .containerPage2 {

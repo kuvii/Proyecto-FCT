@@ -75,7 +75,7 @@ render() {
         onExited={this.onExited}
         key={item.src}
         >
-        <img src={item.src} alt={item.altText} className='anuncios'/>
+        <img src={item.src} alt={item.altText} className='advertisements'/>
         <CarouselCaption /* captionText={item.caption} */ captionHeader={item.caption} />
         </CarouselItem>
     );

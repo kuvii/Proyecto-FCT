@@ -8,7 +8,7 @@ const Register = () => {
             <nav className="navbar navbar-expand-lg contenedorNavbar">
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <div className="logoTitulo">
-                        <img src={imagenLogo1} className='imagenKingBank' alt='Imagen del Logo'/>
+                        <img src={imagenLogo1} className='imgKingBank' alt='Imagen del Logo'/>
                         <span className="titulo">Kings Bank</span>
                     </div>
                     <div className="header">
